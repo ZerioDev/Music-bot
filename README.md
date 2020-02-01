@@ -82,3 +82,5 @@ client.player.setRepeatMode(false);
 ```
 
 Find all the functions available on the official code [right here](https://github.com/Androz2091/discord-player).
+
+This is used with [Discord.js](https://www.npmjs.com/package/discord.js) and [discord-player](https://www.npmjs.com/package/discord-player).
