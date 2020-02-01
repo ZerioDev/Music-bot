@@ -37,7 +37,7 @@ Emojis are already defined by default but you can modify them if you wish.
 
 Go to the console and type this :
 
-```js
+```
 npm init
 npm i (name of each missing module)
 ```
