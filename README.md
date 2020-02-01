@@ -43,3 +43,40 @@ npm i (name of each missing module)
 ```
 
 All you have to do is turn on your bot !
+
+Utilities (to change the code)
+
+Functions available with the `discord-player` module that you can use :
+
+```js
+// Play a song in the voice channel and init the guild queue
+client.player.play(voiceChannel, songName);
+
+// Add a song to the queue
+client.player.addToQueue(guildID, songName);
+// Clear the queue
+client.player.clearQueue(guildID);
+// Get the queue
+client.player.getQueue(guildID);
+// Skip the current song
+client.player.skip(guildID);
+
+
+// Pause
+client.player.pause(guildID);
+// Resume
+client.player.resume(guildID);
+// Stop
+client.player.stop(guildID);
+
+// Check if music is playing in a guild
+client.player.isPlaying(guildID);
+// Get the currently playing song
+client.player.nowPlaying(guildID);
+
+
+// Current song will be repeated indefinitely
+client.player.setRepeatMode(true);
+// Current song will no longer be repeated indefinitely
+client.player.setRepeatMode(false);
+```
