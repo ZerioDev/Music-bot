@@ -44,6 +44,17 @@ npm i (name of each missing module)
 
 All you have to do is turn on your bot !
 
+- `play <name>`, play music in a vocal salon.
+- `pause`, pauses the current music.
+- `resume`, puts the current music back on. 
+- `queue`, see the next musics.
+- `clear-queue`, delete the next music.
+- `now-playing`, see music in progress.
+- `set-volume <...>`, change the volume.
+- `skip`, skip to next music.
+- `stop`, stop all music.
+
+
 Utilities (to change the code) :
 
 Functions available with the `discord-player` module that you can use :
