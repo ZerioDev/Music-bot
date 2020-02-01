@@ -20,8 +20,8 @@ For the bot to be able to start, please complete the file with your credentials 
 Reminder :
 
 - `prefix`, the prefix that will be set to use the bot.
-- `token_bot`, the token of the bot available on the Discord Developers section.
-- `youtube_api`, your youtube token available on the google console.
+- `token_bot`, the token of the bot available on the [Discord Developers](https://discordapp.com/developers/applications) section.
+- `youtube_api`, your youtube token available on the [Google console](https://console.developers.google.com). 
 
 To customize the emojis go to the file `emojis.json`.
 Emojis are already defined by default but you can modify them if you wish.
