@@ -44,7 +44,7 @@ npm i (name of each missing module)
 
 All you have to do is turn on your bot !
 
-Utilities (to change the code)
+Utilities (to change the code) :
 
 Functions available with the `discord-player` module that you can use :
 
