@@ -4,7 +4,7 @@ const client = new Discord.Client()
 
 const settings = require ("./config/bot.json") //The bot connects using the configuration file
 
-const emotes = require ("./config/emojis.json")
+const emotes = require ("./config/emojis.json") //The bot finds emojis
 
 const { Player } = require("discord-player"); //Create a new Player (Youtube API key is your Youtube Data v3 key)
 
@@ -14,7 +14,7 @@ client.player = player;
 
 client.on("ready", () => {
 
-    console.log("The bot is ready to play music");
+    console.log("The bot is ready to play music"); //If the bot is ready it sends a message in the console
 
 });
 
