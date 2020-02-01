@@ -80,3 +80,5 @@ client.player.setRepeatMode(true);
 // Current song will no longer be repeated indefinitely
 client.player.setRepeatMode(false);
 ```
+
+Find all the functions available on the official code [right here](https://github.com/Androz2091/discord-player).
