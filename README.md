@@ -44,8 +44,6 @@ npm i (name of each missing module)
 
 All you have to do is turn on your bot !
 
-![image](https://media.discordapp.net/attachments/669223024880386080/673258302540349464/music.png?width=400&height=124)
-
 Utilities (to change the code)
 
 Functions available with the `discord-player` module that you can use :
