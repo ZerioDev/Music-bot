@@ -51,6 +51,7 @@ All you have to do is turn on your bot !
 - `clear-queue`, delete the next music.
 - `now-playing`, see music in progress.
 - `set-volume <...>`, change the volume.
+- `set-repeat`to enable or disable the repeat function.
 - `skip`, skip to next music.
 - `stop`, stop all music.
 
