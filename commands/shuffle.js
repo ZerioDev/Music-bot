@@ -7,7 +7,7 @@ module.exports.run = async (client, message) => {
     if(!client.player.isPlaying(message.guild.id)) return message.channel.send(`**No music playing on this server ${emotes.error}**`);
 
     client.player.shuffle(message.guild.id);
-    return message.channel.send(`Queue shuffled ${emotes.success}`);
+    return message.channel.send(`**Queue shuffled ${emotes.success}**`);
     
 };
 
