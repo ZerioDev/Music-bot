@@ -10,10 +10,10 @@ module.exports.run = async (client, message) => {
 
     if(repeatMode){
         client.player.setRepeatMode(message.guild.id, false);
-        return message.channel.send(`Repeat mode disabled ${emotes.success}`);
+        return message.channel.send(`**Repeat mode disabled ${emotes.success}**`);
     } else {
         client.player.setRepeatMode(message.guild.id, true);
-        return message.channel.send(`Repeat mode enabled ${emotes.success}`);
+        return message.channel.send(`**Repeat mode enabled ${emotes.success}**`);
     }
     
 };
