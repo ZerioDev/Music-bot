@@ -1,0 +1,13 @@
+{
+  "name": "Music-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ZerioDev/Music-bot.git",
+  "author": "ZerioDev",
+  "license": "MIT",
+  "dependencies": {
+    "@discordjs/opus": "^0.1.0",
+    "discord-player": "^1.3.10",
+    "discord.js": "^12.2.0"
+  }
+}
