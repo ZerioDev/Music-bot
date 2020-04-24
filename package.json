@@ -1,0 +1,8 @@
+{
+  "name": "Music-bot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ZerioDev/Music-bot.git",
+  "author": "Androz2091 <androz2091@gmail.com>",
+  "license": "MIT"
+}
