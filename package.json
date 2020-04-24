@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "repository": "https://github.com/ZerioDev/Music-bot.git",
-  "author": "Androz2091 <androz2091@gmail.com>",
+  "author": "ZerioDev",
   "license": "MIT",
   "dependencies": {
     "discord-player": "^1.3.10",
