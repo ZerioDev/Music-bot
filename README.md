@@ -10,18 +10,19 @@ For the bot to be able to start, please complete the file with your credentials 
 
 ```js
 {
-    "prefix": "PREFIX BOT",
+    "prefix": "PREFIX",
+
+    "game": "GAME",
     
-    "token_bot": "TOKEN BOT",
-    "youtube_api": "TOKEN YOUTUBE API"
+    "token_bot": "TOKEN"
 }
 ```
 
 Reminder :
 
 - `prefix`, the prefix that will be set to use the bot.
+- `game`, the status of the bot.
 - `token_bot`, the token of the bot available on the [Discord Developers](https://discordapp.com/developers/applications) section.
-- `youtube_api`, your youtube token available on the [Google console](https://console.developers.google.com). 
 
 To customize the emojis go to the file `emojis.json`.
 Emojis are already defined by default but you can modify them if you wish.
@@ -30,7 +31,7 @@ Emojis are already defined by default but you can modify them if you wish.
 {
     "music": ":musical_note:",
     "queue": ":bar_chart:",
-    "error": ":tools:",
+    "error": ":x:",
     "success": ":white_check_mark:"
 }
 ```
@@ -44,55 +45,32 @@ npm i (name of each missing module)
 
 All you have to do is turn on your bot !
 
-- `play <name>`, play music in a vocal salon.
-- `pause`, pauses the current music.
-- `resume`, puts the current music back on. 
-- `queue`, see the next musics.
-- `clear-queue`, delete the next music.
-- `now-playing`, see music in progress.
-- `set-volume <...>`, change the volume.
-- `set-repeat`to enable or disable the repeat function.
-- `skip`, skip to next music.
-- `stop`, stop all music.
+### 🎵 Music commands
 
+```
+play <name>, play music in a vocal salon.
+pause, pause the current music.
+resume, puts the current music back on. 
+queue, see the next musics.
+np`, see music in progress.
+volume <1 - 100>, change the volume.
+loop, to enable or disable the repeat function.
+skip, skip to next music.
+stop, stop all music.
+filter, add / remove filters.
+w-filters, see filters.
+clear-queue, delete the next music.
+```
+
+### 💡 General commands
+
+```
+help, see the list of available orders.
+ping, see the bot latency.
+```
 
 Utilities (to change the code) :
 
-Functions available with the `discord-player` module that you can use :
-
-```js
-// Play a song in the voice channel and init the guild queue
-client.player.play(voiceChannel, songName);
-
-// Add a song to the queue
-client.player.addToQueue(guildID, songName);
-// Clear the queue
-client.player.clearQueue(guildID);
-// Get the queue
-client.player.getQueue(guildID);
-// Skip the current song
-client.player.skip(guildID);
-
-
-// Pause
-client.player.pause(guildID);
-// Resume
-client.player.resume(guildID);
-// Stop
-client.player.stop(guildID);
-
-// Check if music is playing in a guild
-client.player.isPlaying(guildID);
-// Get the currently playing song
-client.player.nowPlaying(guildID);
-
-
-// Current song will be repeated indefinitely
-client.player.setRepeatMode(true);
-// Current song will no longer be repeated indefinitely
-client.player.setRepeatMode(false);
-```
-
 Find all the functions available on the official code [right here](https://github.com/Androz2091/discord-player).
 
-This is used with [Discord.js](https://www.npmjs.com/package/discord.js) and [discord-player](https://www.npmjs.com/package/discord-player).
+This is used with [discord.js](https://www.npmjs.com/package/discord.js) and [discord-player](https://www.npmjs.com/package/discord-player).
