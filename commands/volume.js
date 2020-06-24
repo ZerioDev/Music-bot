@@ -17,9 +17,11 @@ exports.run = async (client, message, args) => {
     if(100 < args[0])  return message.channel.send(`Please enter a valid number ${emotes.error}`)
     if(args[0] <=0) return message.channel.send(`Please enter a valid number ${emotes.error}`)
 
-    //Cannot put (-) or (+)
-    if(message.content.includes(".")) return message.channel.send(`Please enter a valid number ${emotes.error}`)
+    //Cannot put (-), (+), (,) or (.)
+    if(message.content.includes("-")) return message.channel.send(`Please enter a valid number ${emotes.error}`)
     if(message.content.includes("+")) return message.channel.send(`Please enter a valid number ${emotes.error}`)
+    if(message.content.includes(",")) return message.channel.send(`Please enter a valid number ${emotes.error}`)
+    if(message.content.includes(".")) return message.channel.send(`Please enter a valid number ${emotes.error}`)
 
     //Set volume
     client.player.setVolume(message.guild.id, parseInt(args.join(" ")));
