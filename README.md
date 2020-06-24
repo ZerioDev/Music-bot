@@ -52,12 +52,12 @@ play <name>, play music in a vocal salon.
 pause, pause the current music.
 resume, puts the current music back on. 
 queue, see the next musics.
-np`, see music in progress.
+np, see music in progress.
 volume <1 - 100>, change the volume.
 loop, to enable or disable the repeat function.
 skip, skip to next music.
 stop, stop all music.
-filter, add / remove filters.
+filter <filter>, add / remove filters.
 w-filters, see filters.
 clear-queue, delete the next music.
 ```
