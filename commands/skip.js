@@ -6,9 +6,9 @@ module.exports.run = async (client, message) => {
 
     if(!client.player.isPlaying(message.guild.id)) return message.channel.send(`**No music playing on this server ${emotes.error}**`);
 
-    const song = await client.player.skip(message.guild.id);
+    const track = await client.player.skip(message.guild.id);
 
-    message.channel.send(`**Song ${song.name} skipped ${emotes.success}**`);
+    message.channel.send(`**Track ${track.name} skipped ${emotes.success}**`);
 
 };
 

@@ -6,11 +6,14 @@ module.exports.run = async (client, message) => {
 
     const queue = client.player.getQueue(message.guild.id);
 
-    if(!queue) return message.channel.send(`**No songs currently playing ${emotes.error}**`);
+    if(!queue) return message.channel.send(`**No tracks currently playing ${emotes.error}**`);
 
-    message.channel.send(`**Server queue ${emotes.queue}** \n`+(queue.songs.map((song, i) => {
-        return `${i === 0 ? 'Current' : `#${i+1}`} - ${song.name} | ${song.author}`
-    }).join('\n')));
+    message.channel.send(`**Server queue ${emotes.queue}** \nCurrent - ${queue.playing.name} | ${queue.playing.author}\n`+
+    (
+        queue.tracks.map((track, i) => {
+            return `#${i+1} - ${track.name} | ${track.author}`
+        }).join('\n')
+    ));
 
 };
 

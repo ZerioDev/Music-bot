@@ -6,7 +6,7 @@
   "author": "ZerioDev",
   "license": "MIT",
   "dependencies": {
-    "@discordjs/opus": "^0.1.0",
+    "@discordjs/opus": "^0.3.2",
     "discord-player": "^1.4.0",
     "discord.js": "^12.2.0"
   }
