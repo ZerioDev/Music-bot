@@ -6,17 +6,27 @@ module.exports.run = async (client, message, args) => {
 
     if (!args[0]) return message.channel.send(`**Please enter a music ${emotes.error}**`);
   
-    const aSongIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
+    const aTrackIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
 
-    // If there's already a song playing 
-    if(aSongIsAlreadyPlaying){
-        // Add the song to the queue
-        const song = await client.player.addToQueue(message.guild.id, args.join(" "));
-        message.channel.send(`**Song ${song.name} added to queue ${emotes.music}**`);
+    // If there's already a track playing 
+    if(aTrackIsAlreadyPlaying){
+        // Add the track to the queue
+        const track = await client.player.addToQueue(message.guild.id, args.join(" "));
+        message.channel.send(`**Track ${track.name} added to queue ${emotes.music}**`);
     } else {
-        // Else, play the song
-        const song = await client.player.play(message.member.voice.channel, args.join(" "));
-        message.channel.send(`**Currently playing ${song.name} ${emotes.music}**`);
+        // Else, play the track
+        const track = await client.player.play(message.member.voice.channel, args.join(" "));
+        message.channel.send(`**Currently playing ${track.name} ${emotes.music}**`);
+        const queue = client.player.getQueue(message.guild.id)
+        .on('end', () => {
+            message.channel.send('There is no more music in the queue!');
+        })
+        .on('trackChanged', (oldTrack, newTrack) => {
+            message.channel.send(`Now playing ${newTrack.name}...`);
+        })
+        .on('channelEmpty', () => {
+            message.channel.send('Stop playing, there is no more member in the voice channel...');
+        });
     }
 };
 
