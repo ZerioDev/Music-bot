@@ -15,14 +15,22 @@ exports.run = async (client, message, args) => {
         if(aTrackIsAlreadyPlaying){
 
             // Add the track to the queue
-            const track = await client.player.addToQueue(message.guild.id, args.join(" "));
-            message.channel.send(`Track ${track.name} added to queue ${emotes.music}`);
+            const result = await client.player.addToQueue(message.guild.id, args[0]);
+            if(result.type === 'playlist'){
+                message.channel.send(`${result.tracks.length} songs added to the queue ${emotes.music}`);
+            } else {
+                message.channel.send(`${result.name} added to the queue ${emotes.music}`);
+            }
 
         } else {
 
             // Else, play the song
-            const song = await client.player.play(message.member.voice.channel, args.join(" "));
-            message.channel.send(`Currently playing ${song.name} ${emotes.music}`);
+            const result = await client.player.play(message.member.voice.channel, args.join(" "));
+            if(result.type === 'playlist'){
+                message.channel.send(`${result.tracks.length} songs added to the queue ${emotes.music}\nCurrently playing **${result.tracks[0].name}**!`);
+            } else {
+                message.channel.send(`Currently playing ${result.name} ${emotes.music}`);
+            }
 
             const queue = client.player.getQueue(message.guild.id)
 
