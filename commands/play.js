@@ -27,7 +27,7 @@ exports.run = async (client, message, args) => {
             // Else, play the song
             const result = await client.player.play(message.member.voice.channel, args.join(" "));
             if(result.type === 'playlist'){
-                message.channel.send(`${result.tracks.length} songs added to the queue ${emotes.music}\nCurrently playing **${result.tracks[0].name}**!`);
+                message.channel.send(`${result.tracks.length} songs added to the queue ${emotes.music}\nCurrently playing ${result.tracks[0].name} !`);
             } else {
                 message.channel.send(`Currently playing ${result.name} ${emotes.music}`);
             }
