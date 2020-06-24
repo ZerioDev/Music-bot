@@ -1,18 +1,18 @@
 const emotes = require ("../config/emojis.json");
+const Discord = require("discord.js")
 
-module.exports.run = async (client, message) => {
+exports.run = async (client, message, args) => {
 
-    if(!message.member.voice.channel) return message.channel.send(`**You're not in a voice channel ${emotes.error}**`);
+    //If the member is not in a voice channel
+    if(!message.member.voice.channel) return message.channel.send(`You're not in a voice channel ${emotes.error}`);
 
-    const track = await client.player.resume(message.guild.id);
+    //Get song
+    const song = await client.player.resume(message.guild.id);
 
-    if(!track) return message.channel.send(`**No tracks currently playing ${emotes.error}**`);
+    //If there's no music
+    if(!song) return message.channel.send(`No songs currently playing ${emotes.error}`);
 
-    message.channel.send(`**Track ${track.name} resumed ${emotes.success}**`);
+    //Message
+    message.channel.send(`Song ${song.name} resumed ${emotes.success}`);
 
-};
-
-module.exports.config = {
-    name: "resume",
-    aliases: []
-};
+}
