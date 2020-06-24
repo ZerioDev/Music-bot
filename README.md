@@ -42,6 +42,16 @@ Go to the console and type this :
 npm i
 ```
 
+To start the bot :
+
+```
+#With Node
+node index.js
+
+#With pm2
+pm2 start index.js --name "MusicBot"
+```
+
 All you have to do is turn on your bot !
 
 ### 🎵 Music commands
