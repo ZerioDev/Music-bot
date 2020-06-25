@@ -1,6 +1,5 @@
 //Modules
 const Discord = require("discord.js");
-const Enmap = require('enmap')
 const fs = require("fs");
 
 //New client
@@ -28,7 +27,7 @@ fs.readdir("./events/", (err, files) => {
 });
 
 //New commands
-client.commands = new Enmap();
+client.commands = new Discord.Collection();
 
 //Commands
 fs.readdir("./commands/", (err, files) => {

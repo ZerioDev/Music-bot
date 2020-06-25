@@ -8,7 +8,6 @@
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
     "discord-player": "github:Androz2091/discord-player#develop",
-    "discord.js": "^12.2.0",
-    "enmap": "^5.3.1"
+    "discord.js": "^12.2.0"
   }
 }
