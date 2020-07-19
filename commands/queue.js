@@ -8,7 +8,7 @@ module.exports.run = async (client, message) => {
 
     if(!queue) return message.channel.send(`**No songs currently playing ${emotes.error}**`);
 
-    message.channel.send(`**Server queue ${emotes.queue}** \n`+(queue.songs.map((song, i) => {
+    message.channel.send(`**Server queue ${emotes.queue}** \n`+(queue.tracks.map((song, i) => {
         return `${i === 0 ? 'Current' : `#${i+1}`} - ${song.name} | ${song.author}`
     }).join('\n')));
 
