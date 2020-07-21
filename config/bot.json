@@ -1,6 +1,7 @@
 {
-    "prefix": "PREFIX BOT",
+    "prefix": "PREFIX",
+
+    "game": "GAME",
     
-    "token_bot": "TOKEN BOT",
-    "youtube_api": "TOKEN YOUTUBE API"
+    "token_bot": "TOKEN"
 }
