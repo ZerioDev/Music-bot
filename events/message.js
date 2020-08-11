@@ -15,7 +15,7 @@ module.exports = (client, message) => {
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const command = args.shift().toLowerCase();
   
-    //Grab the command data from the client.commands Enmap
+    //Grab the command data from the client.commands (Discord collection)
     const cmd = client.commands.get(command);
   
     //If that command doesn't exist, silently exit and do nothing
