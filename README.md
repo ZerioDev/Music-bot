@@ -11,9 +11,7 @@ For the bot to be able to start, please complete the file with your credentials 
 ```js
 {
     "prefix": "PREFIX",
-
     "game": "GAME",
-    
     "token_bot": "TOKEN"
 }
 ```
