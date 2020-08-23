@@ -16,7 +16,10 @@ exports.run = async (client, message, args) => {
 
             // Add the track to the queue
             const result = await client.player.addToQueue(message.guild.id, args[0]);
-            if(!result) return message.channel.send(`This song provider is not supported...`);
+            if(!result) {
+                message.member.voice.channel.leave()
+                return message.channel.send(`This song provider is not supported...`)
+            };
 
             if(result.type === 'playlist'){
                 message.channel.send(`${result.tracks.length} songs added to the queue ${emotes.music}`);
@@ -28,7 +31,10 @@ exports.run = async (client, message, args) => {
 
             // Else, play the song
             const result = await client.player.play(message.member.voice.channel, args.join(" ")).catch(() => {});
-            if(!result) return message.channel.send(`This song provider is not supported...`);
+            if(!result) {
+                message.member.voice.channel.leave()
+                return message.channel.send(`This song provider is not supported...`)
+            };
 
             if(result.type === 'playlist'){
                 message.channel.send(`${result.tracks.length} songs added to the queue ${emotes.music}\nCurrently playing ${result.tracks[0].name} !`);
