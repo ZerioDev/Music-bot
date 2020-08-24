@@ -11,7 +11,7 @@ exports.run = async (client, message, args) => {
 
     const aTrackIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
 
-        // If there's already a track playing 
+        //If there's already a track playing 
         if(aTrackIsAlreadyPlaying){
 
             //Add the track to the queue
@@ -29,7 +29,7 @@ exports.run = async (client, message, args) => {
 
         } else {
 
-            // Else, play the song
+            //Else, play the song
             const result = await client.player.play(message.member.voice.channel, args.join(" ")).catch(() => {});
             if(!result) {
                 message.member.voice.channel.leave()
