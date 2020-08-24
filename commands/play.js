@@ -14,8 +14,8 @@ exports.run = async (client, message, args) => {
         // If there's already a track playing 
         if(aTrackIsAlreadyPlaying){
 
-            // Add the track to the queue
-            const result = await client.player.addToQueue(message.guild.id, args[0]);
+            //Add the track to the queue
+            const result = await client.player.addToQueue(message.guild.id, args.join(" ")).catch(() => {});
             if(!result) {
                 message.member.voice.channel.leave()
                 return message.channel.send(`This song provider is not supported...`)
