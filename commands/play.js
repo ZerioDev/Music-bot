@@ -7,7 +7,7 @@ exports.run = async (client, message, args) => {
     if(!message.member.voice.channel) return message.channel.send(`You're not in a voice channel ${emotes.error}`);
 
     //If no music is provided
-    if (!args[0]) return message.channel.send(`Please enter a music ${emotes.error}`);
+    if (!args[0]) return message.channel.send(`Please specify a song to play ${emotes.error}`);
 
     const aTrackIsAlreadyPlaying = client.player.isPlaying(message.guild.id);
 
@@ -18,7 +18,7 @@ exports.run = async (client, message, args) => {
             const result = await client.player.addToQueue(message.guild.id, args.join(" ")).catch(() => {});
             if(!result) {
                 message.member.voice.channel.leave()
-                return message.channel.send(`This song provider is not supported...`)
+                return message.channel.send(`This song provider is not supported.`)
             };
 
             if(result.type === 'playlist'){
@@ -33,11 +33,11 @@ exports.run = async (client, message, args) => {
             const result = await client.player.play(message.member.voice.channel, args.join(" ")).catch(() => {});
             if(!result) {
                 message.member.voice.channel.leave()
-                return message.channel.send(`This song provider is not supported...`)
+                return message.channel.send(`This song provider is not supported.`)
             };
 
             if(result.type === 'playlist'){
-                message.channel.send(`${result.tracks.length} songs added to the queue ${emotes.music}\nCurrently playing ${result.tracks[0].name} !`);
+                message.channel.send(`${result.tracks.length} songs added to the queue ${emotes.music}\nCurrently playing ${result.tracks[0].name}`);
             } else {
                 message.channel.send(`Currently playing ${result.name} ${emotes.music}`);
             }
@@ -52,7 +52,7 @@ exports.run = async (client, message, args) => {
                 message.channel.send(`Now playing ${newTrack.name} ... ${emotes.music}`);
             })
             .on('channelEmpty', () => {
-                message.channel.send(`Stop playing, there is no more member in the voice channel ${emotes.error}`);
+                message.channel.send(`Music stoppted, there are no more members in the voice channel ${emotes.error}`);
             });
         }
     }
