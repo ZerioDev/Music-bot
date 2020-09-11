@@ -12,6 +12,6 @@ exports.run = async (client, message, args) => {
     const song = await client.player.nowPlaying(message.guild.id);
 
     //Message
-    message.channel.send(`Currently playing ${song.name} ${emotes.music}\nProgression : [${client.player.createProgressBar(message.guild.id)}]`);
+    message.channel.send(`Currently playing ${song.name} ${emotes.music}\nProgress: [${client.player.createProgressBar(message.guild.id)}]`);
 
 }

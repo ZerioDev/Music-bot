@@ -24,7 +24,7 @@ exports.run = async (client, message, args) => {
 
     //List embed
     const list = new Discord.MessageEmbed()
-    .setDescription(`List of all filters enabled or disabled.\nTo add a filter to a \`${config.prefix}filter\` music.`)
+    .setDescription(`List of all filters enabled or disabled.\nUse \`${config.prefix}filter\` to add a filter to a song.`)
     .addField("**Filters**", filtersStatuses[0].join('\n'), true)
     .addField("** **", filtersStatuses[1].join('\n'), true)
     .setColor("ORANGE");

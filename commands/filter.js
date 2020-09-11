@@ -29,12 +29,12 @@ exports.run = async (client, message, args) => {
     if(filtersUpdated[filterRealName]) {
 
         //The bot adds the filter on the music
-        message.channel.send(`I'm adding the filter to the music, please wait... Note : the longer the music is, the longer the wait will be ${emotes.music}`);
+        message.channel.send(`I'm adding the filter to the music, please wait... Note: the longer the music is, the longer this will take ${emotes.music}`);
 
     } else {
 
         //The bot removes the filter from the music
-        message.channel.send(`I'm disabling the filter on the music, please wait... Note : the longer the music is playing, the longer the wait will be ${emotes.music}`);
+        message.channel.send(`I'm disabling the filter on the music, please wait... Note: the longer the music is playing, the longer this will take ${emotes.music}`);
 
     }
 
