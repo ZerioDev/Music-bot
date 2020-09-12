@@ -10,6 +10,7 @@ exports.run = async (client, message, args) => {
     if(!client.player.isPlaying(message.guild.id)) return message.channel.send(`No music playing on this server ${emotes.error}`);
 
     //Stop player
+    client.player.setRepeatMode(message.guild.id, false);
     client.player.stop(message.guild.id);
 
     //Message
