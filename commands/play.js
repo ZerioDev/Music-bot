@@ -52,7 +52,7 @@ exports.run = async (client, message, args) => {
                 message.channel.send(`Now playing ${newTrack.name} ... ${emotes.music}`);
             })
             .on('channelEmpty', () => {
-                message.channel.send(`Music stoppted, there are no more members in the voice channel ${emotes.error}`);
+                message.channel.send(`Music stopped, there are no more members in the voice channel ${emotes.error}`);
             });
         }
     }
