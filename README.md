@@ -1,6 +1,10 @@
 # Music-bot
 A complete code to download for a music bot. Using a module (discord-player) 🎧
 
+The module (discord-player) may currently encounter various problems as a result. 
+Please don't open exits or don't contact me. I am aware of these multiple problems.
+I have already reported them to the creator of the module, who is already working on them ⚠️
+
 Looking for a code for a music bot ? This fully open source code is made for your !
 Warning, this code uses the v12 of the Discord.js module. Previous versions such as (11.5.1, 11.5.0 or other) will not be supported.
 
