@@ -1,21 +1,16 @@
-//Modules
-const Discord = require("discord.js");
 const fs = require("fs");
+const discord = require("discord.js");
+const settings = require("./config/bot.json");
 
-//New client
-const client = new Discord.Client();
+const client = new discord.Client({ disableMentions: 'everyone' });
 
-//The bot connects using the configuration file
-const settings = require ("./config/bot.json")
-
-//Create a new Player
 const { Player } = require("discord-player")
 
-//To easily access the player
 const player = new Player(client)
 client.player = player;
+client.emotes = require('./config/emojis.json');
+client.commands = new discord.Collection();
 
-//Events
 fs.readdir("./events/", (err, files) => {
     if (err) return console.error(err);
     files.forEach(file => {
@@ -26,10 +21,16 @@ fs.readdir("./events/", (err, files) => {
     });
 });
 
-//New commands
-client.commands = new Discord.Collection();
+fs.readdir("./player-events/", (err, files) => {
+    if (err) return console.error(err);
+    files.forEach(file => {
+        const event = require(`./player-events/${file}`);
+        let eventName = file.split(".")[0];
+        console.log(`Loading player event ${eventName}`);
+        client.player.on(eventName, event.bind(null, client));
+    });
+});
 
-//Commands
 fs.readdir("./commands/", (err, files) => {
     if (err) return console.error(err);
     files.forEach(file => {
@@ -41,5 +42,4 @@ fs.readdir("./commands/", (err, files) => {
     });
 });
 
-//Login
 client.login(settings.token_bot);
