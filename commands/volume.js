@@ -1,32 +1,19 @@
-const emotes = require ("../config/emojis.json");
-const Discord = require("discord.js")
+const emotes = require("../config/emojis.json");
 
 exports.run = async (client, message, args) => {
 
-    //If the member is not in a voice channel
-    if(!message.member.voice.channel) return message.channel.send(`You're not in a voice channel ${emotes.error}`);
+    if (!message.member.voice.channel) return message.channel.send(`You're not in a voice channel ${emotes.error}`);
 
-    //If there's no music
-    if(!client.player.isPlaying(message.guild.id)) return message.channel.send(`No music playing on this server ${emotes.error}`);
+    if (!client.player.getQueue(message)) return message.channel.send(`No songs currently playing ${emotes.error}`);
 
-    //Args
-    if(!args[0]) return message.channel.send(`Please enter a number ${emotes.error}`);
+    if (!args[0]) return message.channel.send(`Please enter a number ${emotes.error}`);
 
-    //Security modification
-    if(isNaN(args[0])) return message.channel.send(`Please enter a valid number ${emotes.error}`);
-    if(100 < args[0])  return message.channel.send(`Please enter a valid number ${emotes.error}`)
-    if(args[0] <=0) return message.channel.send(`Please enter a valid number ${emotes.error}`)
+    if (isNaN(args[0]) || 100 < args[0] || args[0] <= 0) return message.channel.send(`Please enter a valid number (between 1 and 100) ${emotes.error}`);
 
-    //Cannot put (-), (+), (,) or (.)
-    if(message.content.includes("-")) return message.channel.send(`Please enter a valid number ${emotes.error}`)
-    if(message.content.includes("+")) return message.channel.send(`Please enter a valid number ${emotes.error}`)
-    if(message.content.includes(",")) return message.channel.send(`Please enter a valid number ${emotes.error}`)
-    if(message.content.includes(".")) return message.channel.send(`Please enter a valid number ${emotes.error}`)
+    if (message.content.includes('-') || message.content.includes('+') || message.content.includes(',') || message.content.includes('.')) return message.channel.send(`Please enter a valid number ${emotes.error}`);
 
-    //Set volume
-    client.player.setVolume(message.guild.id, parseInt(args.join(" ")));
+    client.player.setVolume(message, parseInt(args.join(" ")));
 
-    //Message
-    message.channel.send(`Volume set to \`${args.join(" ")}\` ${emotes.success}`);
+    message.channel.send(`Volume set to **${args.join(" ")}%** ${emotes.success}`);
 
-}
+};
