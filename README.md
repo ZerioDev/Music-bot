@@ -54,7 +54,7 @@ All you have to do is turn on your bot !
 ### 🎵 Music commands
 
 ```
-play <name>, play music in a vocal salon.
+play <name>, play music in a voice channel.
 pause, pause the current music.
 resume, puts the current music back on. 
 queue, see the next musics.
