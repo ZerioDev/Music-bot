@@ -1,9 +1,7 @@
-const emotes = require ("../config/emojis.json");
-const Discord = require("discord.js")
+const emotes = require("../config/emojis.json");
 
-exports.run = async (client, message, args) => {
+exports.run = async (client, message) => {
 
-    //Message
-    message.channel.send(`Ping: ${client.ws.ping} ms ${emotes.success}`)
+    message.channel.send(`Ping : **${client.ws.ping}ms** ${emotes.success}`)
 
-}
+};
