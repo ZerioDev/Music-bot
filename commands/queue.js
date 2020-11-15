@@ -1,23 +1,15 @@
-const emotes = require ("../config/emojis.json");
-const Discord = require("discord.js")
+const emotes = require("../config/emojis.json");
 
-exports.run = async (client, message, args) => {
+exports.run = async (client, message) => {
 
-    //If the member is not in a voice channel
-    if(!message.member.voice.channel) return message.channel.send(`You're not in a voice channel ${emotes.error}`);
+    if (!message.member.voice.channel) return message.channel.send(`You're not in a voice channel ${emotes.error}`);
 
-    //Get queue
-    const queue = client.player.getQueue(message.guild.id);
+    const queue = client.player.getQueue(message);
 
-    //If there's no music
-    if(!queue) return message.channel.send(`No songs currently playing ${emotes.error}`);
+    if (!queue) return message.channel.send(`No songs currently playing ${emotes.error}`);
 
-    //Message
-    message.channel.send(`**Server queue ${emotes.queue}**\nCurrent - ${queue.playing.name} | ${queue.playing.author}\n`+
-    (
-        queue.tracks.map((track, i) => {
-            return `#${i+1} - ${track.name} | ${track.author}`
-        }).join('\n')
-    ));
+    message.channel.send(`**Server queue - ${message.guild.name} ${emotes.queue}**\nCurrent : ${queue.playing.title} | ${queue.playing.author}\n\n` + (queue.tracks.map((track, i) => {
+        return `**#${i + 1}** - ${track.title} | ${track.author} (requested by : ${track.requestedBy.username})`
+    }).slice(0, 5).join('\n') + `\n\n${queue.tracks.length > 5 ? `And **${queue.tracks.length}** other songs...` : `In the playlist **${queue.tracks.length}** song(s)...`}`));
 
-}
+};
