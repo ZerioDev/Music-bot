@@ -1,17 +1,13 @@
-const emotes = require ("../config/emojis.json");
-const Discord = require("discord.js")
+const emotes = require("../config/emojis.json");
 
-exports.run = async (client, message, args) => {
+exports.run = async (client, message) => {
 
-    //If the member is not in a voice channel
-    if(!message.member.voice.channel) return message.channel.send(`You're not in a voice channel ${emotes.error}`);
+    if (!message.member.voice.channel) return message.channel.send(`You're not in a voice channel ${emotes.error}`);
 
-    //If there's no music
-    if(!client.player.isPlaying(message.guild.id)) return message.channel.send(`No music playing on this server ${emotes.error}`);
+    if (!client.player.getQueue(message)) return message.channel.send(`No music playing on this server ${emotes.error}`);
 
-    client.player.shuffle(message.guild.id);
+    client.player.shuffle(message);
 
-    //Message
-    return message.channel.send(`Queue shuffled ${emotes.success}`);
-    
-}
+    return message.channel.send(`Queue shuffled **${client.player.getQueue(message).tracks.length}** song(s) ${emotes.success}`);
+
+};
