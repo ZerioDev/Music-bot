@@ -1,10 +1,6 @@
 # Music-bot
 A complete code to download for a music bot. Using a module (discord-player) 🎧
 
-The module (discord-player) may currently encounter various problems as a result. 
-Please don't open exits or don't contact me. I am aware of these multiple problems.
-I have already reported them to the creator of the module, who is already working on them ⚠️
-
 Looking for a code for a music bot ? This fully open source code is made for your !
 Warning, this code uses the v12 of the Discord.js module. Previous versions such as (11.5.1, 11.5.0 or other) will not be supported.
 
@@ -14,16 +10,16 @@ For the bot to be able to start, please complete the file with your credentials 
 
 ```js
 {
-    "prefix": "PREFIX",
     "game": "GAME",
+    "prefix": "PREFIX",
     "token_bot": "TOKEN"
 }
 ```
 
 Reminder :
 
-- `prefix`, the prefix that will be set to use the bot.
 - `game`, the status of the bot.
+- `prefix`, the prefix that will be set to use the bot.
 - `token_bot`, the token of the bot available on the [Discord Developers](https://discordapp.com/developers/applications) section.
 
 To customize the emojis go to the file `emojis.json`.
