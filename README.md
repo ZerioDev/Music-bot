@@ -2,7 +2,10 @@
 A complete code to download for a music bot. Using a module (discord-player) 🎧
 
 Looking for a code for a music bot ? This fully open source code is made for your !
-Warning, this code uses the v12 of the Discord.js module. Previous versions such as (11.5.1, 11.5.0 or other) will not be supported.
+Warning, this code uses the v12 of the discord.js module. Previous versions such as (11.5.1, 11.5.0 or other) will not be supported.
+
+
+### ⚡ Installation
 
 Well, let's start by downloading the code.
 Go to the folder `config` then the file `config.json`.
@@ -34,11 +37,7 @@ Emojis are already defined by default but you can modify them if you wish.
 }
 ```
 
-Go to the console and type this :
-
-```
-npm i
-```
+In the console, type `npm install` to install all dependencies.
 
 To start the bot :
 
@@ -59,14 +58,15 @@ play <name>, play music in a vocal salon.
 pause, pause the current music.
 resume, puts the current music back on. 
 queue, see the next musics.
+clear-queue, delete the next music.
+shuffle, to mix the queue.
 np, see music in progress.
-volume <1 - 100>, change the volume.
 loop, to enable or disable the repeat function.
+volume <1 - 100>, change the volume.
 skip, skip to next music.
 stop, stop all music.
 filter <filter>, add / remove filters.
 w-filters, see filters.
-clear-queue, delete the next music.
 ```
 
 ### 💡 General commands
@@ -76,7 +76,7 @@ help, see the list of available orders.
 ping, see the bot latency.
 ```
 
-Utilities (to change the code) :
+### 🏓 Utilities (to change the code)
 
 Find all the functions available on the official code [right here](https://github.com/Androz2091/discord-player).
 
