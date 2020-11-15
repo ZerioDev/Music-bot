@@ -1,35 +1,34 @@
-const config = require ("../config/bot.json");
-const emotes = require ("../config/emojis.json");
-const filters = require ("../config/filters.json");
-const Discord = require("discord.js")
+const config = require("../config/bot.json");
+const emotes = require("../config/emojis.json");
+const filters = require("../config/filters.json");
 
-exports.run = async (client, message, args) => {
+exports.run = async (client, message) => {
 
-    //If the member is not in a voice channel
-    if(!message.member.voice.channel) return message.channel.send(`You're not in a voice channel ${emotes.error}`);
+    if (!message.member.voice.channel) return message.channel.send(`You're not in a voice channel ${emotes.error}`);
 
-    //If there's no music
-    if(!client.player.isPlaying(message.guild.id)) return message.channel.send(`No music playing on this server ${emotes.error}`);
+    if (!client.player.getQueue(message)) return message.channel.send(`No songs currently playing ${emotes.error}`);
 
-    //Emojis
-    const enabledEmoji = emotes.success;
     const disabledEmoji = emotes.error;
+    const enabledEmoji = emotes.success;
 
-    const filtersStatuses = [ [], [] ];
+    const filtersStatuses = [[], []];
 
     Object.keys(filters).forEach((filterName) => {
         const array = filtersStatuses[0].length > filtersStatuses[1].length ? filtersStatuses[1] : filtersStatuses[0];
-        array.push(filters[filterName] + " : " + (client.player.getQueue(message.guild.id).filters[filterName] ? enabledEmoji : disabledEmoji));
+        array.push(filters[filterName] + " : " + (client.player.getQueue(message).filters[filterName] ? enabledEmoji : disabledEmoji));
     });
 
-    //List embed
-    const list = new Discord.MessageEmbed()
-    .setDescription(`List of all filters enabled or disabled.\nUse \`${config.prefix}filter\` to add a filter to a song.`)
-    .addField("**Filters**", filtersStatuses[0].join('\n'), true)
-    .addField("** **", filtersStatuses[1].join('\n'), true)
-    .setColor("ORANGE");
+    message.channel.send({
+        embed: {
+            color: 'ORANGE',
+            footer: { text: 'This bot uses a Github project made by Zerio (ZerioDev/Music-bot)' },
+            fields: [
+                { name: 'Filters', value: filtersStatuses[0].join('\n'), inline: true },
+                { name: '** **', value: filtersStatuses[1].join('\n'), inline: true },
+            ],
+            timestamp: new Date(),
+            description: `List of all filters enabled or disabled.\nUse \`${config.prefix}filter\` to add a filter to a song.`,
+        },
+    });
 
-    //Message
-    message.channel.send(list);
-
-}
+};
