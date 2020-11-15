@@ -7,7 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
-    "discord-player": "github:Androz2091/discord-player#develop",
+    "discord-player": "^3.0.2",
     "discord.js": "^12.2.0"
   }
 }
