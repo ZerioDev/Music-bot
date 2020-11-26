@@ -1,5 +1,3 @@
-const config = require("../config/bot.json");
-
 exports.run = async (client, message) => {
 
     message.channel.send({
@@ -13,7 +11,7 @@ exports.run = async (client, message) => {
                 { name: 'Filters', value: '`bassboost`, `8D`, `vaporwave`, `nightcore`, `phaser`, `tremolo`, `vibrato`, `reverse`, `treble`, `normalizer`, `surrounding`, `pulsator`, `subboost`, `karaoke`, `flanger`, `gate`, `haas`, `mcompand`' },
             ],
             timestamp: new Date(),
-            description: `To use filters, ${config.prefix}filter (the filter). Example : ${config.prefix}filter 8D.`,
+            description: `To use filters, ${client.config.prefix}filter (the filter). Example : ${client.config.prefix}filter 8D.`,
         },
     });
 
