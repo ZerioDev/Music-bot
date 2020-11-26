@@ -3,7 +3,7 @@ const discord = require('discord.js');
 
 const client = new discord.Client({ disableMentions: 'everyone' });
 
-const { Player } = require('discord-player')
+const { Player } = require('discord-player');
 
 const player = new Player(client);
 client.player = player;
@@ -12,7 +12,7 @@ client.emotes = require('./config/emojis.json');
 client.filters = require('./config/filters.json');
 client.commands = new discord.Collection();
 
-fs.readdir("./events/", (err, files) => {
+fs.readdir('./events/', (err, files) => {
     if (err) return console.error(err);
     files.forEach(file => {
         const event = require(`./events/${file}`);
@@ -22,7 +22,7 @@ fs.readdir("./events/", (err, files) => {
     });
 });
 
-fs.readdir("./player-events/", (err, files) => {
+fs.readdir('./player-events/', (err, files) => {
     if (err) return console.error(err);
     files.forEach(file => {
         const event = require(`./player-events/${file}`);
@@ -32,7 +32,7 @@ fs.readdir("./player-events/", (err, files) => {
     });
 });
 
-fs.readdir("./commands/", (err, files) => {
+fs.readdir('./commands/', (err, files) => {
     if (err) return console.error(err);
     files.forEach(file => {
         if (!file.endsWith(".js")) return;
