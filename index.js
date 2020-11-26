@@ -1,14 +1,15 @@
-const fs = require("fs");
-const discord = require("discord.js");
-const settings = require("./config/bot.json");
+const fs = require('fs');
+const discord = require('discord.js');
 
 const client = new discord.Client({ disableMentions: 'everyone' });
 
-const { Player } = require("discord-player")
+const { Player } = require('discord-player')
 
-const player = new Player(client)
+const player = new Player(client);
 client.player = player;
+client.config = require('./config/bot.json');
 client.emotes = require('./config/emojis.json');
+client.filters = require('./config/filters.json');
 client.commands = new discord.Collection();
 
 fs.readdir("./events/", (err, files) => {
@@ -42,4 +43,4 @@ fs.readdir("./commands/", (err, files) => {
     });
 });
 
-client.login(settings.token_bot);
+client.login(client.config.token_bot);
