@@ -1,21 +1,17 @@
-const config = require("../config/bot.json");
-const emotes = require("../config/emojis.json");
-const filters = require("../config/filters.json");
-
 exports.run = async (client, message) => {
 
-    if (!message.member.voice.channel) return message.channel.send(`You're not in a voice channel ${emotes.error}`);
+    if (!message.member.voice.channel) return message.channel.send(`${client.emotes.error} - You're not in a voice channel !`);
 
-    if (!client.player.getQueue(message)) return message.channel.send(`No songs currently playing ${emotes.error}`);
+    if (!client.player.getQueue(message)) return message.channel.send(`${client.emotes.error} - No music currently playing !`);
 
-    const disabledEmoji = emotes.error;
-    const enabledEmoji = emotes.success;
+    const disabledEmoji = client.emotes.error;
+    const enabledEmoji = client.emotes.success;
 
     const filtersStatuses = [[], []];
 
-    Object.keys(filters).forEach((filterName) => {
+    Object.keys(client.filters).forEach((filterName) => {
         const array = filtersStatuses[0].length > filtersStatuses[1].length ? filtersStatuses[1] : filtersStatuses[0];
-        array.push(filters[filterName] + " : " + (client.player.getQueue(message).filters[filterName] ? enabledEmoji : disabledEmoji));
+        array.push(client.filters[filterName] + " : " + (client.player.getQueue(message).filters[filterName] ? enabledEmoji : disabledEmoji));
     });
 
     message.channel.send({
@@ -27,7 +23,7 @@ exports.run = async (client, message) => {
                 { name: '** **', value: filtersStatuses[1].join('\n'), inline: true },
             ],
             timestamp: new Date(),
-            description: `List of all filters enabled or disabled.\nUse \`${config.prefix}filter\` to add a filter to a song.`,
+            description: `List of all filters enabled or disabled.\nUse \`${client.config.prefix}filter\` to add a filter to a song.`,
         },
     });
 
