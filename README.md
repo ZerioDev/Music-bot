@@ -38,6 +38,9 @@ Emojis are already defined by default but you can modify them if you wish.
 
 In the console, type `npm install` to install all dependencies.
 
+For this bot to work, `ffmpeg` needs to be installed. You can download it [here](https://ffmpeg.org/download.html).
+If you are using Ubuntu you can simply run `sudo apt install ffmpeg`.
+
 To start the bot :
 
 ```
