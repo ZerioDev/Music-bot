@@ -8,6 +8,7 @@
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
     "discord-player": "^3.0.2",
-    "discord.js": "^12.2.0"
+    "discord.js": "^12.2.0",
+    "ffmpeg-static": "^4.2.7"
   }
 }
