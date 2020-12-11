@@ -57,23 +57,24 @@ All you have to do is turn on your bot !
 play <name>, play music in a voice channel.
 pause, pause the current music.
 resume, puts the current music back on.
-queue, see the next musics.
+queue, see the next songs.
 clear-queue, delete the next music.
 shuffle, to mix the queue.
-np, see music in progress.
+nowplaying, see music in progress.
 loop, to enable or disable the repeat function.
 volume <1 - 100>, change the volume.
 skip, skip to next music.
 stop, stop all music.
-filter <filter>, add / remove filters.
+filter <filter>, add / remove filter.
 w-filters, see filters.
 ```
 
 ### 💡 General commands
 
 ```
-help, see the list of available orders.
 ping, see the bot latency.
+help, see the list of available commands.
+debug, see number of voice connections.
 ```
 
 ### 🏓 Utilities (to change the code)
