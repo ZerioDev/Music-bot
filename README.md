@@ -8,7 +8,7 @@ If you need help with this project, to get support faster you can join the help 
 ### ⚡ Installation
 
 Well, let's start by downloading the code.
-Go to the folder `config` then the file `config.json`.
+Go to the folder `config` then the file `bot.json`.
 For the bot to be able to start, please complete the file with your credentials as follows :
 
 ```js
@@ -25,7 +25,7 @@ Reminder :
 - `prefix`, the prefix that will be set to use the bot.
 - `token_bot`, the token of the bot available on the [Discord Developers](https://discordapp.com/developers/applications) section.
 
-To customize the emojis go to the file `emojis.json`.
+To customize the emojis go to the file `emojis.json` in the same folder.
 Emojis are already defined by default but you can modify them if you wish.
 
 ```js
