@@ -1,14 +1,14 @@
 {
   "name": "music-bot",
-  "version": "3.0.0",
   "main": "index.js",
-  "repository": "https://github.com/ZerioDev/Music-bot.git",
   "author": "ZerioDev",
-  "license": "MIT",
+  "version": "4.0.0",
+  "repository": "https://github.com/ZerioDev/Music-bot.git",
+  "description": "A complete code to download for a music bot. Using a module (discord-player).",
   "dependencies": {
-    "@discordjs/opus": "^0.3.2",
-    "discord-player": "^3.0.2",
-    "discord.js": "^12.2.0",
+    "@discordjs/opus": "^0.3.3",
+    "discord-player": "^3.0.3",
+    "discord.js": "^12.5.1",
     "ffmpeg-static": "^4.2.7"
   }
 }

@@ -15,6 +15,6 @@ module.exports = {
 
         client.player.resume(message);
 
-        message.channel.send(`${client.emotes.success} - Song ${client.player.getQueue(message).playing.title} **resumed** !`);
+        message.channel.send(`${client.emotes.success} - Song ${client.player.getQueue(message).playing.title} resumed !`);
     },
 };

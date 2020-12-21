@@ -11,14 +11,11 @@ module.exports = {
 
         if (!client.player.getQueue(message)) return message.channel.send(`${client.emotes.error} - No music currently playing !`);
 
-        const disabledEmoji = client.emotes.error;
-        const enabledEmoji = client.emotes.success;
-
         const filtersStatuses = [[], []];
 
-        Object.keys(client.filters).forEach((filterName) => {
+        client.filters.forEach((filterName) => {
             const array = filtersStatuses[0].length > filtersStatuses[1].length ? filtersStatuses[1] : filtersStatuses[0];
-            array.push(client.filters[filterName] + " : " + (client.player.getQueue(message).filters[filterName] ? enabledEmoji : disabledEmoji));
+            array.push(filterName.charAt(0).toUpperCase() + filterName.slice(1) + " : " + (client.player.getQueue(message).filters[filterName] ? client.emotes.success : client.emotes.off));
         });
 
         message.channel.send({
@@ -30,7 +27,7 @@ module.exports = {
                     { name: '** **', value: filtersStatuses[1].join('\n'), inline: true },
                 ],
                 timestamp: new Date(),
-                description: `List of all filters enabled or disabled.\nUse \`${client.config.prefix}filter\` to add a filter to a song.`,
+                description: `List of all filters enabled or disabled.\nUse \`${client.config.discord.prefix}filter\` to add a filter to a song.`,
             },
         });
     },

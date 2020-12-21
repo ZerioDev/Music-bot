@@ -8,38 +8,38 @@ If you need help with this project, to get support faster you can join the help 
 ### ⚡ Installation
 
 Well, let's start by downloading the code.
-Go to the folder `config` then the file `bot.json`.
+Go to the folder `config` then the file `bot.js`.
 For the bot to be able to start, please complete the file with your credentials as follows :
 
+- For emojis
+
 ```js
-{
-    "game": "GAME",
-    "prefix": "PREFIX",
-    "token_bot": "TOKEN"
+emojis: {
+    off: ':x:',
+    error: ':warning:',
+    queue: ':bar_chart:',
+    music: ':musical_note:',
+    success: ':white_check_mark:',
 }
 ```
 
-Reminder :
+- For configuration
 
-- `game`, the status of the bot.
+```js
+discord: {
+    token: 'TOKEN',
+    prefix: 'PREFIX',
+    activity: 'ACTIVITY',
+}
+```
+
+- `token`, the token of the bot available on the [Discord Developers](https://discordapp.com/developers/applications) section.
 - `prefix`, the prefix that will be set to use the bot.
-- `token_bot`, the token of the bot available on the [Discord Developers](https://discordapp.com/developers/applications) section.
-
-To customize the emojis go to the file `emojis.json` in the same folder.
-Emojis are already defined by default but you can modify them if you wish.
-
-```js
-{
-    "music": ":musical_note:",
-    "queue": ":bar_chart:",
-    "error": ":x:",
-    "success": ":white_check_mark:"
-}
-```
+- `activity`, the activity of the bot.
 
 In the console, type `npm install` to install all dependencies.
 
-To start the bot :
+- To start the bot :
 
 ```
 #With Node
