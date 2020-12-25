@@ -1,6 +1,6 @@
 module.exports = {
     name: 'loop',
-    aliases: ['lp'],
+    aliases: ['lp', 'repeat'],
     category: 'Music',
     utilisation: '{prefix}loop',
 
