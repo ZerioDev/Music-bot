@@ -15,7 +15,7 @@ module.exports = {
 
         if (Math.round(parseInt(args[0])) < 1 || Math.round(parseInt(args[0])) > 100) return message.channel.send(`${client.emotes.error} - Please enter a valid number (between 1 and 100) !`);
 
-        client.player.setVolume(message, args[0]);
+        client.player.setVolume(message, parseInt(args[0]));
 
         message.channel.send(`${client.emotes.success} - Volume set to **${parseInt(args[0])}%** !`);
     },

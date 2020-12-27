@@ -54,11 +54,12 @@ All you have to do is turn on your bot !
 ### 🎵 Music commands
 
 ```
-play <name>, play music in a voice channel.
+play <name/URL>, play music in a voice channel.
+search <name>, open a panel to choose a music and then play it.
 pause, pause the current music.
 resume, puts the current music back on.
 queue, see the next songs.
-clear-queue, delete the next music.
+clear-queue, remove music in the queue.
 shuffle, to mix the queue.
 nowplaying, see music in progress.
 loop, to enable or disable the repeat function.
