@@ -44,6 +44,7 @@ In the console, type `npm install` to install all dependencies.
 ```
 #With Node
 node index.js
+npm start #Indicated in package.json
 
 #With pm2
 pm2 start index.js --name "MusicBot"
