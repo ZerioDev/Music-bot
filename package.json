@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "start": "node server.js"
-  }
+  },
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
     "discord-player": "^3.0.2",
