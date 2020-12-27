@@ -44,6 +44,7 @@ To start the bot :
 ```
 #With Node
 node index.js
+npm start #Indicated in package.json
 
 #With pm2
 pm2 start index.js --name "MusicBot"
