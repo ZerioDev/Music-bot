@@ -6,7 +6,7 @@
   "author": "ZerioDev",
   "license": "MIT",
   "scripts": {
-    "start": "node server.js"
+    "start": "node index.js"
   },
   "dependencies": {
     "@discordjs/opus": "^0.3.2",
