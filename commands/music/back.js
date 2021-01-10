@@ -11,7 +11,7 @@ module.exports = {
 
         if (!client.player.getQueue(message)) return message.channel.send(`${client.emotes.error} - No music currently playing !`);
 
-        if (client.player.getQueue(message).previousTracks.length < 1) return message.channel.send(`${client.emotes.error}` - No previous track was found !);
+        if (client.player.getQueue(message).previousTracks.length < 1) return message.channel.send(`${client.emotes.error} - No previous track was found !`);
 
         client.player.back(message);
 
