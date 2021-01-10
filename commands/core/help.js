@@ -20,7 +20,7 @@ module.exports = {
                         { name: 'Filters', value: client.filters.map((x) => '`' + x + '`').join(', ') },
                     ],
                     timestamp: new Date(),
-                    description: `To use filters, ${client.config.discord.prefix}filter (the filter). Example : ${client.config.discord.prefix}filter 8D.`,
+                    description: `To use filters, ${process.env.PREFIX}filter (the filter). Example : ${process.env.PREFIX}filter 8D.`,
                 },
             });
         } else {
@@ -37,7 +37,7 @@ module.exports = {
                         { name: 'Name', value: command.name, inline: true },
                         { name: 'Category', value: command.category, inline: true },
                         { name: 'Aliase(s)', value: command.aliases.length < 1 ? 'None' : command.aliases.join(', '), inline: true },
-                        { name: 'Utilisation', value: command.utilisation.replace('{prefix}', client.config.discord.prefix), inline: true },
+                        { name: 'Utilisation', value: command.utilisation.replace('{prefix}', process.env.PREFIX), inline: true },
                     ],
                     timestamp: new Date(),
                     description: 'Find information on the command provided.\nMandatory arguments `[]`, optional arguments `<>`.',
