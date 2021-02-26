@@ -11,8 +11,8 @@ module.exports = {
 
         if (!client.player.getQueue(message)) return message.channel.send(`${client.emotes.error} - No music currently playing !`);
 
-        client.player.skip(message);
+        const success = client.player.skip(message);
 
-        message.channel.send(`${client.emotes.success} - The current music has just been **skipped** !`);
+        if (success) message.channel.send(`${client.emotes.success} - The current music has just been **skipped** !`);
     },
 };

@@ -11,8 +11,8 @@ module.exports = {
 
         if (!client.player.getQueue(message)) return message.channel.send(`${client.emotes.error} - No music currently playing !`);
 
-        client.player.shuffle(message);
+        const success = client.player.shuffle(message);
 
-        return message.channel.send(`${client.emotes.success} - Queue shuffled **${client.player.getQueue(message).tracks.length}** song(s) !`);
+        if (success) message.channel.send(`${client.emotes.success} - Queue shuffled **${client.player.getQueue(message).tracks.length}** song(s) !`);
     },
 };

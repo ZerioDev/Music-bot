@@ -12,8 +12,8 @@ module.exports = {
         if (!client.player.getQueue(message)) return message.channel.send(`${client.emotes.error} - No music currently playing !`);
 
         client.player.setRepeatMode(message, false);
-        client.player.stop(message);
+        const success = client.player.stop(message);
 
-        message.channel.send(`${client.emotes.success} - Music **stopped** into this server !`);
+        if (success) message.channel.send(`${client.emotes.success} - Music **stopped** into this server !`);
     },
 };
