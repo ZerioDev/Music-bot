@@ -11,7 +11,7 @@ module.exports = {
 
         const queue = client.player.getQueue(message);
 
-        if (!client.player.getQueue(message)) return message.channel.send(`${client.emotes.error} - No songs currently playing !`);
+        if (!queue) return message.channel.send(`${client.emotes.error} - No songs currently playing !`);
 
         message.channel.send(`**Server queue - ${message.guild.name} ${client.emotes.queue} ${client.player.getQueue(message).loopMode ? '(looped)' : ''}**\nCurrent : ${queue.playing.title} | ${queue.playing.author}\n\n` + (queue.tracks.map((track, i) => {
             return `**#${i + 1}** - ${track.title} | ${track.author} (requested by : ${track.requestedBy.username})`
