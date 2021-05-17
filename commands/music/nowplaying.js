@@ -2,7 +2,7 @@ module.exports = {
     name: 'nowplaying',
     aliases: ['np'],
     category: 'Music',
-    utilisation: '{prefix}nowplaying',
+    utilisation: 'nowplaying',
 
     execute(client, message) {
         if (!message.member.voice.channel) return message.channel.send(`${client.emotes.error} - You're not in a voice channel !`);
