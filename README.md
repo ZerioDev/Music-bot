@@ -9,7 +9,18 @@ If you need help with this project, to get support faster you can join the help 
 
 Well, let's start by downloading the code.
 Go to the folder `config` then the file `bot.js`.
-For the bot to be able to start, please complete the file with your credentials as follows :
+
+For the bot to be able to start, you need to rename `.env_example` to `.env`. Then add your credentials:
+
+```
+TOKEN=
+PREFIX=
+STATUS= 
+```
+
+- `token`, the token of the bot available on the [Discord Developers](https://discordapp.com/developers/applications) section.
+- `prefix`, the prefix that will be set to use the bot.
+- `activity`, the activity of the bot.
 
 - For emojis
 
@@ -22,20 +33,6 @@ emojis: {
     success: ':white_check_mark:',
 }
 ```
-
-- For configuration
-
-```js
-discord: {
-    token: 'TOKEN',
-    prefix: 'PREFIX',
-    activity: 'ACTIVITY',
-}
-```
-
-- `token`, the token of the bot available on the [Discord Developers](https://discordapp.com/developers/applications) section.
-- `prefix`, the prefix that will be set to use the bot.
-- `activity`, the activity of the bot.
 
 In the console, type `npm install` to install all dependencies.
 
