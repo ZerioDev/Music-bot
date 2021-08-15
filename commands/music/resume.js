@@ -13,8 +13,10 @@ module.exports = {
 
         if (!client.player.getQueue(message).paused) return message.channel.send(`${client.emotes.error} - The music is already playing !`);
 
-        const success = client.player.resume(message);
+        client.player.resume(message);
+        client.player.pause(message);
+        client.player.resume(message);
 
-        if (success) message.channel.send(`${client.emotes.success} - Song ${client.player.getQueue(message).playing.title} resumed !`);
+      message.channel.send(`${client.emotes.success} - Song ${client.player.getQueue(message).playing.title} resumed !`);
     },
 };
