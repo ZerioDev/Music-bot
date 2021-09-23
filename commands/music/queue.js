@@ -1,20 +1,35 @@
+const { MessageEmbed } = require('discord.js');
+
 module.exports = {
     name: 'queue',
-    aliases: [],
-    category: 'Music',
+    aliases: ['q'],
     utilisation: '{prefix}queue',
+    voiceChannel: true,
 
     execute(client, message) {
-        if (!message.member.voice.channel) return message.channel.send(`${client.emotes.error} - You're not in a voice channel !`);
+        const queue = player.getQueue(message.guild.id);
 
-        if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`${client.emotes.error} - You are not in the same voice channel !`);
+        if (!queue) return message.channel.send(`No music currently playing ${message.author}... try again ? ❌`);
 
-        const queue = client.player.getQueue(message);
+        if (!queue.tracks[0]) return message.channel.send(`No music in the queue after the current one ${message.author}... try again ? ❌`);
 
-        if (!client.player.getQueue(message)) return message.channel.send(`${client.emotes.error} - No songs currently playing !`);
+        const embed = new MessageEmbed();
+        const methods = ['', '🔁', '🔂'];
 
-        message.channel.send(`**Server queue - ${message.guild.name} ${client.emotes.queue} ${client.player.getQueue(message).loopMode ? '(looped)' : ''}**\nCurrent : ${queue.playing.title} | ${queue.playing.author}\n\n` + (queue.tracks.map((track, i) => {
-            return `**#${i + 1}** - ${track.title} | ${track.author} (requested by : ${track.requestedBy.username})`
-        }).slice(0, 5).join('\n') + `\n\n${queue.tracks.length > 5 ? `And **${queue.tracks.length - 5}** other songs...` : `In the playlist **${queue.tracks.length}** song(s)...`}`));
+        embed.setColor('RED');
+        embed.setThumbnail(message.guild.iconURL({ size: 2048, dynamic: true }));
+        embed.setAuthor(`Server queue - ${message.guild.name} ${methods[queue.repeatMode]}`, client.user.displayAvatarURL({ size: 1024, dynamic: true }));
+
+        const tracks = queue.tracks.map((track, i) => `**${i + 1}** - ${track.title} | ${track.author} (requested by : ${track.requestedBy.username})`);
+
+        const songs = queue.tracks.length;
+        const nextSongs = songs > 5 ? `And **${songs - 5}** other song(s)...` : `In the playlist **${songs}** song(s)...`;
+
+        embed.setDescription(`Current ${queue.current.title}\n\n${tracks.slice(0, 5).join('\n')}\n\n${nextSongs}`);
+
+        embed.setTimestamp();
+        embed.setFooter('Music comes first - Made with heart by Zerio ❤️', message.author.avatarURL({ dynamic: true }));
+
+        message.channel.send({ embeds: [embed] });
     },
 };

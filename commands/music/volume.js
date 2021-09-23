@@ -1,22 +1,26 @@
+const maxVol = client.config.opt.maxVol;
+
 module.exports = {
     name: 'volume',
-    aliases: [],
-    category: 'Music',
-    utilisation: '{prefix}volume [1-100]',
+    aliases: ['vol'],
+    utilisation: `{prefix}volume [1-${maxVol}]`,
+    voiceChannel: true,
 
     execute(client, message, args) {
-        if (!message.member.voice.channel) return message.channel.send(`${client.emotes.error} - You're not in a voice channel !`);
+        const queue = player.getQueue(message.guild.id);
 
-        if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`${client.emotes.error} - You are not in the same voice channel !`);
+        if (!queue || !queue.playing) return message.channel.send(`No music currently playing ${message.author}... try again ? ❌`);
 
-        if (!client.player.getQueue(message)) return message.channel.send(`${client.emotes.error} - No music currently playing !`);
+        const vol = parseInt(args[0]);
 
-        if (!args[0] || isNaN(args[0]) || args[0] === 'Infinity') return message.channel.send(`${client.emotes.error} - Please enter a valid number !`);
+        if (!vol) return message.channel.send(`The current volume is ${queue.volume} 🔊\n*To change the volume enter a valid number between **1** and **${maxVol}**.*`);
 
-        if (Math.round(parseInt(args[0])) < 1 || Math.round(parseInt(args[0])) > 100) return message.channel.send(`${client.emotes.error} - Please enter a valid number (between 1 and 100) !`);
+        if (queue.volume === vol) return message.channel.send(`The volume you want to change is already the current one ${message.author}... try again ? ❌`);
 
-        const success = client.player.setVolume(message, parseInt(args[0]));
+        if (vol < 0 || vol > maxVol) return message.channel.send(`The specified number is not valid. Enter a number between **1** and **${maxVol}** ${message.author}... try again ? ❌`);
 
-        if (success) message.channel.send(`${client.emotes.success} - Volume set to **${parseInt(args[0])}%** !`);
+        const success = queue.setVolume(vol);
+
+        return message.channel.send(success ? `The volume has been modified to **${vol}**/**${maxVol}**% 🔊` : `Something went wrong ${message.author}... try again ? ❌`);
     },
 };

@@ -1,29 +1,33 @@
 module.exports = {
     name: 'filter',
     aliases: [],
-    category: 'Music',
     utilisation: '{prefix}filter [filter name]',
+    voiceChannel: true,
 
-    execute(client, message, args) {
-        if (!message.member.voice.channel) return message.channel.send(`${client.emotes.error} - You're not in a voice channel !`);
+    async execute(client, message, args) {
+        const queue = player.getQueue(message.guild.id);
 
-        if (message.guild.me.voice.channel && message.member.voice.channel.id !== message.guild.me.voice.channel.id) return message.channel.send(`${client.emotes.error} - You are not in the same voice channel !`);
+        if (!queue || !queue.playing) return message.channel.send(`No music currently playing ${message.author}... try again ? ❌`);
 
-        if (!client.player.getQueue(message)) return message.channel.send(`${client.emotes.error} - No music currently playing !`);
+        const actualFilter = queue.getFiltersEnabled()[0];
 
-        if (!args[0]) return message.channel.send(`${client.emotes.error} - Please specify a valid filter to enable or disable !`);
+        if (!args[0]) return message.channel.send(`Please specify a valid filter to enable or disable ${message.author}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter} (${client.config.app.px}filter ${actualFilter} to disable it).\n` : ''}`);
 
-        const filterToUpdate = client.filters.find((x) => x.toLowerCase() === args[0].toLowerCase());
+        const filters = [];
 
-        if (!filterToUpdate) return message.channel.send(`${client.emotes.error} - This filter doesn't exist, try for example (8D, vibrato, pulsator...) !`);
+        queue.getFiltersEnabled().map(x => filters.push(x));
+        queue.getFiltersDisabled().map(x => filters.push(x));
+
+        const filter = filters.find((x) => x.toLowerCase() === args[0].toLowerCase());
+
+        if (!filter) return message.channel.send(`This filter doesn't exist ${message.author}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter}.\n` : ''}List of available filters ${filters.map(x => `**${x}**`).join(', ')}.`);
 
         const filtersUpdated = {};
 
-        filtersUpdated[filterToUpdate] = client.player.getQueue(message).filters[filterToUpdate] ? false : true;
+        filtersUpdated[filter] = queue.getFiltersEnabled().includes(filter) ? false : true;
 
-        client.player.setFilters(message, filtersUpdated);
+        await queue.setFilters(filtersUpdated);
 
-        if (filtersUpdated[filterToUpdate]) message.channel.send(`${client.emotes.music} - I'm **adding** the filter to the music, please wait... Note : the longer the music is, the longer this will take.`);
-        else message.channel.send(`${client.emotes.music} - I'm **disabling** the filter on the music, please wait... Note : the longer the music is playing, the longer this will take.`);
+        message.channel.send(`The filter ${filter} is now **${queue.getFiltersEnabled().includes(filter) ? 'enabled' : 'disabled'}** ✅\n*Reminder the longer the music is, the longer this will take.*`);
     },
 };

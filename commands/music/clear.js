@@ -1,7 +1,7 @@
 module.exports = {
-    name: 'shuffle',
-    aliases: ['sh'],
-    utilisation: '{prefix}shuffle',
+    name: 'clear',
+    aliases: ['cq'],
+    utilisation: '{prefix}clear',
     voiceChannel: true,
 
     async execute(client, message) {
@@ -11,8 +11,8 @@ module.exports = {
 
         if (!queue.tracks[0]) return message.channel.send(`No music in the queue after the current one ${message.author}... try again ? ❌`);
 
-        await queue.shuffle();
+        await queue.clear();
 
-        return message.channel.send(`Queue shuffled **${queue.tracks.length}** song(s) ! ✅`);
+        message.channel.send(`The queue has just been cleared 🗑️`);
     },
 };

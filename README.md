@@ -1,91 +1,66 @@
 # Music-bot
 
-## Migrating to v5...
-
-Music-Bot has not been migrated to Discord Player v5 yet! It's on the way, feel free to add a star to this repository to show your support. In the meantime, you should use **[discord-music-bot](https://github.com/Androz2091/discord-music-bot)**. Please do not spam issues here as it should have probably been resolved in the new repo. Thanks.
-
-A complete code to download for a music bot. Using a module (discord-player) 🎧
+A complete code to download for a music bot 🎧
 
 Looking for a code for a music bot ? This fully open source code is made for your project !
 
 If you need help with this project, to get support faster you can join the help server by just clicking [here](https://discord.gg/5cGSYV8ZZj).
 
-### ⚡ Installation
+*If you don't have any development knowledge, it is recommended to join the Discord support server to get help.*
 
-Well, let's start by downloading the code.
-Go to the folder `config` then the file `bot.js`.
-For the bot to be able to start, please complete the file with your credentials as follows :
+### ⚡ Configuration
 
-- For emojis
+Open the configuration file located in the main folder `config.js`.
 
 ```js
-emojis: {
-    off: ':x:',
-    error: ':warning:',
-    queue: ':bar_chart:',
-    music: ':musical_note:',
-    success: ':white_check_mark:',
-}
+module.exports = {
+    app: {
+        px: 'XXX',
+        token: 'XXX',
+        playing: 'by Zerio ❤️',
+    },
+
+    opt: {
+        DJ: {
+            enabled: false,
+            roleName: 'XXX',
+            commands: []
+        },
+        maxVol: 100,
+        discordPlayer: {}
+    }
+};
 ```
 
-- For configuration
+Basic configuration
 
-```js
-discord: {
-    token: 'TOKEN',
-    prefix: 'PREFIX',
-    activity: 'ACTIVITY',
-}
-```
+- `app/px`, the prefix that will be set to use the bot
+- `app/token`, the token of the bot available on the [Discord Developers](https://discordapp.com/developers/applications) section
+- `app/playing`, the activity of the bot
 
-- `token`, the token of the bot available on the [Discord Developers](https://discordapp.com/developers/applications) section.
-- `prefix`, the prefix that will be set to use the bot.
-- `activity`, the activity of the bot.
+DJ mode configuration
 
-In the console, type `npm install` to install all dependencies.
+- `opt/DJ/enabled`, whether the DJ mode should be activated or not 
+- `opt/DJ/roleName`, the name of the DJ role to be used
+- `opt/DJ/commands`, the list of commands limited to members with the DJ role
 
-- To start the bot :
+Advanced configuration
 
-```
-#With Node
-node index.js
-npm start #Indicated in package.json
+- `opt/maxVol`, the maximum volume that users can define
+- `opt/discordPlayer`, options used by discord-player
 
-#With pm2
-pm2 start index.js --name "MusicBot"
-```
+### 📑 Installation
 
-All you have to do is turn on your bot !
+To use the project correctly you will need some tools.
 
-### 🎵 Music commands
+[FFmpeg](https://www.ffmpeg.org) to process audio
 
-```
-play <name/URL>, play music in a voice channel.
-search <name>, open a panel to choose a music and then play it.
-pause, pause the current music.
-resume, puts the current music back on.
-queue, see the next songs.
-clear-queue, remove music in the queue.
-shuffle, to mix the queue.
-nowplaying, see music in progress.
-loop, to enable or disable the repeat function.
-volume <1 - 100>, change the volume.
-skip, skip to next music.
-stop, stop all music.
-filter <filter>, add / remove filter.
-w-filters, see filters.
-```
+[Node JS](https://nodejs.org/en/) (v16) for environment
 
-### 💡 General commands
+Without forgetting of course the code editor ^^
 
-```
-ping, see the bot latency.
-help, see the list of available commands.
-debug, see number of voice connections.
-```
+Realized with ❤️ by [ZerioDev](https://github.com/ZerioDev).
 
-### 🏓 Utilities (to change the code)
+Please do not withdraw the license and keep the credits on this project.
 
-Find all the functions available on the official code [right here](https://github.com/Androz2091/discord-player).
-
-This is used with [discord.js](https://www.npmjs.com/package/discord.js) and [discord-player](https://www.npmjs.com/package/discord-player).
+To have full access to the project and to be able to withdraw the credits a small donation is accepted. 

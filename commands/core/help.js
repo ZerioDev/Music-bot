@@ -1,48 +1,25 @@
+const { MessageEmbed } = require('discord.js');
+
 module.exports = {
     name: 'help',
     aliases: ['h'],
-    category: 'Core',
-    utilisation: '{prefix}help <command name>',
+    showHelp: false,
+    utilisation: '{prefix}help',
 
     execute(client, message, args) {
-        if (!args[0]) {
-            const infos = message.client.commands.filter(x => x.category == 'Infos').map((x) => '`' + x.name + '`').join(', ');
-            const music = message.client.commands.filter(x => x.category == 'Music').map((x) => '`' + x.name + '`').join(', ');
+        const embed = new MessageEmbed();
 
-            message.channel.send({
-                embed: {
-                    color: 'ORANGE',
-                    author: { name: 'Help pannel' },
-                    footer: { text: 'This bot uses a Github project made by Zerio (ZerioDev/Music-bot)' },
-                    fields: [
-                        { name: 'Bot', value: infos },
-                        { name: 'Music', value: music },
-                        { name: 'Filters', value: client.filters.map((x) => '`' + x + '`').join(', ') },
-                    ],
-                    timestamp: new Date(),
-                    description: `To use filters, ${client.config.discord.prefix}filter (the filter). Example : ${client.config.discord.prefix}filter 8D.`,
-                },
-            });
-        } else {
-            const command = message.client.commands.get(args.join(" ").toLowerCase()) || message.client.commands.find(x => x.aliases && x.aliases.includes(args.join(" ").toLowerCase()));
+        embed.setColor('RED');
+        embed.setAuthor(client.user.username, client.user.displayAvatarURL({ size: 1024, dynamic: true }));
 
-            if (!command) return message.channel.send(`${client.emotes.error} - I did not find this command !`);
+        const commands = client.commands.filter(x => x.showHelp !== false);
 
-            message.channel.send({
-                embed: {
-                    color: 'ORANGE',
-                    author: { name: 'Help pannel' },
-                    footer: { text: 'This bot uses a Github project made by Zerio (ZerioDev/Music-bot)' },
-                    fields: [
-                        { name: 'Name', value: command.name, inline: true },
-                        { name: 'Category', value: command.category, inline: true },
-                        { name: 'Aliase(s)', value: command.aliases.length < 1 ? 'None' : command.aliases.join(', '), inline: true },
-                        { name: 'Utilisation', value: command.utilisation.replace('{prefix}', client.config.discord.prefix), inline: true },
-                    ],
-                    timestamp: new Date(),
-                    description: 'Find information on the command provided.\nMandatory arguments `[]`, optional arguments `<>`.',
-                }
-            });
-        };
+        embed.setDescription('This code comes from a GitHub project (ZerioDev/Music-bot).\nThe use of this one is possible while keeping the credits for free.\nIf you want to remove the credits join the Discord support server.');
+        embed.addField(`Enabled - ${commands.size}`, commands.map(x => `\`${x.name}${x.aliases[0] ? ` (${x.aliases.map(y => y).join(', ')})\`` : '\`'}`).join(' | '));
+
+        embed.setTimestamp();
+        embed.setFooter('Music comes first - Made with heart by Zerio ❤️', message.author.avatarURL({ dynamic: true }));
+
+        message.channel.send({ embeds: [embed] });
     },
 };
