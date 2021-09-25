@@ -21,7 +21,10 @@ module.exports = {
 
         const methods = ['disabled', 'track', 'queue'];
 
-        embed.setDescription(`Volume **${queue.volume}**%\nDuration **${track.duration}**\nLoop mode **${methods[queue.repeatMode]}**\nRequested by ${track.requestedBy}`);
+        const timestamp = queue.getPlayerTimestamp();
+        const trackDuration = timestamp.progress == 'Infinity' ? 'infinity (live)' : track.duration;
+
+        embed.setDescription(`Volume **${queue.volume}**%\nDuration **${trackDuration}**\nLoop mode **${methods[queue.repeatMode]}**\nRequested by ${track.requestedBy}`);
 
         embed.setTimestamp();
         embed.setFooter('Music comes first - Made with heart by Zerio ❤️', message.author.avatarURL({ dynamic: true }));
