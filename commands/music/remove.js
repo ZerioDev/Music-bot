@@ -14,6 +14,6 @@ module.exports = {
         let song = queue.tracks[Number(args[0]) - 1]
         queue.tracks.splice(Number(args[0]) - 1, 1)
 
-        message.channel.send(`Removed song at queue position ${song.title} 🗑️`);
+        message.channel.send(`Removed song from queue: \`${song.title}\` 🗑️`);
     },
 };
