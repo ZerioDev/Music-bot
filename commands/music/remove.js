@@ -11,9 +11,9 @@ module.exports = {
 
         if (!queue.tracks[0]) return message.channel.send(`No music in the queue after the current one ${message.author}... try again ? ❌`);
         if(args[0] > queue.tracks.length || args[0] < 1) return message.channel.send("That is not a valid track!... try again ? ❌")
-        
-        queue.tracks.splice(args[0] - 1, 1)
+        let song = queue.tracks[Number(args[0]) - 1]
+        queue.tracks.splice(Number(args[0]) - 1, 1)
 
-        message.channel.send(`Removed song at queue position ${args[0]} 🗑️`);
+        message.channel.send(`Removed song at queue position ${song.title} 🗑️`);
     },
 };
