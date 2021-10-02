@@ -33,7 +33,7 @@ module.exports = {
         
         const filter1 = m => m.author.id === message.author.id
 
-         const collector = message.channel.createMessageCollector({filter:filter1,time: 15000 ,errors: ['time'] });
+         const collector = message.channel.createMessageCollector({filter:filter1,time: 15000 ,errors: ['time'] });//you can change the timeout to your choice.15000 being 15 seconds
             
          collector.on('collect',async (m) => {
             if (m.content==='cancel'||m.content==='CANCEL') {
