@@ -44,7 +44,6 @@ module.exports = {
             else if(isNaN(m.content)|| (Number(m.content) < 0) || (Number(m.content) > 10)){
                 await message.channel.send(`Invalid response ${message.author}...Try a value from 1 to 10...:x:`);
             } else {
-                console.log("Valid")
                 collector.stop()
                 try {
                     if (!queue.connection) await queue.connect(message.member.voice.channel);
