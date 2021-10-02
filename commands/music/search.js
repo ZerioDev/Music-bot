@@ -63,5 +63,9 @@ module.exports = {
 
             if (!queue.playing) await queue.play();
         });
+
+        collector.on('end', (msg, reason) => {
+            if (reason === 'time') return message.channel.send(`Search timed out ${message.author}... try again ? ❌`);
+        });
     },
 };
