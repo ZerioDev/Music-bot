@@ -17,7 +17,7 @@ module.exports = {
     app: {
         px: 'XXX',
         token: 'XXX',
-        playing: 'by Zerio ❤️',
+        playing: 'by Zerio ❤️'
     },
 
     opt: {
@@ -47,6 +47,7 @@ DJ mode configuration
 Advanced configuration
 
 - `opt/maxVol`, the maximum volume that users can define
+- `opt/loopMessage`, if the message that a music is played should be sent when it is looped
 - `opt/discordPlayer`, options used by discord-player
 
 ### 📑 Installation
