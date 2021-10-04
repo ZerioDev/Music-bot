@@ -27,6 +27,7 @@ module.exports = {
             commands: []
         },
         maxVol: 100,
+        loopMessage: false,
         discordPlayer: {}
     }
 };
