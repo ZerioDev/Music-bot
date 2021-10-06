@@ -1,6 +1,6 @@
 module.exports = {
     app: {
-        px: 'XXX',
+        prefix: 'XXX',
         token: 'XXX',
         playing: 'by Zerio ❤️'
     },
