@@ -13,6 +13,12 @@ module.exports = {
         },
         maxVol: 100,
         loopMessage: false,
-        discordPlayer: {}
+        discordPlayer: {
+              ytdlOptions: {
+                quality: 'highestaudio', // Fix for EPIPE error
+                highWaterMark: 1 << 25 // Fix for Aborted error
+                    },
+            },
+        }
     }
 };
