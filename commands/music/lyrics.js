@@ -8,7 +8,7 @@ module.exports = {
         const queue = client.player.getQueue(message);
         if (!queue && !args[0]) return message.channel.send(`🚫 | You need to provide a track!`);
 
-        message.channel.startTyping();
+        message.channel.sendTyping();
         const lyrics = await client.player.lyrics(args[0] ? args.join(' ') : client.player.nowPlaying(message).title);
         message.channel.stopTyping();
         
