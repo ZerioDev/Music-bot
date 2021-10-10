@@ -13,6 +13,11 @@ module.exports = {
         },
         maxVol: 100,
         loopMessage: false,
-        discordPlayer: {}
+        discordPlayer: {
+            ytdlOptions: {
+                quality: 'highestaudio',
+                highWaterMark: 1 << 25
+            }
+        }
     }
 };
