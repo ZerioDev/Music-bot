@@ -17,7 +17,7 @@ module.exports = {
 
      const song = await lyricsClient.search(args[0] ? args.join(' ') : queue.current.title);
      
-      if (song.lyrics.length === 0) return message.channel.send(`🚫 | Could not find lyrics for this song! Please retry or search for an other track!`);
+      if (song === null) return message.channel.send(`🚫 | Couldn' find lyrics for this song! Please retry or search for an other track!`);
       
       const embed = new MessageEmbed()
       .setTitle(`**LYRICS | ${song.title}**`)
