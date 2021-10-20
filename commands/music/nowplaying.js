@@ -1,4 +1,4 @@
-const { MessageEmbed } = require('discord.js');
+const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 
 module.exports = {
     name: 'nowplaying',
@@ -29,6 +29,14 @@ module.exports = {
         embed.setTimestamp();
         embed.setFooter('Music comes first - Made with heart by Zerio ❤️', message.author.avatarURL({ dynamic: true }));
 
-        message.channel.send({ embeds: [embed] });
+        const saveButton = new MessageButton();
+
+        saveButton.setLabel('Save this track');
+        saveButton.setCustomId('saveTrack');
+        saveButton.setStyle('SUCCESS');
+
+        const row = new MessageActionRow().addComponents(saveButton);
+
+        message.channel.send({ embeds: [embed], components: [row] });
     },
 };
