@@ -9,7 +9,7 @@ module.exports = {
         DJ: {
             enabled: false,
             roleName: 'DJ',
-            commands: ['back', 'clear', 'filter', 'loop', 'pause', 'resume', 'seek', 'shuffle', 'skip', 'stop', 'volume']
+            commands: ['back', 'clear', 'filter', 'loop', 'pause', 'resume', 'seek', 'shuffle', 'skip', 'stop', 'volume', 'remove']
         },
         maxVol: 100,
         loopMessage: false,
