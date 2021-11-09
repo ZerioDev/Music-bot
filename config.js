@@ -1,7 +1,9 @@
+require('dotenv').config()
+
 module.exports = {
     app: {
         px: '/',
-        token: 'NTI0NTAwNTM1NjUxNDY3MjY0.XXyfHw.hWVvfsDqnKClaWb_rGkyjb0lJek',
+        token: process.env.BOT_TOKEN,
         playing: 'by PPUKJ ❤️'
     },
 

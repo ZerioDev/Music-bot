@@ -11,6 +11,7 @@
   "dependencies": {
     "discord-player": "^5.1.0",
     "discord.js": "^13.1.0",
+    "dotenv": "^10.0.0",
     "ffmpeg-static": "^4.4.0",
     "ms": "^3.0.0-canary.1",
     "opusscript": "^0.0.8"
