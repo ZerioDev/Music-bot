@@ -28,4 +28,4 @@ jobs:
             git pull origin/master
             npm install
             pm2 restart ppukj-music-bot
-            echo 'ppukj-music-bot has been deployed!"
+            echo 'ppukj-music-bot has been deployed!'
