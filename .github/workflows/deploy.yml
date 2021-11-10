@@ -23,7 +23,7 @@ jobs:
           username: ${{secrets.SSH_USERNAME}}
           password: ${{secrets.SSH_PASSWORD}}
           
-          script: #Script to run after SSH-ing
+          script: | #Script to run after SSH-ing
             cd bots/Music-bot/
             git pull origin/master
             npm install
