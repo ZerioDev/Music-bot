@@ -25,7 +25,7 @@ jobs:
           
           script: | #Script to run after SSH-ing
             cd bots/Music-bot/
-            git pull origin/master
+            git pull origin master
             npm install
             pm2 restart ppukj-music-bot
             echo 'ppukj-music-bot has been deployed!'
