@@ -20,8 +20,8 @@ jobs:
         uses: appleboy/ssh-action@v0.1.4 #SSH to VPS
         with:
           host: ${{secrets.SSH_HOST}}
-          key: ${{secrets.SSH_KEY}}
           username: ${{secrets.SSH_USERNAME}}
+          password: ${{secrets.SSH_PASSWORD}}
           
           script: #Script to run after SSH-ing
             cd bots/Music-bot/
