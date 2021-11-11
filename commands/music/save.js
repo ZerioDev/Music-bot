@@ -25,8 +25,6 @@ function savePlaylist(message, args, queue){
          songURLs.push(queue.tracks[i].url);
      }
 
-     console.log(message);
-
      var savedPlaylist = {
          author : message.author.username,
          tracks : songURLs
