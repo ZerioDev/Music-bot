@@ -18,8 +18,14 @@ module.exports = {
         if (!res || !res.tracks.length) return message.channel.send(`No results found ${message.author}... try again ? ❌`);
 
         const queue = await player.createQueue(message.guild, {
-            metadata: message.channel
-        });
+			ytdlOptions: {
+				quality: "highest",
+				filter: "audioonly",
+				highWaterMark: 1 << 25,
+				dlChunkSize: 0,
+			},
+			metadata: message.channel
+		});
 
         const embed = new MessageEmbed();
 
