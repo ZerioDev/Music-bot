@@ -39,7 +39,7 @@ async function loadPlaylist(message, args){
     message.channel.send(`Loading your playlist, this will take very looong time depending on the size of your playlist`);
 
     //loading each song in playlist one by one, please update if someone knows a better way
-    var i = 0, len = pl.length;
+    var i = 0, len = pl.tracks.length;
     while (i < len) {
         // your code
         const res = await player.search(pl.tracks[i], {
@@ -62,7 +62,7 @@ function deletePlaylist(message,args){
     var playlistName = args.join(" ").toLowerCase();
     fileIOUtils.deleteJsonFile(constants.PLAYLIST_PATH + playlistName, function(err){
         if(err === "Not Exists"){
-            message.channel.send("Playlist doesn't exist");
+            message.channel.send("Playlist "+ playlistName + " doesn't exist");
         }else if (err){
             message.channel.send("Error deleting playlist");
         }
@@ -82,7 +82,8 @@ function listPlaylist(message){
     //To Do Later : Pagination
     for (var i in list){
         list[i] = list[i].replace(/\.[^/.]+$/, "")
-        desc = desc+i+". "+list[i]+"\n";
+        var j = i+1;
+        desc = desc+ j +". "+list[i]+"\n";
     }
 
     embed.setDescription(desc);
@@ -91,6 +92,32 @@ function listPlaylist(message){
     //pagination component here
 
     message.channel.send({ embeds: [embed]});
+}
+
+function infoPlaylist(message, args){
+    var playlistName = args.join(" ").toLowerCase();
+
+    try{
+        var pl = fileIOUtils.readJsonFile(constants.PLAYLIST_PATH + playlistName);
+    }catch (err){
+        console.log(err);
+        message.send.channel("Failed to read playlist");
+    }
+
+    var embed = new MessageEmbed();
+
+    embed.setColor('RED');
+    embed.setAuthor("Playlist " + playlistName);
+
+    var desc = "Playlist author : " + pl.author + "\n";
+    var desc = desc + "Number of Tracks : " + pl.tracks.length + "\n";
+
+    embed.setDescription(desc);
+    embed.setFooter('From PPUKJ with Love ❤️', message.author.avatarURL({ dynamic: true }));
+
+    //pagination component here if any
+
+    message.channel.send({ embeds: [embed]})
 }
 
 module.exports = {
@@ -117,6 +144,7 @@ module.exports = {
                 listPlaylist(message);
                 break;
             case 'info':
+                infoPlaylist(message,args.slice(1));
                 break;
         }
     },

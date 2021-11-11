@@ -14,7 +14,7 @@ function saveSong(message){
 
 function savePlaylist(message, args, queue){
     
-    var playlistName = args.join(" ");
+    var playlistName = args.join(" ").toLowerCase();
      console.log("[Save] Saving playlist "+ playlistName);
      
      //Add every song URL in queue to be saved
