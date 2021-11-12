@@ -1,5 +1,6 @@
 const { MessageEmbed } = require('discord.js');
 const { QueryType } = require('discord-player');
+const musicUtils = require('./musicutils/musicutils');
 
 module.exports = {
     name: 'search',
@@ -10,22 +11,8 @@ module.exports = {
     async execute(client, message, args) {
         if (!args[0]) return message.channel.send(`Please enter a valid search ${message.author}... try again ? ❌`);
 
-        const res = await player.search(args.join(' '), {
-            requestedBy: message.member,
-            searchEngine: QueryType.AUTO
-        });
-
-        if (!res || !res.tracks.length) return message.channel.send(`No results found ${message.author}... try again ? ❌`);
-
-        const queue = await player.createQueue(message.guild, {
-			ytdlOptions: {
-				quality: "highest",
-				filter: "audioonly",
-				highWaterMark: 1 << 25,
-				dlChunkSize: 0,
-			},
-			metadata: message.channel
-		});
+        const res = await musicUtils.search(message,args.join(' '));
+        const queue = await musicUtils.createQueue(player,message);
 
         const embed = new MessageEmbed();
 
@@ -56,12 +43,7 @@ module.exports = {
 
             collector.stop();
 
-            try {
-                if (!queue.connection) await queue.connect(message.member.voice.channel);
-            } catch {
-                await player.deleteQueue(message.guild.id);
-                return message.channel.send(`I can't join the voice channel ${message.author}... try again ? ❌`);
-            }
+            await musicUtils.voiceConnect(message, queue);
 
             await message.channel.send(`Loading your search... 🎧`);
 

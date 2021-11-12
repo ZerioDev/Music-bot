@@ -2,6 +2,7 @@ const { QueryType } = require('discord-player');
 const { MessageEmbed, MessageActionRow, MessageButton } = require('discord.js');
 const constants = require('../../../constants/constants')
 const fileIOUtils = require('../../../utils/fileIOUtils')
+const musicUtils = require('./musicutils')
 
 
 module.exports.savePlaylist = function (message, args, queue){
@@ -63,22 +64,7 @@ module.exports.loadPlaylist = async function (message, args){
         message.send.channel("Failed to read playlist (case insensitive)");
     }
     //create queue
-    const queue = await player.createQueue(message.guild, {
-        ytdlOptions: {
-            quality: "highest",
-            filter: "audioonly",
-            highWaterMark: 1 << 25,
-            dlChunkSize: 0,
-        },
-        metadata: message.channel
-    });
-    //connect to vc
-    try {
-        if (!queue.connection) await queue.connect(message.member.voice.channel);
-    } catch {
-        await player.deleteQueue(message.guild.id);
-        return message.channel.send(`I can't join the voice channel ${message.author}... try again ? ❌`);
-    }
+    const queue = await musicUtils.createQueue(player,message);
 
     message.channel.send(`Loading your playlist, this will take very looong time depending on the size of your playlist`);
 
@@ -86,10 +72,7 @@ module.exports.loadPlaylist = async function (message, args){
     var i = 0, len = pl.tracks.length;
     while (i < len) {
         // your code
-        const res = await player.search(pl.tracks[i], {
-            requestedBy: message.member,
-            searchEngine: QueryType.AUTO
-        });
+        const res = await musicUtils.search(message,pl.tracks[i].url);
         if(res){
             queue.addTracks(res.tracks);
         }else{
