@@ -10,6 +10,9 @@ module.exports = {
         if (!args[0]) return message.channel.send(`Please enter a valid search ${message.author}... try again ? ❌`);
         var searchParam = args.join(' ');
         const res = await musicUtils.search(message,searchParam);
+        if(!res){
+            message.channel.send(`No results found ${message.author}... try again ? ❌`);
+        }
         const queue = await musicUtils.createQueue(player,message);
         await musicUtils.voiceConnect(message, queue);
 

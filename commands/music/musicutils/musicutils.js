@@ -8,7 +8,6 @@ module.exports.search = async function(message,param){
         });
 
         if (!res || !res.tracks.length){
-            message.channel.send(`No results found ${message.author}... try again ? ❌`);
             return null;
         }
         return res;
