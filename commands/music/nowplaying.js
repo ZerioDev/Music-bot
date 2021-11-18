@@ -37,6 +37,9 @@ module.exports = {
 
         const row = new MessageActionRow().addComponents(saveButton);
 
-        message.channel.send({ embeds: [embed], components: [row] });
+        message.channel.send({ embeds: [embed], components: [row] }).then(msg => setInterval(() => {
+            embed.setDescription(`Volume **${queue.volume}**%\nDuration **${trackDuration}**\nLoop mode **${methods[queue.repeatMode]}**\nRequested by ${track.requestedBy}\n` + `${queue.createProgressBar()} (**${queue.getPlayerTimestamp().progress}**%)`);
+            msg.edit({embeds: [embed], components: [row]})
+        }, 5000));
     },
 };
