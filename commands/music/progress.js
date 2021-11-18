@@ -14,6 +14,6 @@ module.exports = {
 
         if (timestamp.progress == 'Infinity') return message.channel.send(`Playing a live, no data to display 🎧`);
 
-        message.channel.send(`${progress} (**${timestamp.progress}**%)`);
+        message.channel.send(`${progress} (**${timestamp.progress}**%)`).then(msg => { setInterval(() => msg.edit(`${queue.createProgressBar()} (**${queue.getPlayerTimestamp().progress}**%)`), 5000)});
     },
 };
