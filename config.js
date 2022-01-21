@@ -15,6 +15,8 @@ module.exports = {
         loopMessage: false,
         discordPlayer: {
             ytdlOptions: {
+                filter: 'audioonly',
+                opusEncoded: 'true',
                 quality: 'highestaudio',
                 highWaterMark: 1 << 25
             }
