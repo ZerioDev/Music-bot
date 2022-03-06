@@ -8,6 +8,28 @@ If you need help with this project, to get support faster you can join the help 
 
 *If you don't have any development knowledge, it is recommended to join the Discord support server to get help.*
 
+### 📑 Installation
+
+To use the project correctly you will need some tools.
+
+[FFmpeg](https://www.ffmpeg.org) to process audio
+
+[Node JS](https://nodejs.org/en/) (v16) for environment
+
+Without forgetting of course the code editor ^^
+
+**Clone the repository**
+
+```sh
+git clone https://github.com/ZerioDev/Music-bot.git && cd Music-bot
+```
+
+**Install the dependincies**
+
+```sh
+npm install package.json
+```
+
 ### ⚡ Configuration
 
 Open the configuration file located in the main folder `config.js`.
@@ -51,15 +73,10 @@ Advanced configuration
 - `opt/loopMessage`, if the message that a music is played should be sent when it is looped
 - `opt/discordPlayer`, options used by discord-player
 
-### 📑 Installation
-
-To use the project correctly you will need some tools.
-
-[FFmpeg](https://www.ffmpeg.org) to process audio
-
-[Node JS](https://nodejs.org/en/) (v16) for environment
-
-Without forgetting of course the code editor ^^
+**Starting the program**
+```sh
+node main.js
+```
 
 Realized with ❤️ by [ZerioDev](https://github.com/ZerioDev).
 
