@@ -1,10 +1,5 @@
-FROM node:16.14.2
-ENV NODE_ENV=production
-
-WORKDIR /app
-
+FROM alpine
 COPY . .
-
-RUN npm install --production
-
-CMD [ "node", "main.js" ]
+RUN apk add --update nodejs npm
+RUN npm install --save discord-player
+CMD ["npm", "start"]
