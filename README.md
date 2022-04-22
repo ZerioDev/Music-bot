@@ -61,6 +61,8 @@ To use the project correctly you will need some tools.
 
 Without forgetting of course the code editor ^^
 
+There is also a Dockerfile for running it in a Container
+
 Realized with ❤️ by [ZerioDev](https://github.com/ZerioDev).
 
 Please do not withdraw the license and keep the credits on this project.
