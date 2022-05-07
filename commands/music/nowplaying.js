@@ -7,36 +7,17 @@ module.exports = {
     voiceChannel: true,
 
     execute(client, message) {
+        let falseEmbed = new MessageEmbed()
+        falseEmbed.setAuthor({name: 'false', iconURL: 'https://cdn.discordapp.com/attachments/625276725269364738/961355212512169984/unknown.png'})
+        falseEmbed.setDescription('no songs playin')
+        falseEmbed.setTimestamp()
         const queue = player.getQueue(message.guild.id);
-
-        if (!queue || !queue.playing) return message.channel.send(`No music currently playing ${message.author}... try again ? ❌`);
-
+        if (!queue || !queue.playing) return message.channel.send({embeds: [falseEmbed]});
         const track = queue.current;
-
         const embed = new MessageEmbed();
-
-        embed.setColor('RED');
-        embed.setThumbnail(track.thumbnail);
-        embed.setAuthor(track.title, client.user.displayAvatarURL({ size: 1024, dynamic: true }));
-
-        const methods = ['disabled', 'track', 'queue'];
-
-        const timestamp = queue.getPlayerTimestamp();
-        const trackDuration = timestamp.progress == 'Infinity' ? 'infinity (live)' : track.duration;
-
-        embed.setDescription(`Volume **${queue.volume}**%\nDuration **${trackDuration}**\nLoop mode **${methods[queue.repeatMode]}**\nRequested by ${track.requestedBy}`);
-
-        embed.setTimestamp();
-        embed.setFooter('Music comes first - Made with heart by Zerio ❤️', message.author.avatarURL({ dynamic: true }));
-
-        const saveButton = new MessageButton();
-
-        saveButton.setLabel('Save this track');
-        saveButton.setCustomId('saveTrack');
-        saveButton.setStyle('SUCCESS');
-
-        const row = new MessageActionRow().addComponents(saveButton);
-
-        message.channel.send({ embeds: [embed], components: [row] });
+        embed.setAuthor({name: 'false', iconURL: 'https://cdn.discordapp.com/attachments/625276725269364738/961355228446347264/unknown.png'})
+        embed.setDescription(`Song: ${track.title}`)
+        embed.setTimestamp()
+        message.channel.send({ embeds: [embed]});
     },
 };
