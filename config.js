@@ -7,18 +7,17 @@ let ROLE = process.env.ROLE_NAME;
 module.exports = {
     app: {
         px: PREFIX,
-        token: TOKEN,
-        playing: 'by Zerio ❤️'
+        token: TOKEN
     },
 
     opt: {
         DJ: {
-            enabled: false,
+            enabled: true,
             roleName: ROLE,
             commands: ['back', 'clear', 'filter', 'loop', 'pause', 'resume', 'seek', 'shuffle', 'skip', 'stop', 'volume']
         },
         maxVol: 100,
-        loopMessage: false,
+        loopMessage: true,
         discordPlayer: {
             ytdlOptions: {
                 quality: 'highestaudio',
