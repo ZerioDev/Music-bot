@@ -1,7 +1,12 @@
+require('dotenv').config();
+
+let TOKEN = process.env.CLIENT_TOKEN;
+let PREFIX  = process.env.CLIENT_PREFIX;
+
 module.exports = {
     app: {
-        px: 'XXX',
-        token: 'XXX',
+        px: PREFIX,
+        token: TOKEN,
         playing: 'by Zerio ❤️'
     },
 
