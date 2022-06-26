@@ -8,5 +8,5 @@ module.exports = async (client) => {
     ].join('\n'))
 
 
-    client.user.setActivity(`help for ${client.users.cache.size} in ${client.guilds.cache.size} servers`);
+    client.user.setActivity(`help for ${client.users.cache.size} users in ${client.guilds.cache.size} servers`);
 };
