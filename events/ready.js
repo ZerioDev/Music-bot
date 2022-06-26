@@ -1,7 +1,3 @@
-require('dotenv').config();
-
-let PREFIX = process.env.CLIENT_PREFIX;
-
 module.exports = async (client) => {
     console.log([
         `--------------------------------------------------`,
@@ -12,5 +8,5 @@ module.exports = async (client) => {
     ].join('\n'))
 
 
-    client.user.setActivity(`${PREFIX}help in ${client.guilds.cache.size} servers`);
+    client.user.setActivity(`help for ${client.users.cache.size} in ${client.guilds.cache.size} servers`);
 };
