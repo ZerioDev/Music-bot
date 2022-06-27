@@ -2,7 +2,7 @@ require('dotenv').config();
 
 let TOKEN = process.env.CLIENT_TOKEN;
 let PREFIX  = process.env.CLIENT_PREFIX;
-let ROLE = process.env.ROLE_NAME;
+let ROLE = process.env.ROLE_ID;
 
 module.exports = {
     app: {
