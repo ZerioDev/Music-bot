@@ -38,4 +38,4 @@ To have full access to the project and to be able to withdraw the credits a smal
 
 ### Notes
 
- - If you get the MODULE_NOT_FOUND error with chalk after running `npm install` you can fix it by running `npm install chalk@4.1.2`
+ - If you get the `MODULE_NOT_FOUND` error with chalk you can fix it by typing `npm install chalk@4.1.2`
