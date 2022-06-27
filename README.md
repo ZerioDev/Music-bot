@@ -10,7 +10,7 @@ If you need help with this project, to get support faster you can join the help 
 
 ### ⚡ Configuration
 
- - Create a `.env` file in the root directory of the bot and add the followinf fields to it:
+ - Create a `.env` file in the root directory of the bot and add the following fields to it:
 
 ```
 CLIENT_TOKEN=
