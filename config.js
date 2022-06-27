@@ -12,12 +12,12 @@ module.exports = {
 
     opt: {
         DJ: {
-            enabled: true,
+            enabled: false,
             roleName: ROLE,
             commands: ['back', 'clear', 'filter', 'loop', 'pause', 'resume', 'seek', 'shuffle', 'skip', 'stop', 'volume']
         },
         maxVol: 100,
-        loopMessage: true,
+        loopMessage: false,
         discordPlayer: {
             ytdlOptions: {
                 quality: 'highestaudio',
