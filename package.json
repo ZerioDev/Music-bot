@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "discord-player": "^5.1.0",
+    "chalk": "4.1.2",
     "discord.js": "^13.1.0",
     "dotenv": "^16.0.1",
     "ffmpeg-static": "^4.4.0",
