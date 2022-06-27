@@ -10,46 +10,15 @@ If you need help with this project, to get support faster you can join the help 
 
 ### ⚡ Configuration
 
-Open the configuration file located in the main folder `config.js`.
+ - Create a `.env` file in the root directory of the bot and add the followinf fields to it:
 
-```js
-module.exports = {
-    app: {
-        px: 'XXX',
-        token: 'XXX',
-        playing: 'by Zerio ❤️'
-    },
-
-    opt: {
-        DJ: {
-            enabled: false,
-            roleName: 'XXX',
-            commands: []
-        },
-        maxVol: 100,
-        loopMessage: false,
-        discordPlayer: {}
-    }
-};
+```
+CLIENT_TOKEN=
+CLIENT_PREFIX=
+ROLE_ID=
 ```
 
-Basic configuration
-
-- `app/px`, the prefix that will be set to use the bot
-- `app/token`, the token of the bot available on the [Discord Developers](https://discordapp.com/developers/applications) section
-- `app/playing`, the activity of the bot
-
-DJ mode configuration
-
-- `opt/DJ/enabled`, whether the DJ mode should be activated or not 
-- `opt/DJ/roleName`, the name of the DJ role to be used
-- `opt/DJ/commands`, the list of commands limited to members with the DJ role
-
-Advanced configuration
-
-- `opt/maxVol`, the maximum volume that users can define
-- `opt/loopMessage`, if the message that a music is played should be sent when it is looped
-- `opt/discordPlayer`, options used by discord-player
+Then if you plan to use the DJ role make sure to set ot to `true` in the `config.js`
 
 ### 📑 Installation
 
@@ -66,3 +35,7 @@ Realized with ❤️ by [ZerioDev](https://github.com/ZerioDev).
 Please do not withdraw the license and keep the credits on this project.
 
 To have full access to the project and to be able to withdraw the credits a small donation is accepted. 
+
+### Notes
+
+ - If you get the MODULE_NOT_FOUND error with chalk after running `npm install` you can fix it by running `npm install chalk@4.1.2`
