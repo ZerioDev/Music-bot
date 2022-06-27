@@ -39,4 +39,4 @@ To have full access to the project and to be able to withdraw the credits a smal
 ### Notes
 
  - If you get the `MODULE_NOT_FOUND` error with chalk you can fix it by typing `npm install chalk@4.1.2`
- - If you set the DJ Role to true, know that it will only work in one server. So if you plan on hosting the bot pubilcly, it is advised to keep the DJ Role set to false.
+ - If you set the DJ Role to true, know that it will only work in one server. So if you plan on having the bot in more than one server, it is advised to keep the DJ Role set to false.
