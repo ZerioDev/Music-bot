@@ -2,7 +2,7 @@ require('dotenv').config();
 
 let TOKEN = process.env.CLIENT_TOKEN;
 let PREFIX  = process.env.CLIENT_PREFIX;
-let ROLE = process.env.ROLE_ID;
+let ROLE = process.env.ROLE_NAME;
 
 module.exports = {
     app: {
@@ -12,7 +12,7 @@ module.exports = {
 
     opt: {
         DJ: {
-            enabled: false,
+            enabled: false, /* DJ role currently doesn't work */
             roleName: ROLE,
             commands: ['back', 'clear', 'filter', 'loop', 'pause', 'resume', 'seek', 'shuffle', 'skip', 'stop', 'volume']
         },

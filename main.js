@@ -19,6 +19,8 @@ global.player = new Player(client, client.config.opt.discordPlayer);
 require('./src/loader');
 require('./src/events');
 
+/*
+
 let log = console.log;
 
 client.on("debug", function (info) {
@@ -32,7 +34,7 @@ client.on("error", function (error) {
 client.on("warn", function (info) {
     log(chalk.yellow(` -> warn: ${info}`));
 });
-
+*/
 
 
 client.login(client.config.app.token);

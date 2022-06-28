@@ -1,9 +1,13 @@
+const chalk = require('chalk');
+
+let log = console.log;
+
 player.on('error', (queue, error) => {
-    console.log(`Error emitted from the queue ${error.message}`);
+    log(chalk.red(`Error emitted from the queue ${error.message}`));
 });
 
 player.on('connectionError', (queue, error) => {
-    console.log(`Error emitted from the connection ${error.message}`);
+    log(chalk.red(`Error emitted from the connection ${error.message}`));
 });
 
 player.on('trackStart', (queue, track) => {
