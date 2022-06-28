@@ -10,15 +10,7 @@ If you need help with this project, to get support faster you can join the help 
 
 ### ⚡ Configuration
 
- - Create a `.env` file in the root directory of the bot and add the following fields to it:
-
-```
-CLIENT_TOKEN=
-CLIENT_PREFIX=
-ROLE_ID=
-```
-
-Then if you plan to use the DJ role make sure to set it to `true` in the `config.js`
+ - Rename the `EXAMPLE.env` file to `.env` and fill in the contained config fields.
 
 ### 📑 Installation
 
