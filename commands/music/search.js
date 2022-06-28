@@ -4,7 +4,7 @@ const { QueryType } = require('discord-player');
 module.exports = {
     name: 'search',
     aliases: ['sh'],
-    utilisation: '{prefix}search [song name]',
+    utilisation: client.config.app.px + 'search [song name]',
     voiceChannel: true,
 
     async execute(client, message, args) {

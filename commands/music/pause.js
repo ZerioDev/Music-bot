@@ -1,7 +1,7 @@
 module.exports = {
     name: 'pause',
     aliases: [],
-    utilisation: '{prefix}pause',
+    utilisation: client.config.app.px + 'pause',
     voiceChannel: true,
 
     execute(client, message) {

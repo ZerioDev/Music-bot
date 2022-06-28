@@ -1,7 +1,7 @@
 module.exports = {
     name: 'filter',
     aliases: [],
-    utilisation: '{prefix}filter [filter name]',
+    utilisation: client.config.app.px + 'filter [filter name]',
     voiceChannel: true,
 
     async execute(client, message, args) {

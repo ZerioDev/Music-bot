@@ -1,7 +1,7 @@
 module.exports = {
     name: 'shuffle',
     aliases: ['sh'],
-    utilisation: '{prefix}shuffle',
+    utilisation: client.config.app.px + 'shuffle',
     voiceChannel: true,
 
     async execute(client, message) {

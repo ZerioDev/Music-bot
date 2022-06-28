@@ -1,7 +1,7 @@
 module.exports = {
     name: 'stop',
     aliases: ['dc'],
-    utilisation: '{prefix}stop',
+    utilisation: client.config.app.px + 'stop',
     voiceChannel: true,
 
     execute(client, message) {

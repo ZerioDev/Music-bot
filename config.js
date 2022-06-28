@@ -1,14 +1,18 @@
+require('dotenv').config();
+
+let TOKEN = process.env.CLIENT_TOKEN;
+let PREFIX  = process.env.CLIENT_PREFIX;
+
 module.exports = {
     app: {
-        px: 'XXX',
-        token: 'XXX',
-        playing: 'by Zerio ❤️'
+        px: PREFIX,
+        token: TOKEN
     },
 
     opt: {
         DJ: {
-            enabled: false,
-            roleName: 'DJ',
+            enabled: false, /* DJ role currently doesn't work */
+            roleName: ROLE,
             commands: ['back', 'clear', 'filter', 'loop', 'pause', 'resume', 'seek', 'shuffle', 'skip', 'stop', 'volume']
         },
         maxVol: 100,

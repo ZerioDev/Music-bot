@@ -1,7 +1,7 @@
 module.exports = {
     name: 'skip',
     aliases: ['sk'],
-    utilisation: '{prefix}skip',
+    utilisation: client.config.app.px + 'skip',
     voiceChannel: true,
 
     execute(client, message) {

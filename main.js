@@ -1,5 +1,6 @@
 const { Player } = require('discord-player');
 const { Client, Intents } = require('discord.js');
+const chalk = require('chalk');
 
 global.client = new Client({
     intents: [

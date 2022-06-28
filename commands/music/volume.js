@@ -3,7 +3,7 @@ const maxVol = client.config.opt.maxVol;
 module.exports = {
     name: 'volume',
     aliases: ['vol'],
-    utilisation: `{prefix}volume [1-${maxVol}]`,
+    utilisation: client.config.app.px + 'volume [1-' + maxVol + ']',
     voiceChannel: true,
 
     execute(client, message, args) {
