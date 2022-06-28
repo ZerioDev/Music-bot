@@ -1,7 +1,7 @@
 module.exports = {
     name: 'resume',
     aliases: ['rs'],
-    utilisation: '{prefix}resume',
+    utilisation: client.config.app.px + 'resume',
     voiceChannel: true,
 
     execute(client, message) {

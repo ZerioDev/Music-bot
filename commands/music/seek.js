@@ -3,7 +3,7 @@ const ms = require('ms');
 module.exports = {
     name: 'seek',
     aliases: [],
-    utilisation: '{prefix}seek [time]',
+    utilisation: client.config.app.px + 'seek [time]',
     voiceChannel: true,
 
     async execute(client, message, args) {

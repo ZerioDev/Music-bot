@@ -4,7 +4,7 @@ module.exports = {
     name: 'help',
     aliases: ['h'],
     showHelp: false,
-    utilisation: '{prefix}help',
+    utilisation: `${client.config.app.px}help`,
 
     execute(client, message, args) {
         const embed = new MessageEmbed();

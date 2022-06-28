@@ -1,7 +1,7 @@
 module.exports = {
     name: 'clear',
     aliases: ['cq'],
-    utilisation: '{prefix}clear',
+    utilisation: client.config.app.px + 'clear',
     voiceChannel: true,
 
     async execute(client, message) {

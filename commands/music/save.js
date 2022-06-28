@@ -1,7 +1,7 @@
 module.exports = {
     name: 'save',
     aliases: ['sv'],
-    utilisation: '{prefix}save',
+    utilisation: client.config.app.px + 'save',
     voiceChannel: true,
 
     async execute(client, message) {

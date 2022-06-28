@@ -1,7 +1,7 @@
 module.exports = {
     name: 'back',
     aliases: ['previous'],
-    utilisation: '{prefix}back',
+    utilisation: client.config.app.px + 'back',
     voiceChannel: true,
 
     async execute(client, message) {

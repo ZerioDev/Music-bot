@@ -1,7 +1,7 @@
 module.exports = {
     name: 'progress',
     aliases: ['pbar'],
-    utilisation: '{prefix}progress',
+    utilisation: client.config.app.px + 'progress',
     voiceChannel: true,
 
     async execute(client, message) {
