@@ -1,22 +1,29 @@
 const ms = require('ms');
+const { ApplicationCommandType, ApplicationCommandOptionType } = require('discord.js');
 
 module.exports = {
     name: 'seek',
-    aliases: [],
-    utilisation: '{prefix}seek [time]',
+    description: 'skip back or foward in a song',
     voiceChannel: true,
+    options: [
+    {
+        name: 'time',
+        description: 'time that you want to skip to',
+        type: ApplicationCommandOptionType.String,
+        required: true,
+    }
+    ],
+    async execute({ inter }) {
+        const queue = player.getQueue(inter.guildId);
 
-    async execute(client, message, args) {
-        const queue = player.getQueue(message.guild.id);
+        if (!queue || !queue.playing) return inter.reply({ content: `No music currently playing ${inter.reply}... try again ? ❌`, ephemeral: true });
 
-        if (!queue || !queue.playing) return message.channel.send(`No music currently playing ${message.author}... try again ? ❌`);
+        const timeToMS = ms(inter.options.getString('time'));
 
-        const timeToMS = ms(args.join(' '));
-
-        if (timeToMS >= queue.current.durationMS) return message.channel.send(`The indicated time is higher than the total time of the current song ${message.author}... try again ? ❌\n*Try for example a valid time like **5s, 10s, 20 seconds, 1m**...*`);
+        if (timeToMS >= queue.current.durationMS) return inter.reply({ content:`The indicated time is higher than the total time of the current song ${inter.member}... try again ? ❌\n*Try for example a valid time like **5s, 10s, 20 seconds, 1m**...*`, ephemeral: true });
 
         await queue.seek(timeToMS);
 
-        message.channel.send(`Time set on the current song **${ms(timeToMS, { long: true })}** ✅`);
+        inter.reply({ content: `Time set on the current song **${ms(timeToMS, { long: true })}** ✅`});
     },
 };

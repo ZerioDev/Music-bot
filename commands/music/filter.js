@@ -1,26 +1,37 @@
+const { ApplicationCommandOptionType } = require('discord.js');
+
 module.exports = {
     name: 'filter',
-    aliases: [],
-    utilisation: '{prefix}filter [filter name]',
+    description: 'add a filter to your track',
     voiceChannel: true,
+    options: [
+        {
+            name: 'filter',
+            description: 'filter you want to add',
+            type: ApplicationCommandOptionType.String,
+            required: true,
+        }
+    ],
 
-    async execute(client, message, args) {
-        const queue = player.getQueue(message.guild.id);
 
-        if (!queue || !queue.playing) return message.channel.send(`No music currently playing ${message.author}... try again ? ❌`);
+    async execute({ inter, client }) {
+        const queue = player.getQueue(inter.guildId);
+
+        if (!queue || !queue.playing) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 
         const actualFilter = queue.getFiltersEnabled()[0];
 
-        if (!args[0]) return message.channel.send(`Please specify a valid filter to enable or disable ${message.author}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter} (${client.config.app.px}filter ${actualFilter} to disable it).\n` : ''}`);
+        const infilter = inter.options.getString('filter');
+
 
         const filters = [];
 
         queue.getFiltersEnabled().map(x => filters.push(x));
         queue.getFiltersDisabled().map(x => filters.push(x));
 
-        const filter = filters.find((x) => x.toLowerCase() === args[0].toLowerCase());
+        const filter = filters.find((x) => x.toLowerCase() === infilter.toLowerCase());
 
-        if (!filter) return message.channel.send(`This filter doesn't exist ${message.author}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter}.\n` : ''}List of available filters ${filters.map(x => `**${x}**`).join(', ')}.`);
+        if (!filter) return inter.reply({ content:`This filter doesn't exist ${inter.member}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter}.\n` : ''}List of available filters ${filters.map(x => `**${x}**`).join(', ')}.`, ephemeral: true });
 
         const filtersUpdated = {};
 
@@ -28,6 +39,6 @@ module.exports = {
 
         await queue.setFilters(filtersUpdated);
 
-        message.channel.send(`The filter ${filter} is now **${queue.getFiltersEnabled().includes(filter) ? 'enabled' : 'disabled'}** ✅\n*Reminder the longer the music is, the longer this will take.*`);
+        inter.reply({ content: `The filter ${filter} is now **${queue.getFiltersEnabled().includes(filter) ? 'enabled' : 'disabled'}** ✅\n*Reminder the longer the music is, the longer this will take.*`});
     },
 };

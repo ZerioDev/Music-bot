@@ -1,18 +1,17 @@
 module.exports = {
     name: 'save',
-    aliases: ['sv'],
-    utilisation: '{prefix}save',
+    description: 'save the current track!',
     voiceChannel: true,
 
-    async execute(client, message) {
-        const queue = player.getQueue(message.guild.id);
+    async execute({ inter }) {
+        const queue = player.getQueue(inter.guildId);
 
-        if (!queue || !queue.playing) return message.channel.send(`No music currently playing ${message.author}... try again ? ❌`);
+        if (!queue) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 
-        message.author.send(`You saved the track ${queue.current.title} | ${queue.current.author} from the server ${message.guild.name} ✅`).then(() => {
-            message.channel.send(`I have sent you the title of the music by private messages ✅`);
+        inter.member.send(`You saved the track ${queue.current.title} | ${queue.current.author} from the server ${inter.guild.name} ✅`).then(() => {
+            inter.reply(`I have sent you the title of the music by private messages ✅`);
         }).catch(error => {
-            message.channel.send(`Unable to send you a private message ${message.author}... try again ? ❌`);
+            inter.reply(`Unable to send you a private message ${inter.member}... try again ? ❌`);
         });
     },
 };

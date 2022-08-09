@@ -1,16 +1,15 @@
 module.exports = {
     name: 'resume',
-    aliases: ['rs'],
-    utilisation: '{prefix}resume',
+    description: 'play the track',
     voiceChannel: true,
 
-    execute(client, message) {
-        const queue = player.getQueue(message.guild.id);
+    execute({ inter }) {
+        const queue = player.getQueue(inter.guildId);
 
-        if (!queue) return message.channel.send(`No music currently playing ${message.author}... try again ? ❌`);
+        if (!queue) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 
         const success = queue.setPaused(false);
-
-        return message.channel.send(success ? `Current music ${queue.current.title} resumed ✅` : `Something went wrong ${message.author}... try again ? ❌`);
+        
+        return inter.reply({ content:success ? `Current music ${queue.current.title} resumed ✅` : `Something went wrong ${inter.member}... try again ? ❌`});
     },
 };
