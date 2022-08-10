@@ -10,6 +10,7 @@ module.exports = {
             description: 'filter you want to add',
             type: ApplicationCommandOptionType.String,
             required: true,
+            choices: [...Object.keys(require("discord-player").AudioFilters.filters).map(m => Object({ name: m, value: m })).splice(0, 25)],
         }
     ],
 
