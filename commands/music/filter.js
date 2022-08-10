@@ -10,6 +10,7 @@ module.exports = {
             description: 'filter you want to add',
             type: ApplicationCommandOptionType.String,
             required: true,
+            choices: [...Object.keys(require("discord-player").AudioFilters.filters).map(m => Object({ name: m, value: m })).splice(0, 25)],
         }
     ],
 
@@ -31,7 +32,7 @@ module.exports = {
 
         const filter = filters.find((x) => x.toLowerCase() === infilter.toLowerCase());
 
-        if (!filter) return inter.reply({ content:`This filter doesn't exist ${inter.member}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter}.\n` : ''}List of available filters ${filters.map(x => `**${x}**`).join(', ')}.`, ephemeral: true });
+        if (!filter) return inter.reply({ content: `This filter doesn't exist ${inter.member}... try again ? ❌\n${actualFilter ? `Filter currently active ${actualFilter}.\n` : ''}List of available filters ${filters.map(x => `**${x}**`).join(', ')}.`, ephemeral: true });
 
         const filtersUpdated = {};
 
@@ -39,6 +40,6 @@ module.exports = {
 
         await queue.setFilters(filtersUpdated);
 
-        inter.reply({ content: `The filter ${filter} is now **${queue.getFiltersEnabled().includes(filter) ? 'enabled' : 'disabled'}** ✅\n*Reminder the longer the music is, the longer this will take.*`});
+        inter.reply({ content: `The filter ${filter} is now **${queue.getFiltersEnabled().includes(filter) ? 'enabled' : 'disabled'}** ✅\n*Reminder the longer the music is, the longer this will take.*` });
     },
 };
