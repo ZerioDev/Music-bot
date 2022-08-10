@@ -16,7 +16,7 @@ Open the configuration file located in the main folder `config.js`.
 module.exports = {
     app: {
         token: 'XXX',
-        playing: 'by Zerio ❤️'
+        playing: 'by Zerio ❤️',
         global: true,
         guild: 'xxx'
     },
