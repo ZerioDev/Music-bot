@@ -11,7 +11,7 @@ player.on('connectionError', (queue, error) => {
 player.on('trackStart', (queue, track) => {
     if (!client.config.opt.loopMessage && queue.repeatMode !== 0) return;
     const embed = new EmbedBuilder()
-    .setAuthor({name: `Started playing ${track.title} in **${queue.connection.channel.name}** 🎧`, iconURL: track.requestedBy.avatarURL()})
+    .setAuthor({name: `Started playing ${track.title} in ${queue.connection.channel.name} 🎧`, iconURL: track.requestedBy.avatarURL()})
     .setColor('#13f857')
 
     const back = new ButtonBuilder()
