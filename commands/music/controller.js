@@ -1,10 +1,10 @@
-const { ApplicationCommandOptionType, ActionRowBuilder, ButtonBuilder, EmbedBuilder } = require('discord.js');
+const { ApplicationCommandOptionType, ActionRowBuilder, ButtonBuilder, EmbedBuilder, PermissionsBitField } = require('discord.js');
 
 module.exports = {
     name: 'controller',
     description: "set controller channel ",
     voiceChannel: false,
-    permissions: 'MANAGE_CHANNELS',
+    permissions: PermissionsBitField.Flags.ManageMessages,
     options: [
         {
             name: 'channel',
