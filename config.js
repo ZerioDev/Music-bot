@@ -13,6 +13,7 @@ module.exports = {
             commands: []
         },
         maxVol: 100,
+        fixedChannel: '',
         leaveOnEnd: true,
         autoSelfDeaf: true,
         leaveOnEmpty: true,

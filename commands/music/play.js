@@ -33,7 +33,13 @@ module.exports = {
         });
 
         try {
-            if (!queue.connection) await queue.connect(inter.member.voice.channel);
+            if (!queue.connection) {
+                if(client.config.opt.fixedChannel) {
+                    await queue.connect(client.config.opt.fixedChannel); // Connect to fixed channel if set.
+                } else {
+                    await queue.connect(inter.member.voice.channel);
+                }
+            } 
         } catch {
             await player.deleteQueue(inter.guildId);
             return inter.reply({ content: `I can't join the voice channel ${inter.member}... try again ? ❌`, ephemeral: true});
