@@ -4,8 +4,11 @@ module.exports = (client, inter) => {
     if (inter.type === InteractionType.ApplicationCommand) {
         const DJ = client.config.opt.DJ;
         const command = client.commands.get(inter.commandName);
-
+    try {
     if (!command) return inter.reply({ embeds: [ new EmbedBuilder().setColor('#ff0000').setDescription('❌ | Error! Please contact Developers!')], ephemeral: true, }), client.slash.delete(inter.commandName)
+    } catch {
+        console.log("There was a problem with deleting the command, it could be already deleted, or does not exist?");
+    }
     if (command.permissions && !inter.member.permissions.has(command.permissions)) return inter.reply({ embeds: [ new EmbedBuilder().setColor('#ff0000').setDescription(`❌ | You need do not have the proper permissions to exacute this command`)], ephemeral: true, })
     if(DJ.enabled && DJ.commands.includes(command)) {
         let roles = DJ.roleName.split(","); // Split by comma
