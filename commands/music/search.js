@@ -27,6 +27,9 @@ module.exports = {
         const queue = await player.createQueue(inter.guild, {
             metadata: inter.channel,
             leaveOnEnd: client.config.opt.leaveOnEnd,
+            autoSelfDeaf: client.config.opt.autoSelfDeaf,
+            leaveOnEmpty: client.config.opt.leaveOnEmpty,
+            leaveOnStop: client.config.opt.leaveOnStop
         });
         const maxTracks = res.tracks.slice(0, 10);
 

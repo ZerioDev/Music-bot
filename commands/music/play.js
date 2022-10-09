@@ -26,7 +26,10 @@ module.exports = {
             metadata: inter.channel,
             spotifyBridge: client.config.opt.spotifyBridge,
             initialVolume: client.config.opt.defaultvolume,
-            leaveOnEnd: client.config.opt.leaveOnEnd
+            leaveOnEnd: client.config.opt.leaveOnEnd,
+            autoSelfDeaf: client.config.opt.autoSelfDeaf,
+            leaveOnEmpty: client.config.opt.leaveOnEmpty,
+            leaveOnStop: client.config.opt.leaveOnStop
         });
 
         try {
