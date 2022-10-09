@@ -53,7 +53,7 @@ player.on('botDisconnect', (queue) => {
 });
 
 player.on('channelEmpty', (queue) => {
-    if(!client.config.opt.leaveOnEmpty) // Only show this if leave on Empty is true.
+    if(client.config.opt.leaveOnEmpty) // Only show this if leave on Empty is true.
     queue.metadata.send('Nobody is in the voice channel, leaving the voice channel... ❌');
 });
 
