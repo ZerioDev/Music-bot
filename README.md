@@ -67,6 +67,16 @@ To use the project correctly you will need some tools.
 
 [Node JS](https://nodejs.org/en/) (v16.6) for environment
 
+```
+npm install discord-player
+```
+Then
+```
+node main.js
+```
+At PowerShell / CMD
+
+
 Without forgetting of course the code editor ^^
 
 Realized with ❤️ by [ZerioDev](https://github.com/ZerioDev).
