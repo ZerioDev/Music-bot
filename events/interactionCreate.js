@@ -5,7 +5,9 @@ module.exports = (client, inter) => {
         const DJ = client.config.opt.DJ;
         const command = client.commands.get(inter.commandName);
         try {
-            if (!command) return inter.reply({ embeds: [ new EmbedBuilder().setColor('#ff0000').setDescription('❌ | Error! Please contact Developers!')], ephemeral: true, }), client.slash.delete(inter.commandName)
+            // Let other bots have a chance to reply
+            //if (!command) return inter.reply({ embeds: [ new EmbedBuilder().setColor('#ff0000').setDescription('❌ | Error! Please contact Developers!')], ephemeral: true, }), client.slash.delete(inter.commandName)
+            if (!command) return;
 
             if (command.permissions && !inter.member.permissions.has(command.permissions)) return inter.reply({ embeds: [ new EmbedBuilder().setColor('#ff0000').setDescription(`❌ | You need do not have the proper permissions to exacute this command`)], ephemeral: true, })
             if(DJ.enabled && DJ.commands.includes(command)) {
