@@ -62,14 +62,11 @@ player.on('channelEmpty', (queue) => {
 client.on('voiceStateUpdate', (oldState, newState) => {
     let newUserChannel = oldState.channel
     let oldUserChannel = newState.channel
-    console.log(newUserChannel === undefined);
-    console.log(oldUserChannel === undefined);
-    if(oldUserChannel === undefined && newUserChannel !== undefined) {
+    if(oldUserChannel.channel.members.size <= 1 && newUserChannel.channel.members.size > oldUserChannel.channel.members.size) { // Someone joined
         // User Joins a voice channel
         const queue = player.getQueue(newUserChannel.guild.id); // Grab queue
-        console.log("Voice size: " + newUserChannel.channel.members.size); 
-       if(queue.connection.paused && newUserChannel.channel.members.size == 2) queue.setPaused(false) // Unpause the song only if there is now 1 member in the channel from 0.
-    } else if(newUserChannel === undefined){  
+       if(queue.connection.paused) queue.setPaused(false) // Unpause the song
+    } else if(newUserChannel.channel.members.size < oldUserChannel.channel.members.size){  // someone left
       // User leaves a voice channel
   
     }
