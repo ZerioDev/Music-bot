@@ -55,8 +55,23 @@ player.on('botDisconnect', (queue) => {
 player.on('channelEmpty', (queue) => {
     if(client.config.opt.leaveOnEmpty) // Only show this if leave on Empty is true.
     queue.metadata.send('Nobody is in the voice channel, leaving the voice channel... ❌');
+    else queue.setPaused(true) // Empty channel, let's pause the music until someone comes.
 });
 
+// Use this whenever you want the bot to react to mutes/unmutes or join/disconnects
+client.on('voiceStateUpdate', (oldMember, newMember) => {
+    let newUserChannel = newMember.voiceChannel
+    let oldUserChannel = oldMember.voiceChannel
+  
+    if(oldUserChannel === undefined && newUserChannel !== undefined) {
+        // User Joins a voice channel
+        const queue = player.getQueue(newUserChannel.guild.id); // Grab queue
+       if(queue.connection.paused && newUserChannel.channel.members.size == 1) queue.setPaused(false) // Unpause the song only if there is now 1 member in the channel from 0.
+    } else if(newUserChannel === undefined){  
+      // User leaves a voice channel
+  
+    }
+  })
 player.on('queueEnd', (queue) => {
     queue.metadata.send('I finished reading the whole queue ✅');
 });
