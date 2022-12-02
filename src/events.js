@@ -59,11 +59,11 @@ player.on('channelEmpty', (queue) => {
 });
 
 // Use this whenever you want the bot to react to mutes/unmutes or join/disconnects
-client.on('voiceStateUpdate', (oldMember, newMember) => {
-    let newUserChannel = newMember.voiceChannel
-    let oldUserChannel = oldMember.voiceChannel
-    console.log(oldUserChannel)
-    console.log(newUserChannel)
+client.on('voiceStateUpdate', (oldState, newState) => {
+    let newUserChannel = oldState.voiceChannel
+    let oldUserChannel = newState.voiceChannel
+    console.log(newUserChannel);
+    console.log(oldUserChannel);
     if(oldUserChannel === undefined && newUserChannel !== undefined) {
         // User Joins a voice channel
         const queue = player.getQueue(newUserChannel.guild.id); // Grab queue
