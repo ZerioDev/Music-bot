@@ -62,7 +62,7 @@ player.on('channelEmpty', (queue) => {
 client.on('voiceStateUpdate', (oldState, newState) => {
     let newUserChannel = oldState.channel
     let oldUserChannel = newState.channel
-    if(newUserChannel == undefined || oldUserChannel == undefined) return; // Not a join or a leave state
+    if(newUserChannel == undefined && oldUserChannel == undefined) return; // Not a join or a leave state
     if(oldUserChannel == undefined && newUserChannel.members.size > oldUserChannel.members.size) { // Someone joined
         // User Joins a voice channel
         const queue = player.getQueue(newUserChannel.guild.id); // Grab queue
