@@ -55,7 +55,7 @@ player.on('botDisconnect', (queue) => {
 player.on('channelEmpty', (queue) => {
     if(client.config.opt.leaveOnEmpty) // Only show this if leave on Empty is true.
     queue.metadata.send('Nobody is in the voice channel, leaving the voice channel... ❌');
-    else queue.setPaused(true) // Empty channel, let's pause the music until someone comes.
+    else if(!queue && !queue.connection.paused) queue.setPaused(true) // Empty channel, let's pause the music until someone comes.
 });
 
 // Use this whenever you want the bot to react to mutes/unmutes or join/disconnects
