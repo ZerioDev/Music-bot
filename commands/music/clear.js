@@ -2,6 +2,7 @@ module.exports = {
     name: 'clear',
     description: 'clear all the music in the queue',
     voiceChannel: true,
+    dm_permission: false,
 
     async execute({ inter }) {
         const queue = player.getQueue(inter.guildId);

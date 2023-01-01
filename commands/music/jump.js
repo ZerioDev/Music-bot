@@ -4,6 +4,7 @@ module.exports = {
     name: 'jump',
     description: "Jumps to particular track in queue",
     voiceChannel: true,
+    dm_permission: false,
     options: [
         {
             name: 'song',

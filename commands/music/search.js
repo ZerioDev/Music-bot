@@ -5,6 +5,7 @@ module.exports = {
     name: 'search',
     description: 'search a track',
     voiceChannel: true,
+    dm_permission: false,
     options: [
         {
             name: 'song',

@@ -4,6 +4,7 @@ module.exports = {
     name: 'play',
     description: "play a song!",
     voiceChannel: true,
+    dm_permission: false,
     options: [
         {
             name: 'song',

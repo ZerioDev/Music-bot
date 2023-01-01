@@ -5,6 +5,7 @@ module.exports = {
     name: 'seek',
     description: 'skip back or foward in a song',
     voiceChannel: true,
+    dm_permission: false,
     options: [
     {
         name: 'time',
