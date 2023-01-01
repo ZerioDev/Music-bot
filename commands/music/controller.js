@@ -5,6 +5,9 @@ module.exports = {
     description: "set controller channel ",
     voiceChannel: false,
     permissions: PermissionsBitField.Flags.ManageMessages,
+    default_member_permissions: PermissionsBitField.Flags.ManageMessages,
+    dm_permission: false,
+    
     options: [
         {
             name: 'channel',
