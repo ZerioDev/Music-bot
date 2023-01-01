@@ -2,6 +2,7 @@ module.exports = {
     name: 'back',
     description: "Go back the song before",
     voiceChannel: true,
+    dm_permission: false,
 
     async execute({ inter }) {
         const queue = player.getQueue(inter.guildId);
