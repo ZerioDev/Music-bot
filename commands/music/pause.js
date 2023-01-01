@@ -2,6 +2,7 @@ module.exports = {
     name: 'pause',
     description: 'pause the track',
     voiceChannel: true,
+    dm_permission: false,
 
     execute({ inter }) {
         const queue = player.getQueue(inter.guildId);
