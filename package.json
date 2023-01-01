@@ -11,6 +11,7 @@
     "dependencies": {
       "discord-player": "^5.3.1",
       "discord.js": "^14.1.2",
+      "lyrics-finder": "^21.7.0",
       "ffmpeg-static": "^5.0.2",
       "ms": "^3.0.0-canary.1",
       "opusscript": "^0.0.8"
