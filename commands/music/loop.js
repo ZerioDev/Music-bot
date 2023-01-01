@@ -5,6 +5,7 @@ module.exports = {
     name: 'loop',
     description: 'enable or disable looping of song\'s or the whole queue',
     voiceChannel: true,
+    dm_permission: false,
     options: [
         {
         name: 'action' ,
