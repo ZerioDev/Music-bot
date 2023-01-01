@@ -4,6 +4,7 @@ module.exports = {
     name: 'remove',
     description: "remove a song from the queue",
     voiceChannel: true,
+    dm_permission: false,
     options: [
         {
             name: 'song',
