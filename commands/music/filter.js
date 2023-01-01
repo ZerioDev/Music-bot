@@ -4,6 +4,7 @@ module.exports = {
     name: 'filter',
     description: 'add a filter to your track',
     voiceChannel: true,
+    dm_permission: false,
     options: [
         {
             name: 'filter',
