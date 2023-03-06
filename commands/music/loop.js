@@ -19,30 +19,44 @@ module.exports = {
     }
     ],
     execute({ inter }) {
-        const queue = player.getQueue(inter.guildId);
+        const queue = player.nodes.get(inter.guildId);
 
-        if (!queue || !queue.playing) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
         switch (inter.options._hoistedOptions.map(x => x.value).toString()) {
             case 'enable_loop_queue': {
-                if (queue.repeatMode === 1) return inter.reply({ content:`You must first disable the current music in the loop mode (/loop Disable) ${inter.member}... try again ? ❌`, ephemeral: true });
+                if (queue.repeatMode === QueueRepeatMode.TRACK) return inter.reply({ content:`You must first disable the current music in the loop mode (/loop Disable) ${inter.member}... try again ? ❌`, ephemeral: true });
 
-                const success = queue.setRepeatMode( QueueRepeatMode.QUEUE);
+                try {
+                    queue.setRepeatMode(QueueRepeatMode.QUEUE);
+                } catch {
+                    return inter.reply({ content: `Something went wrong ${inter.member}... try again ? ❌` });
+                }
 
-                return inter.reply({ content:success ? `Repeat mode **enabled** the whole queue will be repeated endlessly 🔁` : `Something went wrong ${inter.member}... try again ? ❌` });
+                return inter.reply({ content: `Repeat mode **enabled** the whole queue will be repeated endlessly 🔁` });
                 break
             }
             case 'disable_loop': {
-                const success = queue.setRepeatMode(QueueRepeatMode.OFF);
+                if (queue.repeatMode === QueueRepeatMode.OFF) return inter.reply({ content: `The loop is currently disabled ${inter.member}... try again ? ❌`, ephemeral: true })
+                
+                try {
+                    queue.setRepeatMode(QueueRepeatMode.OFF);
+                } catch {
+                    return inter.reply({ content: `Something went wrong ${inter.member}... try again ? ❌` });
+                }
 
-                return inter.reply({ content:success ? `Repeat mode **disabled**` : `Something went wrong ${inter.member}... try again ? ❌` });
+                return inter.reply({ content: `Repeat mode **disabled**` });
                 break
             }
             case 'enable_loop_song': {
-                if (queue.repeatMode === 2) return inter.reply({ content:`You must first disable the current music in the loop mode (/loop Disable) ${inter.member}... try again ? ❌`, ephemeral: true });
+                if (queue.repeatMode === QueueRepeatMode.QUEUE) return inter.reply({ content:`You must first disable the current music in the loop mode (/loop Disable) ${inter.member}... try again ? ❌`, ephemeral: true });
 
-                const success = queue.setRepeatMode( QueueRepeatMode.TRACK);
-                
-                return inter.reply({ content:success ? `Repeat mode **enabled** the current song will be repeated endlessly (you can end the loop with /loop disable)` : `Something went wrong ${inter.member}... try again ? ❌` });
+                try {
+                    queue.setRepeatMode(QueueRepeatMode.TRACK);
+                } catch {
+                    return inter.reply({ content: `Something went wrong ${inter.member}... try again ? ❌`, ephemeral: true });
+                }
+
+                return inter.reply({ content: `Repeat mode **enabled** the current song will be repeated endlessly (you can end the loop with /loop disable)` });
                 break
             }
         }
