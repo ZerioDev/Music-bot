@@ -16,9 +16,9 @@ module.exports = {
 
     async execute({ inter }) {
 	await inter.deferReply();
-        const queue = player.getQueue(inter.guildId);
+        const queue = player.nodes.get(inter.guildId);
 
-        if (!queue || !queue.playing) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 
         const song = inter.options.getString('song');
 
@@ -31,7 +31,7 @@ module.exports = {
 
        if (res.playlist) return inter.editReply({ content: `This command dose not support playlist's ${inter.member}... try again ? ❌`, ephemeral: true });
 
-        queue.insert(res.tracks[0], 0)
+        queue.insertTrack(res.tracks[0], 0)
 
         await inter.editReply({ content:`Track has been inserted into the queue... it will play next 🎧`});
 
