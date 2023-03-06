@@ -4,13 +4,13 @@ module.exports = {
     voiceChannel: true,
 
     async execute({ inter }) {
-        const queue = player.getQueue(inter.guildId);
+        const queue = player.nodes.get(inter.guildId);
 
-        if (!queue || !queue.playing) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.node.isPlaying()) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 
-        if (!queue.previousTracks[1]) return inter.reply({ content: `There was no music played before ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue.history.previousTrack) return inter.reply({ content: `There was no music played before ${inter.member}... try again ? ❌`, ephemeral: true });
 
-        await queue.back();
+        await queue.history.back();
 
         inter.reply({ content:`Playing the **previous** track ✅`});
     },
