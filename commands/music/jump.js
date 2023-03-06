@@ -23,27 +23,30 @@ module.exports = {
         const track = inter.options.getString('song');
         const number =  inter.options.getNumber('number')
 
-        const queue = player.getQueue(inter.guildId);
+        const queue = player.nodes.get(inter.guildId);
 
-        if (!queue || !queue.playing) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        const alltracks = queue.tracks.toArray()
+
+        if (!queue || !queue.isPlaying()) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
         if (!track && !number) inter.reply({ content: `You have to use one of the options to jump to a song ${inter.member}... try again ? ❌`, ephemeral: true });
 
-            if (track) {
-        for (let song of queue.tracks) {
-            if (song.title === track || song.url === track ) {
-                queue.skipTo(song)
-                return inter.reply({ content: `skiped to ${track} ✅` });
-            }
+        if (track) {
+            for (let song of alltracks) {
+                if (song.title === track || song.url === track ) {
+                    queue.node.skipTo(song)
+                    return inter.reply({ content: `Skipped to ${track} ✅` });
+                }
+            }   
+            return inter.reply({ content: `Could not find ${track} ${inter.member}... try using the url or the full name of the song ? ❌`, ephemeral: true });    
         }
-        return inter.reply({ content: `could not find ${track} ${inter.member}... try using the url or the full name of the song ? ❌`, ephemeral: true });    
-    }
-    if (number) {
-        const index = number - 1
-        const trackname = queue.tracks[index].title
-        if (!trackname) return inter.reply({ content: `This track dose not seem to exist ${inter.member}...  try again ?❌`, ephemeral: true });   
-        queue.skipTo(index);
-        return inter.reply({ content: `Jumped to ${trackname}  ✅` });
-    }
+
+        if (number) {
+            const index = number - 1
+            const trackname = alltracks[index].title
+            if (!trackname) return inter.reply({ content: `This track dose not seem to exist ${inter.member}...  try again ?❌`, ephemeral: true });   
+            queue.node.skipTo(index);
+            return inter.reply({ content: `Jumped to ${trackname}  ✅` });
+        }
          
     }
 }
