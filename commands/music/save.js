@@ -6,7 +6,7 @@ module.exports = {
     voiceChannel: true,
 
     async execute({ inter }) {
-        const queue = player.getQueue(inter.guildId);
+        const queue = player.nodes.get(inter.guildId);
 
         if (!queue) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 
@@ -14,16 +14,16 @@ module.exports = {
             embeds: [
                 new EmbedBuilder()
                     .setColor('Red')
-                    .setTitle(`:arrow_forward: ${queue.current.title}`)
-                    .setURL(queue.current.url)
+                    .setTitle(`:arrow_forward: ${queue.currentTrack.title}`)
+                    .setURL(queue.currentTrack.url)
                     .addFields(
-                        { name: ':hourglass: Duration:', value: `\`${queue.current.duration}\``, inline: true },
-                        { name: 'Song by:', value: `\`${queue.current.author}\``, inline: true },
-                        { name: 'Views :eyes:', value: `\`${Number(queue.current.views).toLocaleString()}\``, inline: true },
-                        { name: 'Song URL:', value: `\`${queue.current.url}\`` }
+                        { name: ':hourglass: Duration:', value: `\`${queue.currentTrack.duration}\``, inline: true },
+                        { name: 'Song by:', value: `\`${queue.currentTrack.author}\``, inline: true },
+                        { name: 'Views :eyes:', value: `\`${Number(queue.currentTrack.views).toLocaleString()}\``, inline: true },
+                        { name: 'Song URL:', value: `\`${queue.currentTrack.url}\`` }
                     )
-                    .setThumbnail(queue.current.thumbnail)
-                    .setFooter({text:`from the server ${inter.member.guild.name}`, iconURL: inter.member.guild.iconURL({ dynamic: false })})
+                    .setThumbnail(queue.currentTrack.thumbnail)
+                    .setFooter({text:`From the server ${inter.member.guild.name}`, iconURL: inter.member.guild.iconURL({ dynamic: false })})
             ]
         }).then(() => {
             return inter.reply({ content: `I have sent you the title of the music by private messages ✅`, ephemeral: true });
