@@ -4,12 +4,12 @@ module.exports = {
     voiceChannel: true,
 
     execute({ inter }) {
-        const queue = player.getQueue(inter.guildId);
+        const queue = player.nodes.get(inter.guildId);
 
-        if (!queue || !queue.playing) return inter.reply({ content:`No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.reply({ content:`No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 
-        queue.destroy();
+        queue.delete();
 
-        inter.reply({ content: `Music stopped intero this server, see you next time ✅`});
+        inter.reply({ content: `Music stopped into this server, see you next time ✅`});
     },
 };
