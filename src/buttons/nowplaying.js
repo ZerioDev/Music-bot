@@ -1,16 +1,14 @@
 const { EmbedBuilder } = require('discord.js');
 module.exports = async ({ client, inter, queue }) => { 
-    if (!queue || !queue.playing) return inter.reply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
+    if (!queue || !queue.isPlaying()) return inter.reply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
 
-    const track = queue.current;
+    const track = queue.currentTrack;
 
     const methods = ['disabled', 'track', 'queue'];
 
-    const timestamp = queue.getPlayerTimestamp();
+    const trackDuration = track.duration;
 
-    const trackDuration = timestamp.progress == 'Infinity' ? 'infinity (live)' : track.duration;
-
-    const progress = queue.createProgressBar();
+    const progress = queue.node.createProgressBar();
     
 
     const embed = new EmbedBuilder()
