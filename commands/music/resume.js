@@ -1,6 +1,6 @@
 module.exports = {
     name: 'resume',
-    description: 'play the track',
+    description: 'Play the track',
     voiceChannel: true,
 
     execute({ inter }) {
