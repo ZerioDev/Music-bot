@@ -1,10 +1,13 @@
 module.exports = async ({  inter, queue }) => { 
-    if (!queue || !queue.playing) return inter.reply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
+    if (!queue || !queue.isPlaying()) return inter.reply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
 
-    const success = queue.setPaused(false);
-    
-    if (!success) queue.setPaused(true);
-    
+    let success = null;
 
-    return inter.reply({ content: `${success ? `Current music ${queue.current.title} paused ✅` : `Current music ${queue.current.title} resumed ✅`}`, ephemeral: true});
+    if (queue.node.isPaused()) {
+        queue.node.resume()
+        return inter.reply({ content: `Current music ${queue.currentTrack.title} resumed ✅`, ephemeral: true});
+    } else {
+        queue.node.pause()
+        return inter.reply({ content: `Current music ${queue.currentTrack.title} paused ✅`, ephemeral: true});
+    }
 }
