@@ -46,6 +46,6 @@ module.exports = {
 
         res.playlist ? queue.addTrack(res.tracks) : queue.addTrack(res.tracks[0]);
 
-        if (!queue.playing) await queue.node.play();
+        if (!queue.isPlaying()) await queue.node.play();
     },
 };
