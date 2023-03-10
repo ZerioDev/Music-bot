@@ -35,6 +35,6 @@ module.exports = {
 
         queue.filters.ffmpeg.toggle(filter.toString())
 
-        inter.reply({ content: `The filter ${filter} is now **${queue.filters.ffmpeg.getFiltersEnabled().includes(filter) ? 'enabled' : 'disabled'}** ✅\n*Reminder the longer the music is, the longer this will take.*` });
+        inter.reply({ content: `The filter ${filter} is now **${queue.filters.ffmpeg.isEnabled(filter) ? 'enabled' : 'disabled'}** ✅\n*Reminder the longer the music is, the longer this will take.*` });
     },
 };
