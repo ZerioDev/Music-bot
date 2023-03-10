@@ -72,7 +72,7 @@ module.exports = {
 
             queue.addTrack(res.tracks[query.content - 1]);
 
-            if (!queue.isPlaying) await queue.node.play();
+            if (!queue.isPlaying()) await queue.node.play();
         });
 
         collector.on('end', (msg, reason) => {
