@@ -9,7 +9,7 @@
       "start": "node main.js"
     },
     "dependencies": {
-      "discord-player": "^6.0.0",
+      "discord-player": "^6.1.1",
       "discord.js": "^14.1.2",
       "ffmpeg-static": "^5.0.2",
       "ms": "^3.0.0-canary.1",
