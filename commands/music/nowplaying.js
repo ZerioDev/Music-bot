@@ -2,7 +2,7 @@ const { EmbedBuilder, ActionRowBuilder, ButtonBuilder } = require('discord.js');
 
 module.exports = {
     name: 'nowplaying',
-    description: 'veiw what is playing!',
+    description: 'view what is playing!',
     voiceChannel: true,
 
     execute({ inter }) {
