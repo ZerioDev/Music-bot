@@ -1,4 +1,4 @@
-const { ApplicationCommandOptionType } = require('discord.js');
+const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: 'remove',
@@ -23,34 +23,36 @@ module.exports = {
         const number =  inter.options.getNumber('number')
         const track = inter.options.getString('song');
 
-        const queue = player.getQueue(inter.guildId);
+        const queue = player.nodes.get(inter.guildId);
 
-        if (!queue || !queue.playing) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
         if (!track && !number) inter.reply({ content: `You have to use one of the options to remove a song ${inter.member}... try again ? ❌`, ephemeral: true });
 
+        const BaseEmbed = EmbedBuilder()
+        .setColor('#2f3136')
+
+
         if (track) {
+            const track_to_remove = queue.tracks.toArray().find((t) => t.title === track || t.url === track);
+            if (!track_to_remove) return inter.reply({ content: `could not find ${track} ${inter.member}... try using the url or the full name of the song ? ❌`, ephemeral: true });
+            queue.removeTrack(track_to_remove);
+            BaseEmbed.setAuthor({name: `removed ${track_to_remove.title} from the queue ✅` })
 
-        for (let song of queue.tracks) {
-            if (song.title === track || song.url === track ) {
-                queue.remove(song)
-                return inter.reply({ content: `removed ${track} from the queue ✅` });
-            }
-
-        }
-
-        return inter.reply({ content: `could not find ${track} ${inter.member}... try using the url or the full name of the song ? ❌`, ephemeral: true });    
+            return inter.reply({ embeds: [BaseEmbed] });
         }
 
         if (number) {
 
             const index = number - 1
-            const trackname = queue.tracks[index].title
+            const trackname = queue.tracks.toArray()[index].title
 
             if (!trackname) return inter.reply({ content: `This track dose not seem to exist ${inter.member}...  try again ?❌`, ephemeral: true });   
 
-            queue.remove(index);
-            
-            return inter.reply({ content: `removed ${trackname} from the queue ✅` });
+            queue.removeTrack(index);
+
+            BaseEmbed.setAuthor({name: `removed ${trackname} from the queue ✅` })
+
+            return inter.reply({ embeds: [BaseEmbed] });
         }
 
 

@@ -19,6 +19,8 @@ module.exports = {
         playing: 'by Zerio ❤️',
         global: true,
         guild: 'xxx'
+        ExtraMessages: false,
+
     },
 
     opt: {
@@ -43,6 +45,7 @@ Basic configuration
 - `app/playing`, the activity of the bot
 - `app/global`, whether the commands will work on all servers or just one (if global they might take up to an hour to show up)
 - `app/guild`, the guild the slash command will be loaded to (this only applys if global is set to false)
+- `app/ExtraMessages` will increesse the amount of bot spam, while you get more infomation (not recommended) 
 
 DJ mode configuration
 
@@ -77,14 +80,8 @@ To have full access to the project and to be able to withdraw the credits a smal
 
 ### 📝 ToDo 
 
-- [ ] lyrics command
 
 -  [ ] Vote to skip command https://github.com/ZerioDev/Music-bot/issues/187
 
-- [ ] history commnad
-
-- [ ] auto autocomplete (play, search, filters, ect)
-
 - [ ] better button option's
 
-- [ ] more config's for discord player 

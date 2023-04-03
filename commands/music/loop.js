@@ -1,5 +1,5 @@
 const { QueueRepeatMode } = require('discord-player');
-const { ApplicationCommandOptionType } = require('discord.js');
+const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: 'loop',
@@ -19,31 +19,41 @@ module.exports = {
     }
     ],
     execute({ inter }) {
-        const queue = player.getQueue(inter.guildId);
+        const queue = player.nodes.get(inter.guildId);
+        let BaseEmbed = EmbedBuilder()
+        .setColor('#2f3136')
 
-        if (!queue || !queue.playing) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
         switch (inter.options._hoistedOptions.map(x => x.value).toString()) {
             case 'enable_loop_queue': {
-                if (queue.repeatMode === 1) return inter.reply({ content:`You must first disable the current music in the loop mode (/loop Disable) ${inter.member}... try again ? ❌`, ephemeral: true });
+                if (queue.repeatMode === QueueRepeatMode.TRACK) return inter.reply({ content:`You must first disable the current music in the loop mode (/loop Disable) ${inter.member}... try again ? ❌`, ephemeral: true });
 
-                const success = queue.setRepeatMode( QueueRepeatMode.QUEUE);
+                const success = queue.setRepeatMode(QueueRepeatMode.QUEUE);
+                
+                BaseEmbed.setAuthor({ name: success ? `Something went wrong ${inter.member}... try again ? ❌` : `Repeat mode **enabled** the whole queue will be repeated endlessly 🔁` })
 
-                return inter.reply({ content:success ? `Repeat mode **enabled** the whole queue will be repeated endlessly 🔁` : `Something went wrong ${inter.member}... try again ? ❌` });
-                break
+                return inter.reply({ embeds: [BaseEmbed] });
+                
             }
             case 'disable_loop': {
+                if (queue.repeatMode === QueueRepeatMode.OFF) return inter.reply({ content:`You must first enable the loop mode (/loop Queue or /loop Song) ${inter.member}... try again ? ❌`, ephemeral: true });
+                
                 const success = queue.setRepeatMode(QueueRepeatMode.OFF);
 
-                return inter.reply({ content:success ? `Repeat mode **disabled**` : `Something went wrong ${inter.member}... try again ? ❌` });
-                break
+                BaseEmbed.setAuthor({ name: success ? `Something went wrong ${inter.member}... try again ? ❌` : `Repeat mode **disabled** the queue will no longer be repeated 🔁`})
+
+                return inter.reply({ embeds: [BaseEmbed] });
+                
             }
             case 'enable_loop_song': {
-                if (queue.repeatMode === 2) return inter.reply({ content:`You must first disable the current music in the loop mode (/loop Disable) ${inter.member}... try again ? ❌`, ephemeral: true });
+                if (queue.repeatMode === QueueRepeatMode.QUEUE) return inter.reply({ content:`You must first disable the current music in the loop mode (/loop Disable) ${inter.member}... try again ? ❌`, ephemeral: true });
 
-                const success = queue.setRepeatMode( QueueRepeatMode.TRACK);
+                const success = queue.setRepeatMode(QueueRepeatMode.TRACK);
+
+                BaseEmbed.setAuthor({ name: success ? `Something went wrong ${inter.member}... try again ? ❌` : `Repeat mode **enabled** the current song will be repeated endlessly (you can end the loop with /loop disable)` })
+
+                return inter.reply({ embeds: [BaseEmbed] });
                 
-                return inter.reply({ content:success ? `Repeat mode **enabled** the current song will be repeated endlessly (you can end the loop with /loop disable)` : `Something went wrong ${inter.member}... try again ? ❌` });
-                break
             }
         }
        

@@ -6,23 +6,23 @@ module.exports = {
     voiceChannel: true,
 
     async execute({ inter }) {
-        const queue = player.getQueue(inter.guildId);
+        const queue = player.nodes.get(inter.guildId);
 
         if (!queue) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 
         inter.member.send({
             embeds: [
                 new EmbedBuilder()
-                    .setColor('Red')
-                    .setTitle(`:arrow_forward: ${queue.current.title}`)
-                    .setURL(queue.current.url)
+                    .setColor('#2f3136')
+                    .setTitle(`:arrow_forward: ${queue.currentTrack.title}`)
+                    .setURL(queue.currentTrack.url)
                     .addFields(
-                        { name: ':hourglass: Duration:', value: `\`${queue.current.duration}\``, inline: true },
-                        { name: 'Song by:', value: `\`${queue.current.author}\``, inline: true },
-                        { name: 'Views :eyes:', value: `\`${Number(queue.current.views).toLocaleString()}\``, inline: true },
-                        { name: 'Song URL:', value: `\`${queue.current.url}\`` }
+                        { name: ':hourglass: Duration:', value: `\`${queue.currentTrack.duration}\``, inline: true },
+                        { name: 'Song by:', value: `\`${queue.currentTrack.author}\``, inline: true },
+                        { name: 'Views :eyes:', value: `\`${Number(queue.currentTrack.views).toLocaleString()}\``, inline: true },
+                        { name: 'Song URL:', value: `\`${queue.currentTrack.url}\`` }
                     )
-                    .setThumbnail(queue.current.thumbnail)
+                    .setThumbnail(queue.currentTrack.thumbnail)
                     .setFooter({text:`from the server ${inter.member.guild.name}`, iconURL: inter.member.guild.iconURL({ dynamic: false })})
             ]
         }).then(() => {

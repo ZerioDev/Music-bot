@@ -1,5 +1,7 @@
 const { Player } = require('discord-player');
+const Genius = require("genius-lyrics");
 const { Client, GatewayIntentBits } = require('discord.js');
+
 
 global.client = new Client({
     intents: [
@@ -15,8 +17,8 @@ global.client = new Client({
 client.config = require('./config');
 
 global.player = new Player(client, client.config.opt.discordPlayer);
+global.genius = new Genius.Client();
 
 require('./src/loader');
-require('./src/events');
 
 client.login(client.config.app.token);

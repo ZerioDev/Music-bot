@@ -21,7 +21,7 @@ module.exports = {
       const embed = new EmbedBuilder()
        .setTitle('control your music from the buttons below')
        .setImage(inter.guild.iconURL({ size: 4096, dynamic: true }))
-       .setColor('#36393e')
+       .setColor('#2f3136')
        .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true })})
 
 

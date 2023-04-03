@@ -2,17 +2,18 @@
     "name": "music-bot",
     "main": "main.js",
     "author": "ZerioDev",
-    "version": "6.0.0",
+    "version": "8.0.0",
     "repository": "https://github.com/ZerioDev/Music-bot.git",
     "description": "A complete code to download for a cool Discord music bot.",
     "scripts": {
-      "start": "node main.js"
+        "start": "node main.js"
     },
     "dependencies": {
-      "discord-player": "^5.3.1",
-      "discord.js": "^14.1.2",
-      "ffmpeg-static": "^5.0.2",
-      "ms": "^3.0.0-canary.1",
-      "opusscript": "^0.0.8"
+        "discord-player": "^6.1.1",
+        "discord.js": "^14.9.0",
+        "ffmpeg-static": "^5.0.2",
+        "genius-lyrics": "^4.4.3",
+        "ms": "^3.0.0-canary.1",
+        "opusscript": "^0.0.8"
     }
 }

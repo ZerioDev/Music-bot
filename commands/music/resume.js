@@ -1,18 +1,25 @@
+const { EmbedBuilder } = require('discord.js');
+
 module.exports = {
     name: 'resume',
     description: 'play the track',
     voiceChannel: true,
 
     execute({ inter }) {
-        const queue = player.getQueue(inter.guildId);
+        const queue = player.nodes.get(inter.guildId);
 
         if (!queue) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
         
 
-        if(!queue.connection.paused) return inter.reply({content: `The track is already running, ${inter.member}... try again ? ❌`, ephemeral: true})
+        if(queue.node.isPlaying()) return inter.reply({content: `The track is already running, ${inter.member}... try again ? ❌`, ephemeral: true})
 
-        const success = queue.setPaused(false);
+        const success = queue.node.resume();
         
-        return inter.reply({ content:success ? `Current music ${queue.current.title} resumed ✅` : `Something went wrong ${inter.member}... try again ? ❌`});
+        const ResumeEmbed = EmbedBuilder()
+        .setAuthor({name: success ? `Current music ${queue.currentTrack.title} resumed ✅` : `Something went wrong ${inter.member}... try again ? ❌` })
+        .setColor('#2f3136')
+        
+        return inter.reply({ embeds: [ResumeEmbed] });
+
     },
 };
