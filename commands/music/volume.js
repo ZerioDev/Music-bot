@@ -27,7 +27,7 @@ module.exports = {
         const success = queue.node.setVolume(vol);
 
 
-        const VolEmbed = EmbedBuilder()
+        const VolEmbed = new EmbedBuilder()
         .setColor('#2f3136')
         .setAuthor({name: success ? `The volume has been modified to **${vol}**/**${maxVol}**% 🔊` : `Something went wrong ${inter.member}... try again ? ❌` })
 

@@ -12,7 +12,7 @@ module.exports = {
 
         const success = queue.node.skip();
 
-        const SkipEmbed = EmbedBuilder()
+        const SkipEmbed = new EmbedBuilder()
         .setColor('#2f3136')
         .setAuthor({name: success ? `Current music ${queue.currentTrack.title} skipped ✅` : `Something went wrong ${inter.member}... try again ? ❌` })
 

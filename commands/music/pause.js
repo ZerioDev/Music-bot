@@ -13,7 +13,7 @@ module.exports = {
 
         const success = queue.node.setPaused(true);
         
-        const PauseEmbed = EmbedBuilder()
+        const PauseEmbed = new EmbedBuilder()
         .setAuthor({name: success ? `Current music ${queue.currentTrack.title} paused ✅` : `Something went wrong ${inter.member}... try again ? ❌` })
         .setColor('#2f3136')
         

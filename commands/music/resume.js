@@ -15,7 +15,7 @@ module.exports = {
 
         const success = queue.node.resume();
         
-        const ResumeEmbed = EmbedBuilder()
+        const ResumeEmbed = new EmbedBuilder()
         .setAuthor({name: success ? `Current music ${queue.currentTrack.title} resumed ✅` : `Something went wrong ${inter.member}... try again ? ❌` })
         .setColor('#2f3136')
         

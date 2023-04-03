@@ -28,7 +28,7 @@ module.exports = {
         if (!queue || !queue.isPlaying()) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
         if (!track && !number) inter.reply({ content: `You have to use one of the options to remove a song ${inter.member}... try again ? ❌`, ephemeral: true });
 
-        const BaseEmbed = EmbedBuilder()
+        const BaseEmbed = new EmbedBuilder()
         .setColor('#2f3136')
 
 

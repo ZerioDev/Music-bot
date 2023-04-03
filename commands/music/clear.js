@@ -13,7 +13,7 @@ module.exports = {
 
         await queue.tracks.clear();
 
-        const ClearEmbed = EmbedBuilder()
+        const ClearEmbed = new EmbedBuilder()
         .setAuthor({name: `The queue has just been cleared 🗑️`})
         .setColor('#2f3136')
         

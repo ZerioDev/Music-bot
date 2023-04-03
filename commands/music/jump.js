@@ -40,7 +40,7 @@ module.exports = {
         if (!trackname) return inter.reply({ content: `This track dose not seem to exist ${inter.member}...  try again ?❌`, ephemeral: true });   
         queue.node.skipTo(index);
 
-        const JumpEmbed = EmbedBuilder()
+        const JumpEmbed = new EmbedBuilder()
         .setAuthor({name: `Jumped to ${trackname} ✅`})
         .setColor('#2f3136')
         

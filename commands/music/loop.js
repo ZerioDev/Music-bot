@@ -20,7 +20,7 @@ module.exports = {
     ],
     execute({ inter }) {
         const queue = player.nodes.get(inter.guildId);
-        let BaseEmbed = EmbedBuilder()
+        let BaseEmbed = new EmbedBuilder()
         .setColor('#2f3136')
 
         if (!queue || !queue.isPlaying()) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });

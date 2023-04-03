@@ -1,4 +1,4 @@
-const { ApplicationCommandOptionType } = require('discord.js');
+const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const { QueryType } = require('discord-player');
 
 module.exports = {
@@ -33,7 +33,7 @@ module.exports = {
 
         queue.insertTrack(res.tracks[0], 0)
 
-        const PlayNextEmbed = EmbedBuilder()
+        const PlayNextEmbed = new EmbedBuilder()
         .setAuthor({name: `Track has been inserted into the queue... it will play next 🎧` })
         .setColor('#2f3136')
         

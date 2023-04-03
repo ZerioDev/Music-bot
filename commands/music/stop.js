@@ -12,7 +12,7 @@ module.exports = {
 
         queue.delete();
 
-        const StopEmbed = EmbedBuilder()
+        const StopEmbed = new EmbedBuilder()
         .setColor('#2f3136')
         .setAuthor({name: `Music stopped into this server, see you next time ✅` })
 

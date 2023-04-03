@@ -13,7 +13,7 @@ module.exports = {
 
         await queue.history.back();
 
-        const BackEmbed = EmbedBuilder()
+        const BackEmbed = new EmbedBuilder()
         .setAuthor({name: `Playing the **previous** track ✅`})
         .setColor('#2f3136')
 

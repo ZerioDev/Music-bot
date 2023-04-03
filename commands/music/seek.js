@@ -24,7 +24,7 @@ module.exports = {
 
         await queue.node.seek(timeToMS);
 
-        const SeekEmbed = EmbedBuilder()
+        const SeekEmbed = new EmbedBuilder()
         .setColor('#2f3136')
         .setAuthor({name: `Time set on the current song **${ms(timeToMS, { long: true })}** ✅`})
 
