@@ -16,7 +16,7 @@ module.exports = {
 
         const ShuffleEmbed = new EmbedBuilder()
         .setColor('#2f3136')
-        .setAuthor({name: `Queue shuffled **${queue.tracks.size}** song(s) ! ✅` })
+        .setAuthor({name: `Queue shuffled **${queue.tracks.size}** song(s)! ✅` })
 
 
        return inter.reply({ embeds: [ShuffleEmbed] });

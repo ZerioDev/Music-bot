@@ -1,17 +1,8 @@
 const { EmbedBuilder } = require('discord.js');
+module.exports = async ({ client, inter, queue }) => { 
+    if (!queue || !queue.isPlaying()) return inter.reply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
 
-module.exports = {
-    name: 'lyrics',
-    description: 'get lyrics for the current track',
-    voiceChannel: true,
-
-    async execute({ inter }) {
-
-        const queue = player.nodes.get(inter.guildId);
-
-        if (!queue || !queue.isPlaying()) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
-
-        const search = await genius.songs.search(queue.currentTrack.title); 
+    const search = await genius.songs.search(queue.currentTrack.title); 
 
         const song = search.find(song => song.artist.name.toLowerCase() === queue.currentTrack.author.toLowerCase());
         if (!song) return inter.reply({ content: `No lyrics found for ${queue.currentTrack.title}... try again ? ❌`, ephemeral: true });
@@ -27,7 +18,5 @@ module.exports = {
                 .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true })})
                 );
         }
-        return inter.reply({ embeds: embeds });
-    },
-};
-
+        return inter.reply({ embeds: embeds, ephemeral: true});
+}

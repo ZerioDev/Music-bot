@@ -72,13 +72,28 @@ module.exports = {
          .setCustomId(JSON.stringify({ffb: 'queue'}))
          .setStyle('Secondary')
 
+        const lyrics = new ButtonBuilder()
+            .setLabel('lyrics')
+            .setCustomId(JSON.stringify({ffb: 'lyrics'}))
+            .setStyle('Primary')
+
+        const shuffle = new ButtonBuilder()
+            .setLabel('shuffle')
+            .setCustomId(JSON.stringify({ffb: 'shuffle'}))
+            .setStyle('Success')
+
+        const stop = new ButtonBuilder()
+            .setLabel('Stop')
+            .setCustomId(JSON.stringify({ffb: 'stop'}))
+            .setStyle('Danger')
+
 
          const row1 = new ActionRowBuilder().addComponents(back, queuebutton, resumepause, np, skip)
          const row2 = new ActionRowBuilder().addComponents(volumedown, loop, save, volumeup)
+        const row3 = new ActionRowBuilder().addComponents(lyrics, shuffle, stop)
 
 
-
-        Channel.send({ embeds: [embed], components: [row1, row2] })
+        Channel.send({ embeds: [embed], components: [row1, row2, row3] })
 
     },
 }

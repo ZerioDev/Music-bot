@@ -68,7 +68,7 @@ To use the project correctly you will need some tools.
 
 [FFmpeg](https://www.ffmpeg.org) to process audio
 
-[Node JS](https://nodejs.org/en/) (v16.6) for environment
+[Node JS](https://nodejs.org/en/) (v16.9) or newer for environment
 
 Without forgetting of course the code editor ^^
 

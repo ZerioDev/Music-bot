@@ -26,12 +26,12 @@ module.exports = (queue, track) => {
     .setCustomId(JSON.stringify({ffb: 'loop'}))
     .setStyle('Secondary')
     
-    const queuebutton = new ButtonBuilder()
-    .setLabel('Queue')
-    .setCustomId(JSON.stringify({ffb: 'queue'}))
+    const lyrics = new ButtonBuilder()
+    .setLabel('lyrics')
+    .setCustomId(JSON.stringify({ffb: 'lyrics'}))
     .setStyle('Secondary')
 
-    const row1 = new ActionRowBuilder().addComponents(back, loop, resumepause, queuebutton, skip)
+    const row1 = new ActionRowBuilder().addComponents(back, loop, resumepause, lyrics, skip)
     queue.metadata.send({ embeds: [embed], components: [row1] })
 
 }
