@@ -1,13 +1,13 @@
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
-    name: 'jump',
-    description: "Jumps to particular track in queue",
+    name: 'skipto',
+    description: "skips to particular track in queue",
     voiceChannel: true,
     options: [
         {
             name: 'song',
-            description: 'the name/url of the track you want to jump to',
+            description: 'the name/url of the track you want to skip to',
             type: ApplicationCommandOptionType.String,
             required: false,
         },
@@ -29,22 +29,22 @@ module.exports = {
         if (!track && !number) inter.reply({ content: `You have to use one of the options to jump to a song ${inter.member}... try again ? ❌`, ephemeral: true });
 
             if (track) {
-                const track_to_jump = queue.tracks.toArray().find((t) => t.title.tolowercase() === track.tolowercase() || t.url === track)
-                if (!track_to_jump) return inter.reply({ content: `could not find ${track} ${inter.member}... try using the url or the full name of the song ? ❌`, ephemeral: true });
-                queue.node.jump(track_to_jump);
-                return inter.reply({ content: `Jumped to ${track_to_jump.title}  ✅` });
+                const track_skipto = queue.tracks.toArray().find((t) => t.title.tolowercase() === track.tolowercase() || t.url === track)
+                if (!track_skipto) return inter.reply({ content: `could not find ${track} ${inter.member}... try using the url or the full name of the song ? ❌`, ephemeral: true });
+                queue.node.skipTo(track_skipto);
+                return inter.reply({ content: `Jumped to ${track_skipto.title}  ✅` });
     }
     if (number) {
         const index = number - 1
         const trackname = queue.tracks.toArray()[index].title
         if (!trackname) return inter.reply({ content: `This track dose not seem to exist ${inter.member}...  try again ?❌`, ephemeral: true });   
-        queue.node.jump(index);
+        queue.node.skipTo(index);
 
-        const JumpEmbed = new EmbedBuilder()
-        .setAuthor({name: `Jumped to ${trackname} ✅`})
+        const skipToEmbed = new EmbedBuilder()
+        .setAuthor({name: `Skiped to ${trackname} ✅`})
         .setColor('#2f3136')
         
-        inter.reply({ embeds: [JumpEmbed] });
+        inter.reply({ embeds: [skipToEmbed] });
     }
          
     }

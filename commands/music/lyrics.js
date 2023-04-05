@@ -10,7 +10,9 @@ module.exports = {
         const queue = player.nodes.get(inter.guildId);
 
         if (!queue || !queue.isPlaying()) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
-
+        
+        try {
+        
         const search = await genius.songs.search(queue.currentTrack.title); 
 
         const song = search.find(song => song.artist.name.toLowerCase() === queue.currentTrack.author.toLowerCase());
@@ -28,6 +30,10 @@ module.exports = {
                 );
         }
         return inter.reply({ embeds: embeds });
+
+    } catch (error) {
+            inter.reply({ content: `Error! Please contact Developers! | ❌`, ephemeral: true });
+    } 
     },
 };
 
