@@ -2,7 +2,7 @@ const { EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: 'skip',
-    description: 'stop the track',
+    description: 'skip the track',
     voiceChannel: true,
 
     execute({ inter }) {
