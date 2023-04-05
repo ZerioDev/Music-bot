@@ -6,13 +6,14 @@
     "repository": "https://github.com/ZerioDev/Music-bot.git",
     "description": "A complete code to download for a cool Discord music bot.",
     "scripts": {
-      "start": "node main.js"
+        "start": "node main.js"
     },
     "dependencies": {
-      "discord-player": "^5.3.1",
-      "discord.js": "^14.1.2",
-      "ffmpeg-static": "^5.0.2",
-      "ms": "^3.0.0-canary.1",
-      "opusscript": "^0.0.8"
+        "discord-player": "^5.3.1",
+        "discord.js": "^14.1.2",
+        "ffmpeg-static": "^5.0.2",
+        "ms": "^3.0.0-canary.1",
+        "opusscript": "^0.0.8",
+        "ytdl-core": "^4.11.3"
     }
 }
