@@ -15,7 +15,6 @@ module.exports = {
     ],
 
     async execute({ inter }) {
-	await inter.deferReply();
         const queue = player.nodes.get(inter.guildId);
 
         if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });

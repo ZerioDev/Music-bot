@@ -14,7 +14,6 @@ module.exports = {
     ],
 
     async execute({ inter, client }) {
-	await inter.deferReply();
         const song = inter.options.getString('song');
         const res = await player.search(song, {
             requestedBy: inter.member,

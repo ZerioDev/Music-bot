@@ -14,7 +14,7 @@ module.exports = {
 
         const methods = ['', '🔁', '🔂'];
 
-        const songs = queue.tracks.length;
+        const songs = queue.tracks.size;
 
         const nextSongs = songs > 5 ? `And **${songs - 5}** other song(s)...` : `In the playlist **${songs}** song(s)...`;
 
