@@ -70,13 +70,13 @@ To use the project correctly you will need some tools.
 
 [Node JS](https://nodejs.org/en/) (v16.9) or newer for environment
 
-[yarn](https://yarnpkg.com/getting-started/usage)
+[yarn](https://yarnpkg.com/getting-started/usage) for package management
 
-Without forgetting of course the code editor ^^ ([recommended](https://code.visualstudio.com/))
+Without forgetting of course the code editor, we recommend [visual studio code](https://code.visualstudio.com/) 
 
 Now in your terminal run the following commands assuming you are in the same directory as the project.
 
-`yarn install` (or `npm install` not recommended as it might not work)
+`yarn install` (or `npm install` **not recommended** as it might not work)
 
 `node .` (or `node index.js`)
 
