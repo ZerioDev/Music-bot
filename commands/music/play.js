@@ -20,7 +20,7 @@ module.exports = {
             searchEngine: QueryType.AUTO
         });
         const NoResultsEmbed = new EmbedBuilder()
-            .setAuthor({ name: `No results found ${inter.member}... try again ? ❌`})
+            .setAuthor({ name: `No results found... try again ? ❌`})
             .setColor('#2f3136')
 
         if (!res || !res.tracks.length) return inter.editReply({ embeds: [NoResultsEmbed] });
@@ -41,7 +41,7 @@ module.exports = {
             await player.deleteQueue(inter.guildId);
 
             const NoVoiceEmbed = new EmbedBuilder()
-                .setAuthor({ name: `I can't join the voice channel ${inter.member}... try again ? ❌`})
+                .setAuthor({ name: `I can't join the voice channel... try again ? ❌`})
                 .setColor('#2f3136')
 
             return inter.editReply({ embeds: [NoVoiceEmbed] });
