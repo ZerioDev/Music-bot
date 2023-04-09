@@ -28,6 +28,7 @@ module.exports = {
         const queue = await player.nodes.create(inter.guild, {
             metadata: inter.channel,
             spotifyBridge: client.config.opt.spotifyBridge,
+            skipOnNoStream: true,
             volume: client.config.opt.volume,
             leaveOnEmpty: client.config.opt.leaveOnEmpty,
             leaveOnEmptyCooldown: client.config.opt.leaveOnEmptyCooldown,
