@@ -70,11 +70,21 @@ To use the project correctly you will need some tools.
 
 [Node JS](https://nodejs.org/en/) (v16.9) or newer for environment
 
-Without forgetting of course the code editor ^^
+[yarn](https://yarnpkg.com/getting-started/usage)
+
+Without forgetting of course the code editor ^^ ([recommended](https://code.visualstudio.com/))
+
+Now in your terminal run the following commands assuming you are in the same directory as the project.
+
+`yarn install` (or `npm install` not recommended as it might not work)
+
+`node .` (or `node index.js`)
+
+and Done, your bot should be running!
 
 Realized with ❤️ by [ZerioDev](https://github.com/ZerioDev).
 
-Please do not withdraw the license and keep the credits on this project.
+Please do not withdraw the license and keep the credits on this project. 
 
 To have full access to the project and to be able to withdraw the credits a small donation is accepted. 
 

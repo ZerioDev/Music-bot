@@ -9,11 +9,13 @@
         "start": "node main.js"
     },
     "dependencies": {
+        "@discord-player/extractor": "^4.1.2",
         "discord-player": "^6.1.1",
         "discord.js": "^14.9.0",
         "ffmpeg-static": "^5.0.2",
         "genius-lyrics": "^4.4.3",
         "ms": "^3.0.0-canary.1",
-        "opusscript": "^0.0.8"
+        "opusscript": "^0.0.8",
+        "play-dl": "^1.9.6"
     }
 }
