@@ -22,7 +22,7 @@ module.exports = {
             searchEngine: QueryType.AUTO
         });
 
-        if (!res || !res.tracks.length) return inter.reply({ content: `No results found ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!res || !res.tracks.length) return inter.editReply({ content: `No results found ${inter.member}... try again ? ❌`, ephemeral: true });
 
         const queue = await player.nodes.create(inter.guild, {
             metadata: inter.channel,
@@ -40,7 +40,7 @@ module.exports = {
         .setTimestamp()
         .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true })})
 
-        inter.reply({ embeds: [embed] });
+        inter.editReply({ embeds: [embed] });
 
         const collector = inter.channel.createMessageCollector({
             time: 15000,

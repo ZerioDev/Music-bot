@@ -8,7 +8,7 @@ module.exports = {
     execute({ inter }) {
         const queue = player.nodes.get(inter.guildId);
 
-        if (!queue) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 
         const track = queue.currentTrack;
 
@@ -58,6 +58,6 @@ module.exports = {
 
         const row = new ActionRowBuilder().addComponents(volumedown, saveButton, resumepause, loop, volumeup);
 
-         inter.reply({ embeds: [embed], components: [row] });
+         inter.editReply({ embeds: [embed], components: [row] });
     },
 };

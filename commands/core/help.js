@@ -16,6 +16,6 @@ module.exports = {
         .setTimestamp()
         .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true })});
 
-        inter.reply({ embeds: [embed] });
+        inter.editReply({ embeds: [embed] });
     },
 };

@@ -8,7 +8,7 @@ module.exports = {
     execute({ inter }) {
         const queue = player.nodes.get(inter.guildId);
 
-         if (!queue || !queue.isPlaying()) return inter.reply({ content:`No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+         if (!queue || !queue.isPlaying()) return inter.editReply({ content:`No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 
         const success = queue.node.skip();
 
@@ -17,7 +17,7 @@ module.exports = {
         .setAuthor({name: success ? `Current music ${queue.currentTrack.title} skipped ✅` : `Something went wrong ${inter.member}... try again ? ❌` })
 
 
-       return inter.reply({ embeds: [SkipEmbed] });
+       return inter.editReply({ embeds: [SkipEmbed] });
 
     },
 };

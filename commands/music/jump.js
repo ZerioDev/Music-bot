@@ -25,26 +25,26 @@ module.exports = {
 
         const queue = player.nodes.get(inter.guildId);
 
-        if (!queue || !queue.isPlaying()) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
-        if (!track && !number) inter.reply({ content: `You have to use one of the options to jump to a song ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!track && !number) inter.editReply({ content: `You have to use one of the options to jump to a song ${inter.member}... try again ? ❌`, ephemeral: true });
 
             if (track) {
                 const track_to_jump = queue.tracks.toArray().find((t) => t.title.tolowercase() === track.tolowercase() || t.url === track)
-                if (!track_to_jump) return inter.reply({ content: `could not find ${track} ${inter.member}... try using the url or the full name of the song ? ❌`, ephemeral: true });
+                if (!track_to_jump) return inter.editReply({ content: `could not find ${track} ${inter.member}... try using the url or the full name of the song ? ❌`, ephemeral: true });
                 queue.node.jump(track_to_jump);
-                return inter.reply({ content: `Jumped to ${track_to_jump.title}  ✅` });
+                return inter.editReply({ content: `Jumped to ${track_to_jump.title}  ✅` });
     }
     if (number) {
         const index = number - 1
         const trackname = queue.tracks.toArray()[index].title
-        if (!trackname) return inter.reply({ content: `This track dose not seem to exist ${inter.member}...  try again ?❌`, ephemeral: true });   
+        if (!trackname) return inter.editReply({ content: `This track dose not seem to exist ${inter.member}...  try again ?❌`, ephemeral: true });   
         queue.node.jump(index);
 
         const JumpEmbed = new EmbedBuilder()
         .setAuthor({name: `Jumped to ${trackname} ✅`})
         .setColor('#2f3136')
         
-        inter.reply({ embeds: [JumpEmbed] });
+        inter.editReply({ embeds: [JumpEmbed] });
     }
          
     }

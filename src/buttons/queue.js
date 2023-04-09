@@ -1,8 +1,8 @@
 const { EmbedBuilder } = require('discord.js');
 module.exports = async ({ client, inter, queue }) => { 
-    if (!queue || !queue.isPlaying()) return inter.reply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
+    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
 
-    if (!queue.tracks.toArray()[0]) return  inter.reply({ content: `No music in the queue after the current one ${inter.member}... try again ? ❌`, ephemeral: true });
+    if (!queue.tracks.toArray()[0]) return  inter.editReply({ content: `No music in the queue after the current one ${inter.member}... try again ? ❌`, ephemeral: true });
 
         const methods = ['', '🔁', '🔂'];
 
@@ -20,5 +20,5 @@ module.exports = async ({ client, inter, queue }) => {
         .setTimestamp()
         .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true })})
 
-        inter.reply({ embeds: [embed], ephemeral: true });
+        inter.editReply({ embeds: [embed], ephemeral: true });
 }

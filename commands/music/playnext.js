@@ -36,7 +36,7 @@ module.exports = {
         .setAuthor({name: `Track has been inserted into the queue... it will play next 🎧` })
         .setColor('#2f3136')
         
-        await inter.reply({ embeds: [PlayNextEmbed] });
+        await inter.editReply({ embeds: [PlayNextEmbed] });
 
 
     }

@@ -8,7 +8,7 @@ module.exports = {
     execute({ inter }) {
         const queue = player.nodes.get(inter.guildId);
 
-        if (!queue || !queue.isPlaying()) return inter.reply({ content:`No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content:`No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 
         queue.delete();
 
@@ -17,7 +17,7 @@ module.exports = {
         .setAuthor({name: `Music stopped into this server, see you next time ✅` })
 
 
-       return inter.reply({ embeds: [StopEmbed] });
+       return inter.editReply({ embeds: [StopEmbed] });
 
     },
 };

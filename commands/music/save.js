@@ -8,7 +8,7 @@ module.exports = {
     async execute({ inter }) {
         const queue = player.nodes.get(inter.guildId);
 
-        if (!queue) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 
         inter.member.send({
             embeds: [
@@ -26,9 +26,9 @@ module.exports = {
                     .setFooter({text:`from the server ${inter.member.guild.name}`, iconURL: inter.member.guild.iconURL({ dynamic: false })})
             ]
         }).then(() => {
-            return inter.reply({ content: `I have sent you the title of the music by private messages ✅`, ephemeral: true });
+            return inter.editReply({ content: `I have sent you the title of the music by private messages ✅`, ephemeral: true });
         }).catch(error => {
-            return inter.reply({ content: `Unable to send you a private message... try again ? ❌`, ephemeral: true });
+            return inter.editReply({ content: `Unable to send you a private message... try again ? ❌`, ephemeral: true });
         });
     },
 };

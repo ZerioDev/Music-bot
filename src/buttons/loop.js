@@ -3,7 +3,7 @@ module.exports = async ({  inter, queue }) => {
 
     const methods = ['disabled', 'track', 'queue'];
 
-    if (!queue || !queue.isPlaying()) return inter.reply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
+    if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing... try again ? ❌`, ephemeral: true });
 
     const repeatMode = queue.repeatMode
 
@@ -13,7 +13,7 @@ module.exports = async ({  inter, queue }) => {
 
     if (repeatMode === 2) queue.setRepeatMode( QueueRepeatMode.OFF)
     
-    return inter.reply({ content: `loop made has been set to **${methods[queue.repeatMode]}**.✅`})
+    return inter.editReply({ content: `loop made has been set to **${methods[queue.repeatMode]}**.✅`})
 
 
 
