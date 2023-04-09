@@ -29,7 +29,7 @@ module.exports = {
 
         const VolEmbed = new EmbedBuilder()
         .setColor('#2f3136')
-        .setAuthor({name: success ? `The volume has been modified to **${vol}**/**${maxVol}**% 🔊` : `Something went wrong ${inter.member}... try again ? ❌` })
+        .setAuthor({name: success ? `The volume has been modified to ${vol}/${maxVol}% 🔊` : `Something went wrong ${inter.member}... try again ? ❌` })
 
 
        return inter.editReply({ embeds: [VolEmbed] });
