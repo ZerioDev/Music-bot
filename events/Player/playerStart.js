@@ -1,7 +1,7 @@
 const { ActionRowBuilder, ButtonBuilder, EmbedBuilder } = require('discord.js');
 module.exports = (queue, track) => {
 
-    if (!client.config.opt.loopMessage && queue.repeatMode !== 0) return;
+    if (!client.config.app.loopMessage && queue.repeatMode !== 0) return;
     const embed = new EmbedBuilder()
     .setAuthor({name: `Started playing ${track.title} in ${queue.channel.name} 🎧`, iconURL: track.thumbnail})
     .setColor('#2f3136')
