@@ -6,7 +6,7 @@ module.exports = async ({ client, inter, queue }) => {
 
     const methods = ['disabled', 'track', 'queue'];
 
-    const timestamp = track.timestamp;
+    const timestamp = queue.node.getTimestamp();
     
     const trackDuration = timestamp.progress == 'Infinity' ? 'infinity (live)' : track.duration;
 
@@ -16,7 +16,7 @@ module.exports = async ({ client, inter, queue }) => {
     const embed = new EmbedBuilder()
     .setAuthor({ name: track.title,  iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true })})
     .setThumbnail(track.thumbnail)
-    .setDescription(`Volume **${queue.volume}**%\nDuration **${trackDuration}**\nProgress ${progress}\nLoop mode **${methods[queue.repeatMode]}**\nRequested by ${track.requestedBy}`)
+    .setDescription(`Volume **${queue.node.volume}**%\nDuration **${trackDuration}**\nProgress ${progress}\nLoop mode **${methods[queue.repeatMode]}**\nRequested by ${track.requestedBy}`)
     .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true })})
     .setColor('ff0000')
     .setTimestamp()
