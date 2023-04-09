@@ -2,7 +2,6 @@ const { Player } = require('discord-player');
 const Genius = require("genius-lyrics");
 const { Client, GatewayIntentBits } = require('discord.js');
 
-
 global.client = new Client({
     intents: [
         GatewayIntentBits.Guilds,
@@ -16,8 +15,12 @@ global.client = new Client({
 
 client.config = require('./config');
 
-global.player = new Player(client, client.config.opt.discordPlayer);
 global.genius = new Genius.Client();
+global.player = new Player(client, client.config.opt.discordPlayer);
+
+player.on('debug', (message) => {
+    console.log(`[Debug] ${message}`);
+});
 
 require('./src/loader');
 
