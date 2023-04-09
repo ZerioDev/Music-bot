@@ -15,6 +15,7 @@ module.exports = {
             { name: 'Queue', value: 'enable_loop_queue' },
             { name: 'Disable', value: 'disable_loop'},
             { name: 'Song', value: 'enable_loop_song' },
+            { name: 'autoplay', value: 'enable_autoplay' },
         ],
     }
     ],
@@ -54,6 +55,16 @@ module.exports = {
 
                 return inter.editReply({ embeds: [BaseEmbed] });
                 
+            }
+            case 'enable_autoplay': {
+                if (queue.repeatMode === QueueRepeatMode.AUTOPLAY) return inter.editReply({ content:`You must first disable the current music in the loop mode (/loop Disable) ${inter.member}... try again ? ❌`, ephemeral: true });
+
+                const success = queue.setRepeatMode(QueueRepeatMode.AUTOPLAY);
+
+                BaseEmbed.setAuthor({ name: success ? `Something went wrong ${inter.member}... try again ? ❌` : `Autoplay **enabled** the queue will be automatically filled with similar songs to the current one 🔁` })
+
+                return inter.editReply({ embeds: [BaseEmbed] });
+
             }
         }
        
