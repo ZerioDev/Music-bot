@@ -72,6 +72,15 @@ Advanced configuration (only change if you know what you are doing)
 - `opt/leaveOnEndCooldown`, the cooldown before the bot leaves on finishing the queue
 - `opt/discordPlayer`, options used by discord-player
 
+Create a file with name `.env` and add any one of below content to force a extractor
+[This is optional but recomended for better result]
+
+- `DP_FORCE_YTDL_MOD="play-dl"`
+- `DP_FORCE_YTDL_MOD="@distube/ytdl-core"`
+- `DP_FORCE_YTDL_MOD="ytdl-core"`
+
+It is recomended to use play-dl or @distube/ytdl-core for better result also make sure that package is installed.
+
 ### 📑 Installation
 
 To use the project correctly you will need some tools.
