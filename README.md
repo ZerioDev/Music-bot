@@ -71,14 +71,25 @@ Advanced configuration (only change if you know what you are doing)
 - `opt/leaveOnEndCooldown`, the cooldown before the bot leaves on finishing the queue
 - `opt/discordPlayer`, options used by discord-player
 
-Create a file with name `.env` and add any one of below content to force a extractor
-[This is optional but recomended for better result]
+### Force setting Extractor 
 
-- `DP_FORCE_YTDL_MOD="play-dl"`
-- `DP_FORCE_YTDL_MOD="@distube/ytdl-core"`
-- `DP_FORCE_YTDL_MOD="ytdl-core"`
+Note: This method is only used if you are using npm and not required if you are using yarn
 
-It is recomended to use play-dl or @distube/ytdl-core for better result also make sure that package is installed.
+- Install dotenv and add this in top of `main.js` file (i.e 3rd line)
+    ``` 
+        const dotenv = require('dotenv');
+        dotenv.config();
+    ```
+
+- Create a file with name `.env` and add any one of below content to force a extractor
+    [This is optional but recomended for better result]
+
+    - `DP_FORCE_YTDL_MOD="play-dl"`
+    - `DP_FORCE_YTDL_MOD="@distube/ytdl-core"`
+    - `DP_FORCE_YTDL_MOD="ytdl-core"`
+
+- Install `play-dl` or `@distube/ytdl-core` or `ytdl-core` whichever package you set in the env file
+
 
 ### 📑 Installation
 
