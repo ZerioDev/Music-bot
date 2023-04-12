@@ -13,7 +13,7 @@ module.exports = {
 
         let description = tracks
             .slice(0, 20)
-            .map((track, index) => { return `**${index + 1}.** ${track.title} (${track.url})` })
+            .map((track, index) => { return `**${index + 1}.** [${track.title}](${track.url})` })
             .join('\r\n\r\n');
 
         let ClearEmbed = new EmbedBuilder()
