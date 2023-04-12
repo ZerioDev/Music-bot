@@ -21,8 +21,7 @@ module.exports = {
         guild: 'xxx'
         ExtraMessages: false,
         loopMessage: false,
-
-    },
+},
     opt: {
         DJ: {
             enabled: false,

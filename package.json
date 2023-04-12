@@ -10,6 +10,7 @@
     },
     "dependencies": {
         "@discord-player/extractor": "^4.1.2",
+        "@distube/ytdl-core": "^4.11.8",
         "discord-player": "^6.1.1",
         "discord.js": "^14.9.0",
         "dotenv": "^16.0.3",

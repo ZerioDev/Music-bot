@@ -31,7 +31,7 @@ module.exports = {
 
                 const success = queue.setRepeatMode(QueueRepeatMode.QUEUE);
                 
-                BaseEmbed.setAuthor({ name: success ? `Something went wrong ${inter.member}... try again ? ❌` : `Repeat mode **enabled** the whole queue will be repeated endlessly 🔁` })
+                BaseEmbed.setAuthor({ name: success ? `Something went wrong ${inter.member}... try again ? ❌` : `Repeat mode enabled the whole queue will be repeated endlessly 🔁` })
 
                 return inter.editReply({ embeds: [BaseEmbed] });
                 
@@ -41,7 +41,7 @@ module.exports = {
                 
                 const success = queue.setRepeatMode(QueueRepeatMode.OFF);
 
-                BaseEmbed.setAuthor({ name: success ? `Something went wrong ${inter.member}... try again ? ❌` : `Repeat mode **disabled** the queue will no longer be repeated 🔁`})
+                BaseEmbed.setAuthor({ name: success ? `Something went wrong ${inter.member}... try again ? ❌` : `Repeat mode disabled the queue will no longer be repeated 🔁`})
 
                 return inter.editReply({ embeds: [BaseEmbed] });
                 
@@ -51,7 +51,7 @@ module.exports = {
 
                 const success = queue.setRepeatMode(QueueRepeatMode.TRACK);
 
-                BaseEmbed.setAuthor({ name: success ? `Something went wrong ${inter.member}... try again ? ❌` : `Repeat mode **enabled** the current song will be repeated endlessly (you can end the loop with /loop disable)` })
+                BaseEmbed.setAuthor({ name: success ? `Something went wrong ${inter.member}... try again ? ❌` : `Repeat mode enabled the current song will be repeated endlessly (you can end the loop with /loop disable)` })
 
                 return inter.editReply({ embeds: [BaseEmbed] });
                 
@@ -61,7 +61,7 @@ module.exports = {
 
                 const success = queue.setRepeatMode(QueueRepeatMode.AUTOPLAY);
 
-                BaseEmbed.setAuthor({ name: success ? `Something went wrong ${inter.member}... try again ? ❌` : `Autoplay **enabled** the queue will be automatically filled with similar songs to the current one 🔁` })
+                BaseEmbed.setAuthor({ name: success ? `Something went wrong ${inter.member}... try again ? ❌` : `Autoplay enabled the queue will be automatically filled with similar songs to the current one 🔁` })
 
                 return inter.editReply({ embeds: [BaseEmbed] });
 

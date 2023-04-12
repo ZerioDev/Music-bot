@@ -14,7 +14,7 @@ module.exports = {
         await queue.history.back();
 
         const BackEmbed = new EmbedBuilder()
-        .setAuthor({name: `Playing the **previous** track ✅`})
+        .setAuthor({name: `Playing the previous track ✅`})
         .setColor('#2f3136')
 
         inter.editReply({ embeds: [BackEmbed] });
