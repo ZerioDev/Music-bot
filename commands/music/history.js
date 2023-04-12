@@ -16,12 +16,15 @@ module.exports = {
             .map((track, index) => { return `**${index + 1}.** [${track.title}](${track.url}) by ${track.author}` })
             .join('\r\n\r\n');
 
-        let ClearEmbed = new EmbedBuilder()
+        let HistoryEmbed = new EmbedBuilder()
             .setTitle(`History`)
             .setDescription(description)
             .setColor('#2f3136')
+            .setTimestamp()
+            .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true })})
 
-        inter.editReply({ embeds: [ClearEmbed] });
+
+        inter.editReply({ embeds: [HistoryEmbed] });
 
     },
 };
