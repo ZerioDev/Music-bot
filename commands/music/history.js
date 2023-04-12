@@ -10,10 +10,10 @@ module.exports = {
         if (!queue || queue.history.tracks.toArray().length == 0) return inter.editReply({ content: `No music has been played yet`, ephemeral: true });
 
         const tracks = queue.history.tracks.toArray();
-
+        console.log(tracks)
         let description = tracks
             .slice(0, 20)
-            .map((track, index) => { return `**${index + 1}.** [${track.title}](${track.url})` })
+            .map((track, index) => { return `**${index + 1}.** [${track.title}](${track.url}) by ${track.author}` })
             .join('\r\n\r\n');
 
         let ClearEmbed = new EmbedBuilder()
