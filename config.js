@@ -1,9 +1,9 @@
-// require("dotenv").config();
+require("dotenv").config();
 
 module.exports = {
   app: {
-    token: "xxx",
-    playing: "by Zerio ❤️",
+    token: `${process.env.DISCORD_TOKEN}`,
+    playing: "🎵 @ /help",
     global: true,
     guild: "xxx",
     ExtraMessages: false,
@@ -18,7 +18,7 @@ module.exports = {
     },
     maxVol: 100,
     spotifyBridge: true,
-    volume: 75,
+    volume: 100,
     leaveOnEmpty: true,
     leaveOnEmptyCooldown: 30000,
     leaveOnEnd: true,
