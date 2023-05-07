@@ -9,10 +9,31 @@ player.on("error", (queue, error) => {
   console.log(`Error emitted from the queue ${error.message}`);
 });
 
+// Patch randomly disconnect
+player.on('connectionCreate', (queue) => {
+  queue.connection.voiceConnection.on('stateChange', (oldState, newState) => {
+    const oldNetworking = Reflect.get(oldState, 'networking');
+    const newNetworking = Reflect.get(newState, 'networking');
+    
+    const networkStateChangeHandler = (oldNetworkState, newNetworkState) => {
+      const newUdp = Reflect.get(newNetworkState, 'udp');
+      clearInterval(newUdp?.keepAliveInterval);
+    }
+    
+    oldNetworking?.off('stateChange', networkStateChangeHandler);
+    newNetworking?.on('stateChange', networkStateChangeHandler);
+
+  });
+});
+
 player.on("connectionError", (queue, error) => {
   console.log(`Error emitted from the connection ${error.message}`);
 });
-
+player.on("trackEnd", async (queue, track) => {
+  // Fix bug where playlist breaks by skipping a track then going back.
+  // await queue.skip(); // Skip song for fix then go back to skipped song.
+  // await queue.back();
+});
 player.on("trackStart", (queue, track) => {
   if (!client.config.opt.loopMessage && queue.repeatMode !== 0) return;
   const embed = new EmbedBuilder()

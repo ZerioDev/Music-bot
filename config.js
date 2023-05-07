@@ -1,7 +1,8 @@
+
 module.exports = {
     app: {
         token: 'XXX',
-        playing: 'by Zerio ❤️',
+        playing: 'Music 🖤',
         global: true,
         guild: 'XXX'
     },
@@ -13,11 +14,11 @@ module.exports = {
             commands: []
         },
         maxVol: 100,
-        fixedChannel: '',
-        leaveOnEnd: true,
+        fixedChannel: 'XXX',
+        leaveOnEnd: false,
         autoSelfDeaf: true,
         leaveOnEmpty: true,
-        leaveOnStop: true,
+        leaveOnStop: false,
         loopMessage: false,
         spotifyBridge: true,
         defaultvolume: 75,
@@ -29,3 +30,4 @@ module.exports = {
         }
     }
 };
+
