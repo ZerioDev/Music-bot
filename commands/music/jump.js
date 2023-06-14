@@ -29,7 +29,7 @@ module.exports = {
         if (!track && !number) inter.editReply({ content: `You have to use one of the options to jump to a song ${inter.member}... try again ? ❌`, ephemeral: true });
 
             if (track) {
-                const track_to_jump = queue.tracks.toArray().find((t) => t.title.tolowercase() === track.tolowercase() || t.url === track)
+                const track_to_jump = queue.tracks.toArray().find((t) => t.title.toLowerCase() === track.toLowerCase() || t.url === track)
                 if (!track_to_jump) return inter.editReply({ content: `could not find ${track} ${inter.member}... try using the url or the full name of the song ? ❌`, ephemeral: true });
                 queue.node.jump(track_to_jump);
                 return inter.editReply({ content: `Jumped to ${track_to_jump.title}  ✅` });
