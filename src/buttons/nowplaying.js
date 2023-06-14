@@ -6,7 +6,7 @@ module.exports = async ({ client, inter, queue }) => {
 
     const methods = ['disabled', 'track', 'queue'];
 
-    const timestamp = track.timestamp;
+    const timestamp = track.duration;
     
     const trackDuration = timestamp.progress == 'Infinity' ? 'infinity (live)' : track.duration;
 
