@@ -1,4 +1,5 @@
 const { EmbedBuilder, InteractionType } = require('discord.js');
+const { useQueue } = require('discord-player');
 
 module.exports = async (client, inter) => {
     await inter.deferReply()
@@ -19,7 +20,7 @@ module.exports = async (client, inter) => {
     if (inter.type === InteractionType.MessageComponent) {
         const customId = JSON.parse(inter.customId)
         const file_of_button = customId.ffb
-        const queue = player.nodes.get(inter.guildId);
+const queue = useQueue(inter.guild);
         if (file_of_button) {
             delete require.cache[require.resolve(`../../src/buttons/${file_of_button}.js`)];
             const button = require(`../../src/buttons/${file_of_button}.js`)

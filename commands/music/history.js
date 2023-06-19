@@ -1,11 +1,14 @@
 const { EmbedBuilder } = require('discord.js');
+const { useMasterPlayer, useQueue } = require('discord-player');
+
 module.exports = {
     name: 'history',
     description: 'See the history of the queue',
     voiceChannel: false,
 
     async execute({ inter }) {
-        const queue = player.nodes.get(inter.guildId);
+const queue = useQueue(inter.guild);
+        const player = useMasterPlayer()
 
         if (!queue || queue.history.tracks.toArray().length == 0) return inter.editReply({ content: `No music has been played yet`, ephemeral: true });
 

@@ -1,11 +1,14 @@
 const { EmbedBuilder } = require('discord.js');
+const { useMasterPlayer, useQueue  } = require('discord-player');
+
 module.exports = {
     name: 'pause',
     description: 'pause the track',
     voiceChannel: true,
 
     execute({ inter }) {
-        const queue = player.nodes.get(inter.guildId);
+const queue = useQueue(inter.guild);
+        const player = useMasterPlayer()
 
         if (!queue) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
         

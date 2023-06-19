@@ -1,4 +1,5 @@
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
+const { useMasterPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'remove',
@@ -20,10 +21,12 @@ module.exports = {
     ],
 
     async execute({ inter }) { 
+        const player = useMasterPlayer()
+
         const number =  inter.options.getNumber('number')
         const track = inter.options.getString('song');
 
-        const queue = player.nodes.get(inter.guildId);
+const queue = useQueue(inter.guild);
 
         if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
         if (!track && !number) inter.editReply({ content: `You have to use one of the options to remove a song ${inter.member}... try again ? ❌`, ephemeral: true });

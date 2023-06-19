@@ -1,8 +1,9 @@
 const { readdirSync } = require('fs');
 const { Collection } = require('discord.js');
-
+const { useMasterPlayer } = require('discord-player');
 client.commands = new Collection();
 CommandsArray = [];
+const player = useMasterPlayer()
 
 
 
