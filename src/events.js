@@ -1,4 +1,5 @@
 const { ApplicationCommandOptionType, ActionRowBuilder, ButtonBuilder, EmbedBuilder } = require('discord.js');
+const { VoiceConnectionStatus } = require('@discordjs/voice');
 
 player.on('error', (queue, error) => {
     console.log(`Error emitted from the queue ${error.message}`);
@@ -6,6 +7,14 @@ player.on('error', (queue, error) => {
 
 player.on('connectionError', (queue, error) => {
     console.log(`Error emitted from the connection ${error.message}`);
+});
+
+player.on('connectionCreate', (queue) => {
+    queue.connection.voiceConnection.on('stateChange', (oldState, newState) => {
+        if (oldState.status === VoiceConnectionStatus.Ready && newState.status === VoiceConnectionStatus.Connecting) {
+            queue.connection.voiceConnection.configureNetworking();
+        }
+    })
 });
 
 player.on('trackStart', (queue, track) => {

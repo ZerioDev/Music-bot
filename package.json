@@ -9,6 +9,7 @@
       "start": "node main.js"
     },
     "dependencies": {
+      "@discordjs/voice": "^0.14.0",
       "discord-player": "^5.3.1",
       "discord.js": "^14.1.2",
       "ffmpeg-static": "^5.0.2",
