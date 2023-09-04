@@ -1,5 +1,5 @@
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
-const { QueryType } = require('discord-player');
+const { QueryType, useMasterPlayer, useQueue } = require('discord-player');
 
 module.exports = {
     name: 'search',
@@ -15,6 +15,8 @@ module.exports = {
     ],
 
     async execute({ client, inter }) {
+        const player = useMasterPlayer()
+
         const song = inter.options.getString('song');
 
         const res = await player.search(song, {
@@ -22,22 +24,25 @@ module.exports = {
             searchEngine: QueryType.AUTO
         });
 
-        if (!res || !res.tracks.length) return inter.reply({ content: `No results found ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!res || !res.tracks.length) return inter.editReply({ content: `No results found ${inter.member}... try again ? ❌`, ephemeral: true });
 
-        const queue = await player.createQueue(inter.guild, {
+        const queue = await player.nodes.create(inter.guild, {
             metadata: inter.channel,
+            spotifyBridge: client.config.opt.spotifyBridge,
+            volume: client.config.opt.defaultvolume,
             leaveOnEnd: client.config.opt.leaveOnEnd,
+            leaveOnEmpty: client.config.opt.leaveOnEmpty
         });
         const maxTracks = res.tracks.slice(0, 10);
 
         const embed = new EmbedBuilder()
-        .setColor('#ff0000')
+        .setColor('#2f3136')
         .setAuthor({ name: `Results for ${song}`, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true })})
         .setDescription(`${maxTracks.map((track, i) => `**${i + 1}**. ${track.title} | ${track.author}`).join('\n')}\n\nSelect choice between **1** and **${maxTracks.length}** or **cancel** ⬇️`)
         .setTimestamp()
         .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true })})
 
-        inter.reply({ embeds: [embed] });
+        inter.editReply({ embeds: [embed] });
 
         const collector = inter.channel.createMessageCollector({
             time: 15000,
@@ -65,7 +70,7 @@ module.exports = {
 
             queue.addTrack(res.tracks[query.content - 1]);
 
-            if (!queue.playing) await queue.play();
+            if (!queue.isPlaying()) await queue.node.play();
         });
 
         collector.on('end', (msg, reason) => {

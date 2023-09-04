@@ -1,9 +1,12 @@
 module.exports = {
     app: {
-        token: 'XXX',
+        token: 'xxx',
         playing: 'by Zerio ❤️',
         global: true,
-        guild: 'XXX'
+        guild: 'xxx',
+        ExtraMessages: false,
+        loopMessage: false,
+
     },
 
     opt: {
@@ -13,10 +16,12 @@ module.exports = {
             commands: []
         },
         maxVol: 100,
-        leaveOnEnd: true,
-        loopMessage: false,
         spotifyBridge: true,
-        defaultvolume: 75,
+        volume: 75,
+        leaveOnEmpty: true,
+        leaveOnEmptyCooldown: 30000,
+        leaveOnEnd: true,
+        leaveOnEndCooldown: 30000,
         discordPlayer: {
             ytdlOptions: {
                 quality: 'highestaudio',

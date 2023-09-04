@@ -1,5 +1,6 @@
 const maxVol = client.config.opt.maxVol;
-const { ApplicationCommandOptionType } = require('discord.js');
+const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
+const { useMasterPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'volume',
@@ -17,15 +18,17 @@ module.exports = {
     ],
 
     execute({ inter }) {
-        const queue = player.getQueue(inter.guildId);
+        const player = useMasterPlayer()
 
-        if (!queue) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+const queue = useQueue(inter.guild);
+
+        if (!queue) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
         const vol = inter.options.getNumber('volume')
 
-        if (queue.volume === vol) return inter.reply({ content: `The volume you want to change is already the current one ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (queue.node.volume === vol) return inter.editReply({ content: `The volume you want to change is already the current one ${inter.member}... try again ? ❌`, ephemeral: true });
 
-        const success = queue.setVolume(vol);
+        const success = queue.node.setVolume(vol);
 
-        return inter.reply({ content:success ? `The volume has been modified to **${vol}**/**${maxVol}**% 🔊` : `Something went wrong ${inter.member}... try again ? ❌`});
+       return inter.editReply({ content: success ? `The volume has been modified to ${vol}/${maxVol}% 🔊` : `Something went wrong ${inter.member}... try again ? ❌` });
     },
 };

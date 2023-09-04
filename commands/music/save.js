@@ -1,4 +1,5 @@
 const { EmbedBuilder } = require("discord.js");
+const { useMasterPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'save',
@@ -6,29 +7,31 @@ module.exports = {
     voiceChannel: true,
 
     async execute({ inter }) {
-        const queue = player.getQueue(inter.guildId);
+        const player = useMasterPlayer()
 
-        if (!queue) return inter.reply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+const queue = useQueue(inter.guild);
+
+        if (!queue) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 
         inter.member.send({
             embeds: [
                 new EmbedBuilder()
-                    .setColor('Red')
-                    .setTitle(`:arrow_forward: ${queue.current.title}`)
-                    .setURL(queue.current.url)
+                    .setColor('#2f3136')
+                    .setTitle(`:arrow_forward: ${queue.currentTrack.title}`)
+                    .setURL(queue.currentTrack.url)
                     .addFields(
-                        { name: ':hourglass: Duration:', value: `\`${queue.current.duration}\``, inline: true },
-                        { name: 'Song by:', value: `\`${queue.current.author}\``, inline: true },
-                        { name: 'Views :eyes:', value: `\`${Number(queue.current.views).toLocaleString()}\``, inline: true },
-                        { name: 'Song URL:', value: `\`${queue.current.url}\`` }
+                        { name: ':hourglass: Duration:', value: `\`${queue.currentTrack.duration}\``, inline: true },
+                        { name: 'Song by:', value: `\`${queue.currentTrack.author}\``, inline: true },
+                        { name: 'Views :eyes:', value: `\`${Number(queue.currentTrack.views).toLocaleString()}\``, inline: true },
+                        { name: 'Song URL:', value: `\`${queue.currentTrack.url}\`` }
                     )
-                    .setThumbnail(queue.current.thumbnail)
+                    .setThumbnail(queue.currentTrack.thumbnail)
                     .setFooter({text:`from the server ${inter.member.guild.name}`, iconURL: inter.member.guild.iconURL({ dynamic: false })})
             ]
         }).then(() => {
-            return inter.reply({ content: `I have sent you the title of the music by private messages ✅`, ephemeral: true });
+            return inter.editReply({ content: `I have sent you the title of the music by private messages ✅`, ephemeral: true });
         }).catch(error => {
-            return inter.reply({ content: `Unable to send you a private message... try again ? ❌`, ephemeral: true });
+            return inter.editReply({ content: `Unable to send you a private message... try again ? ❌`, ephemeral: true });
         });
     },
 };

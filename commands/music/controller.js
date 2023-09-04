@@ -15,17 +15,17 @@ module.exports = {
     ],
     async execute({ inter, client }) { 
       let Channel = inter.options.getChannel('channel');
-      if (Channel.type !== 0) return inter.reply({ content: `you have to send it to a text channel.. ❌`, ephemeral: true})
+      if (Channel.type !== 0) return inter.editReply({ content: `you have to send it to a text channel.. ❌`, ephemeral: true})
 
     
       const embed = new EmbedBuilder()
        .setTitle('control your music from the buttons below')
        .setImage(inter.guild.iconURL({ size: 4096, dynamic: true }))
-       .setColor('#36393e')
+       .setColor('#2f3136')
        .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true })})
 
 
-         inter.reply({ content: `sending controller to ${Channel}... ✅`, ephemeral: true})
+         inter.editReply({ content: `sending controller to ${Channel}... ✅`, ephemeral: true})
 
          const back = new ButtonBuilder()
          .setLabel('Back')
@@ -72,13 +72,28 @@ module.exports = {
          .setCustomId(JSON.stringify({ffb: 'queue'}))
          .setStyle('Secondary')
 
+        const lyrics = new ButtonBuilder()
+            .setLabel('lyrics')
+            .setCustomId(JSON.stringify({ffb: 'lyrics'}))
+            .setStyle('Primary')
+
+        const shuffle = new ButtonBuilder()
+            .setLabel('shuffle')
+            .setCustomId(JSON.stringify({ffb: 'shuffle'}))
+            .setStyle('Success')
+
+        const stop = new ButtonBuilder()
+            .setLabel('Stop')
+            .setCustomId(JSON.stringify({ffb: 'stop'}))
+            .setStyle('Danger')
+
 
          const row1 = new ActionRowBuilder().addComponents(back, queuebutton, resumepause, np, skip)
          const row2 = new ActionRowBuilder().addComponents(volumedown, loop, save, volumeup)
+        const row3 = new ActionRowBuilder().addComponents(lyrics, shuffle, stop)
 
 
-
-        Channel.send({ embeds: [embed], components: [row1, row2] })
+        Channel.send({ embeds: [embed], components: [row1, row2, row3] })
 
     },
 }

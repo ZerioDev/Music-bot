@@ -1,15 +1,26 @@
+const { EmbedBuilder } = require('discord.js');
+const { useMasterPlayer, useQueue  } = require('discord-player');
+
 module.exports = {
     name: 'stop',
     description: 'stop the track',
     voiceChannel: true,
 
     execute({ inter }) {
-        const queue = player.getQueue(inter.guildId);
+        const player = useMasterPlayer()
 
-        if (!queue || !queue.playing) return inter.reply({ content:`No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+const queue = useQueue(inter.guild);
 
-        queue.destroy();
+        if (!queue || !queue.isPlaying()) return inter.editReply({ content:`No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 
-        inter.reply({ content: `Music stopped intero this server, see you next time ✅`});
+        queue.delete();
+
+        const StopEmbed = new EmbedBuilder()
+        .setColor('#2f3136')
+        .setAuthor({name: `Music stopped into this server, see you next time ✅` })
+
+
+       return inter.editReply({ embeds: [StopEmbed] });
+
     },
 };
