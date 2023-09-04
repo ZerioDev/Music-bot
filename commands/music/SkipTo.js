@@ -1,5 +1,5 @@
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
-const { useMasterPlayer, useQueue  } = require('discord-player');
+const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'skipto',
@@ -21,7 +21,7 @@ module.exports = {
     ],
 
     async execute({ inter }) { 
-        const player = useMasterPlayer()
+        const player = useMainPlayer()
 
         const track = inter.options.getString('song');
         const number =  inter.options.getNumber('number')

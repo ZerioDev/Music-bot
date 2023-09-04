@@ -1,12 +1,12 @@
 const { EmbedBuilder } = require('discord.js');
-const { useMasterPlayer, useQueue  } = require('discord-player');
+const { useMainPlayer, useQueue  } = require('discord-player');
 module.exports = {
     name: 'back',
     description: "Go back the song before",
     voiceChannel: true,
 
     async execute({ inter }) {
-        const player = useMasterPlayer()
+        const player = useMainPlayer()
 
 const queue = useQueue(inter.guild);
 

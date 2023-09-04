@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require('discord.js');
-const { useMasterPlayer, useQueue  } = require('discord-player');
+const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'shuffle',
@@ -7,7 +7,7 @@ module.exports = {
     voiceChannel: true,
 
     async execute({ inter }) {
-        const player = useMasterPlayer()
+        const player = useMainPlayer()
 
 const queue = useQueue(inter.guild);
 

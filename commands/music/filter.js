@@ -1,5 +1,5 @@
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
-const { useMasterPlayer, useQueue  } = require('discord-player');
+const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'filter',
@@ -18,7 +18,7 @@ module.exports = {
 
     async execute({ inter }) {
 const queue = useQueue(inter.guild);
-        const player = useMasterPlayer()
+        const player = useMainPlayer()
 
         if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 

@@ -1,6 +1,6 @@
 const ms = require('ms');
 const {  ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
-const { useMasterPlayer, useQueue  } = require('discord-player');
+const { useMainPlayer, useQueue  } = require('discord-player');
 
 module.exports = {
     name: 'seek',
@@ -15,7 +15,7 @@ module.exports = {
     }
     ],
     async execute({ inter }) {
-        const player = useMasterPlayer()
+        const player = useMainPlayer()
 
 const queue = useQueue(inter.guild);
 

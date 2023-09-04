@@ -1,5 +1,5 @@
 const { EmbedBuilder, ActionRowBuilder, ButtonBuilder } = require('discord.js');
-const { useMasterPlayer, useQueue } = require('discord-player');
+const { useMainPlayer, useQueue } = require('discord-player');
 
 module.exports = {
     name: 'nowplaying',
@@ -8,7 +8,7 @@ module.exports = {
 
     execute({ inter }) {
 const queue = useQueue(inter.guild);
-        const player = useMasterPlayer()
+        const player = useMainPlayer()
 
         if (!queue) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
 

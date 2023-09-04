@@ -1,4 +1,4 @@
-const { QueueRepeatMode, useMasterPlayer, useQueue } = require('discord-player');
+const { QueueRepeatMode, useMainPlayer, useQueue } = require('discord-player');
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
@@ -20,7 +20,7 @@ module.exports = {
     }
     ],
     execute({ inter }) {
-        const player = useMasterPlayer()
+        const player = useMainPlayer()
 
 const queue = useQueue(inter.guild);
         let BaseEmbed = new EmbedBuilder()
