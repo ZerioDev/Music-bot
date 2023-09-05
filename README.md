@@ -18,7 +18,7 @@ module.exports = {
         token: 'XXX',
         playing: 'by Zerio ❤️',
         global: true,
-        guild: 'xxx'
+        guild: 'xxx',
         ExtraMessages: false,
         loopMessage: false,
 },
