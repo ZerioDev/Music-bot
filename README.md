@@ -74,11 +74,11 @@ Advanced configuration (only change if you know what you are doing)
 ### 📑 Installation
 To use the project correctly you will need some tools.
 
-WARNING: You MUST use Node.js version 18.17 or greater; otherwise, you will encounter major compatibility issues.
+WARNING: You MUST use Node.js version under 18.17, otherwise, you will encounter major compatibility issues.
 
 [FFmpeg](https://www.ffmpeg.org) to process audio
 
-[Node JS](https://nodejs.org/en/) (v18.17) or newer for environment
+[Node JS](https://nodejs.org/en/) (v18.17) or older for environment
 
 [yarn](https://yarnpkg.com/getting-started/usage) for package management
 
