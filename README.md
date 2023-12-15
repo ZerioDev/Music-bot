@@ -2,7 +2,7 @@
 
 A complete code to download for a music bot 🎧
 
-Looking for a code for a music bot ? This fully open source code is made for your project !
+Looking for a code for a music bot? This fully open-source code is made for your project!
 
 If you need help with this project, to get support faster you can join the help server by just clicking [here](https://discord.gg/5cGSYV8ZZj).
 
@@ -72,12 +72,13 @@ Advanced configuration (only change if you know what you are doing)
 - `opt/discordPlayer`, options used by discord-player
 
 ### 📑 Installation
-
 To use the project correctly you will need some tools.
+
+WARNING: You MUST use Node.js version 18.17 or greater; otherwise, you will encounter major compatibility issues.
 
 [FFmpeg](https://www.ffmpeg.org) to process audio
 
-[Node JS](https://nodejs.org/en/) (v16.9) or newer for environment
+[Node JS](https://nodejs.org/en/) (v18.17) or newer for environment
 
 [yarn](https://yarnpkg.com/getting-started/usage) for package management
 
