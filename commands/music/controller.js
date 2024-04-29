@@ -28,62 +28,62 @@ module.exports = {
 
         const back = new ButtonBuilder()
             .setLabel('Back')
-            .setCustomId(JSON.stringify({ ffb: 'back' }))
+            .setCustomId('back')
             .setStyle('Primary');
 
         const skip = new ButtonBuilder()
             .setLabel('Skip')
-            .setCustomId(JSON.stringify({ ffb: 'skip' }))
+            .setCustomId('skip')
             .setStyle('Primary');
 
         const resumepause = new ButtonBuilder()
             .setLabel('Resume & Pause')
-            .setCustomId(JSON.stringify({ ffb: 'resume&pause' }))
+            .setCustomId('resume&pause')
             .setStyle('Danger');
 
         const save = new ButtonBuilder()
             .setLabel('Save')
-            .setCustomId(JSON.stringify({ ffb: 'savetrack' }))
+            .setCustomId('savetrack')
             .setStyle('Success');
 
         const volumeup = new ButtonBuilder()
             .setLabel('Volume Up')
-            .setCustomId(JSON.stringify({ ffb: 'volumeup' }))
+            .setCustomId('volumeup')
             .setStyle('Primary');
 
         const volumedown = new ButtonBuilder()
             .setLabel('Volume Down')
-            .setCustomId(JSON.stringify({ ffb: 'volumedown' }))
+            .setCustomId('volumedown')
             .setStyle('Primary');
 
         const loop = new ButtonBuilder()
             .setLabel('Loop')
-            .setCustomId(JSON.stringify({ ffb: 'loop' }))
+            .setCustomId('loop')
             .setStyle('Danger');
 
         const np = new ButtonBuilder()
             .setLabel('Now Playing')
-            .setCustomId(JSON.stringify({ ffb: 'nowplaying' }))
+            .setCustomId('nowplaying')
             .setStyle('Secondary');
 
         const queuebutton = new ButtonBuilder()
             .setLabel('Queue')
-            .setCustomId(JSON.stringify({ ffb: 'queue' }))
+            .setCustomId('queue')
             .setStyle('Secondary');
 
         const lyrics = new ButtonBuilder()
             .setLabel('lyrics')
-            .setCustomId(JSON.stringify({ ffb: 'lyrics' }))
+            .setCustomId('Lyrics')
             .setStyle('Primary');
 
         const shuffle = new ButtonBuilder()
-            .setLabel('shuffle')
-            .setCustomId(JSON.stringify({ ffb: 'shuffle' }))
+            .setLabel('Shuffle')
+            .setCustomId('shuffle')
             .setStyle('Success');
 
         const stop = new ButtonBuilder()
             .setLabel('Stop')
-            .setCustomId(JSON.stringify({ ffb: 'stop' }))
+            .setCustomId('stop')
             .setStyle('Danger');
 
         const row1 = new ActionRowBuilder().addComponents(back, queuebutton, resumepause, np, skip);

@@ -26,31 +26,30 @@ module.exports = {
 
         const saveButton = new ButtonBuilder()
             .setLabel('Save this track')
-            .setCustomId(JSON.stringify({ ffb: 'savetrack' }))
+            .setCustomId('savetrack')
             .setStyle('Danger');
 
         const volumeup = new ButtonBuilder()
             .setLabel('Volume Up')
-            .setCustomId(JSON.stringify({ ffb: 'volumeup' }))
+            .setCustomId('volumeup')
             .setStyle('Primary');
 
         const volumedown = new ButtonBuilder()
             .setLabel('Volume Down')
-            .setCustomId(JSON.stringify({ ffb: 'volumedown' }))
+            .setCustomId('volumedown')
             .setStyle('Primary');
 
         const loop = new ButtonBuilder()
             .setLabel('Loop')
-            .setCustomId(JSON.stringify({ ffb: 'loop' }))
+            .setCustomId('loop')
             .setStyle('Danger');
 
         const resumepause = new ButtonBuilder()
             .setLabel('Resume & Pause')
-            .setCustomId(JSON.stringify({ ffb: 'resume&pause' }))
+            .setCustomId('resume&pause')
             .setStyle('Success');
 
         const row = new ActionRowBuilder().addComponents(volumedown, saveButton, resumepause, loop, volumeup);
-
         inter.editReply({ embeds: [embed], components: [row] });
     }
 }

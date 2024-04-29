@@ -9,27 +9,27 @@ module.exports = (queue, track) => {
 
     const back = new ButtonBuilder()
         .setLabel('Back')
-        .setCustomId(JSON.stringify({ ffb: 'back' }))
+        .setCustomId('back')
         .setStyle('Primary');
 
     const skip = new ButtonBuilder()
         .setLabel('Skip')
-        .setCustomId(JSON.stringify({ ffb: 'skip' }))
+        .setCustomId('skip')
         .setStyle('Primary');
 
     const resumepause = new ButtonBuilder()
         .setLabel('Resume & Pause')
-        .setCustomId(JSON.stringify({ ffb: 'resume&pause' }))
+        .setCustomId('resume&pause')
         .setStyle('Danger');
 
     const loop = new ButtonBuilder()
         .setLabel('Loop')
-        .setCustomId(JSON.stringify({ ffb: 'loop' }))
+        .setCustomId('loop')
         .setStyle('Secondary');
 
     const lyrics = new ButtonBuilder()
-        .setLabel('lyrics')
-        .setCustomId(JSON.stringify({ ffb: 'lyrics' }))
+        .setLabel('Lyrics')
+        .setCustomId('lyrics')
         .setStyle('Secondary');
 
     const row1 = new ActionRowBuilder().addComponents(back, loop, resumepause, lyrics, skip);

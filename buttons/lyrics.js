@@ -1,4 +1,5 @@
 const { EmbedBuilder } = require('discord.js');
+
 module.exports = async ({ inter, queue }) => {
     if (!queue?.isPlaying()) return inter.editReply({ content: `No music currently playing... try again ? ❌` });
 

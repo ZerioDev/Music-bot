@@ -30,7 +30,6 @@ module.exports = {
 
         let trackName;
 
-
         if (track) {
             const skipTo = queue.tracks.toArray().find((t) => t.title.toLowerCase() === track.toLowerCase() || t.url === track)
             if (!skipTo) return inter.editReply({ content: `Could not find ${track} ${inter.member}... try using the url or the full name of the song ? ❌` });
@@ -41,7 +40,7 @@ module.exports = {
         } else if (number) {
             const index = number - 1;
             const name = queue.tracks.toArray()[index].title;
-            if (!name) return inter.editReply({ content: `This track dose not seem to exist ${inter.member}...  try again ?❌` });
+            if (!name) return inter.editReply({ content: `This track does not seem to exist ${inter.member}...  try again ?❌` });
 
             trackName = name;
 
@@ -49,7 +48,7 @@ module.exports = {
         }
 
         const embed = new EmbedBuilder()
-            .setAuthor({ name: `Skiped to ${trackName} ✅` })
+            .setAuthor({ name: `Skipped to ${trackName} ✅` })
             .setColor('#2f3136')
 
         inter.editReply({ embeds: [embed] });

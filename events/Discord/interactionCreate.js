@@ -39,14 +39,14 @@ module.exports = async (client, inter) => {
 
         command.execute({ inter, client });
     } else if (inter.type === InteractionType.MessageComponent) {
-        const customId = JSON.parse(inter.customId);
-        const fileOfButton = customId.ffb;
-        const queue = useQueue(inter.guild);
+        const customId = inter.customId;
+        if (!customId) return;
 
-        if (fileOfButton) {
-            delete require.cache[require.resolve(`../../buttons/${fileOfButton}.js`)];
-            const button = require(`../../buttons/${fileOfButton}.js`);
-            if (button) return button({ client, inter, customId, queue });
-        }
+        const queue = useQueue(inter.guild);
+        const path = `../../buttons/${customId}.js`;
+
+        delete require.cache[require.resolve(path)];
+        const button = require(path);
+        if (button) return button({ client, inter, customId, queue });
     }
 }

@@ -14,7 +14,7 @@ module.exports = async ({ inter, queue }) => {
             { name: 'Song URL:', value: `\`${queue.currentTrack.url}\`` }
         )
         .setThumbnail(queue.currentTrack.thumbnail)
-        .setFooter({ text: `from the server ${inter.member.guild.name}`, iconURL: inter.member.guild.iconURL({ dynamic: false }) });
+        .setFooter({ text: `From the server ${inter.member.guild.name}`, iconURL: inter.member.guild.iconURL({ dynamic: false }) });
 
     inter.member.send({ embeds: [embed] })
         .then(() => {
