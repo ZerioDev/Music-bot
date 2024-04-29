@@ -1,26 +1,23 @@
 const { EmbedBuilder } = require('discord.js');
-const { useMainPlayer, useQueue} = require('discord-player');
+const { useQueue } = require('discord-player');
 
 module.exports = {
     name: 'clear',
-    description: 'clear all the music in the queue',
+    description: 'Clear all the music in the queue',
     voiceChannel: true,
 
     async execute({ inter }) {
-const queue = useQueue(inter.guild);
-        const player = useMainPlayer()
+        const queue = useQueue(inter.guild);
+        if (!queue?.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌` });
 
-        if (!queue || !queue.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌`, ephemeral: true });
+        if (!queue.tracks.toArray()[1]) return inter.editReply({ content: `No music in the queue after the current one ${inter.member}... try again ? ❌` });
 
-        if (!queue.tracks.toArray()[1]) return inter.editReply({ content: `No music in the queue after the current one ${inter.member}... try again ? ❌`, ephemeral: true });
+        queue.tracks.clear();
 
-        await queue.tracks.clear();
+        const clearEmbed = new EmbedBuilder()
+            .setAuthor({ name: `The queue has just been cleared 🗑️` })
+            .setColor('#2f3136');
 
-        const ClearEmbed = new EmbedBuilder()
-        .setAuthor({name: `The queue has just been cleared 🗑️`})
-        .setColor('#2f3136')
-        
-        inter.editReply({ embeds: [ClearEmbed] });
-
-    },
-};
+        inter.editReply({ embeds: [clearEmbed] });
+    }
+}
