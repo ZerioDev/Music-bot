@@ -7,5 +7,5 @@ module.exports = (queue) => {
         .setAuthor({ name: `All the songs in playlist added into the queue ✅` })
         .setColor('#2f3136');
 
-    queue.metadata.send({ embeds: [embed] });
+    queue.metadata.channel.send({ embeds: [embed] });
 }

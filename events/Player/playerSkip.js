@@ -5,5 +5,5 @@ module.exports = (queue, track) => {
         .setAuthor({ name: `Skipping **${track.title}** due to an issue! ❌`, iconURL: track.thumbnail })
         .setColor('#EE4B2B');
 
-    queue.metadata.send({ embeds: [embed] });
+    queue.metadata.channel.send({ embeds: [embed] });
 }

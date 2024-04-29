@@ -30,30 +30,26 @@ module.exports = {
             return inter.editReply({ embeds: [defaultEmbed] });
         }
 
-        const queue = player.nodes.create(inter.guild, {
-            metadata: inter.channel,
-            spotifyBridge: client.config.opt.spotifyBridge,
-            volume: client.config.opt.volume,
-            leaveOnEmpty: client.config.opt.leaveOnEmpty,
-            leaveOnEmptyCooldown: client.config.opt.leaveOnEmptyCooldown,
-            leaveOnEnd: client.config.opt.leaveOnEnd,
-            leaveOnEndCooldown: client.config.opt.leaveOnEndCooldown,
-        });
-
         try {
-            if (!queue.connection) await queue.connect(inter.member.voice.channel);
-        } catch {
-            await player.deleteQueue(inter.guildId);
+            const { track } = await player.play(inter.member.voice.channel, song, {
+                nodeOptions: {
+                    metadata: {
+                        channel: inter.channel
+                    },
+                    volume: client.config.opt.volume,
+                    leaveOnEmpty: client.config.opt.leaveOnEmpty,
+                    leaveOnEmptyCooldown: client.config.opt.leaveOnEmptyCooldown,
+                    leaveOnEnd: client.config.opt.leaveOnEnd,
+                    leaveOnEndCooldown: client.config.opt.leaveOnEndCooldown,
+                }
+            });
 
+            defaultEmbed.setAuthor({ name: `Loading ${track.title} to the queue... ✅` });
+            await inter.editReply({ embeds: [defaultEmbed] });
+        } catch (error) {
+            console.log(`Play error: ${error}`);
             defaultEmbed.setAuthor({ name: `I can't join the voice channel... try again ? ❌` });
             return inter.editReply({ embeds: [defaultEmbed] });
         }
-
-        defaultEmbed.setAuthor({ name: `Loading your ${res.playlist ? 'playlist' : 'track'} to the queue... ✅` });
-        await inter.editReply({ embeds: [defaultEmbed] });
-
-        res.playlist ? queue.addTrack(res.tracks) : queue.addTrack(res.tracks[0]);
-
-        if (!queue.isPlaying()) await queue.node.play();
     }
 }
