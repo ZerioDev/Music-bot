@@ -23,6 +23,8 @@ module.exports = {
         const lyrics = results?.[0];
         if (!lyrics?.plainLyrics) return inter.editReply({ content: `No lyrics found for ${queue.currentTrack.title}... try again ? ❌` });
 
+        const trimmedLyrics = lyrics.plainLyrics.substring(0, 1997);
+
         const embed = new EmbedBuilder()
             .setTitle(`Lyrics for ${queue.currentTrack.title}`)
             .setAuthor({

@@ -7,7 +7,7 @@ module.exports = async ({ client, inter, queue }) => {
     const methods = ['', '🔁', '🔂'];
     const songs = queue.tracks.length;
     const nextSongs = songs > 5 ? `And **${songs - 5}** other song(s)...` : `In the playlist **${songs}** song(s)...`;
-    const tracks = queue.tracks.map((track, i) => `**${i + 1}** - ${track.title} | ${track.author} (requested by : ${track.requestedBy.username})`)
+    const tracks = queue.tracks.map((track, i) => `**${i + 1}** - ${track.title} | ${track.author} (requested by : ${track.requestedBy ? track.requestedBy.displayName : "unknow"})`);
 
     const embed = new EmbedBuilder()
         .setColor('#ff0000')
