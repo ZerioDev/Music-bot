@@ -88,7 +88,7 @@ Now in your terminal run the following commands assuming you are in the same dir
 
 `yarn install` (or `npm install` **not recommended** as it might not work)
 
-`node .` (or `node index.js`)
+`node .` (or `node main.js`)
 
 and Done, your bot should be running!
 
