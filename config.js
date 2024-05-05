@@ -4,9 +4,8 @@ module.exports = {
         playing: 'by Zerio ❤️',
         global: true,
         guild: 'xxx',
-        ExtraMessages: false,
+        extraMessages: false,
         loopMessage: false,
-
     },
 
     opt: {

@@ -19,7 +19,7 @@ module.exports = {
         playing: 'by Zerio ❤️',
         global: true,
         guild: 'xxx',
-        ExtraMessages: false,
+        extraMessages: false,
         loopMessage: false,
 },
     opt: {
@@ -50,8 +50,8 @@ Basic configuration
 - `app/token`, the token of the bot available on the [Discord Developers](https://discordapp.com/developers/applications) section
 - `app/playing`, the activity of the bot
 - `app/global`, whether the commands will work on all servers or just one (if global they might take up to an hour to show up)
-- `app/guild`, the guild the slash command will be loaded to (this only applys if global is set to false)
-- `app/ExtraMessages` will increesse the amount of bot spam, while you get more infomation (not recommended) 
+- `app/guild`, the guild the slash command will be loaded to (this only applies if global is set to false)
+- `app/extraMessages` will increase the amount of bot spam, while you get more infomation (not recommended) 
 - `opt/loopMessage`, if the message that a music is played should be sent when it is looped
 
 DJ mode configuration
@@ -74,11 +74,11 @@ Advanced configuration (only change if you know what you are doing)
 ### 📑 Installation
 To use the project correctly you will need some tools.
 
-WARNING: You MUST use Node.js version under 18.17, otherwise, you will encounter major compatibility issues.
+WARNING: You MUST use Node.js version `v18.20.2`, otherwise, you will encounter major compatibility issues.
 
 [FFmpeg](https://www.ffmpeg.org) to process audio
 
-[Node JS](https://nodejs.org/en/) (v18.17) or older for environment
+[Node JS](https://nodejs.org/en/) (`v18.20.2`) for environment
 
 [yarn](https://yarnpkg.com/getting-started/usage) for package management
 
@@ -96,9 +96,8 @@ Realized with ❤️ by [ZerioDev](https://github.com/ZerioDev).
 
 Please do not withdraw the license and keep the credits on this project. 
 
-To have full access to the project and to be able to withdraw the credits a small donation is accepted. 
+To have full access to the project and to be able to withdraw the credits a small donation is accepted.
 
 ### 📝 ToDo 
-
 
 -  [ ] Vote to skip command https://github.com/ZerioDev/Music-bot/issues/187

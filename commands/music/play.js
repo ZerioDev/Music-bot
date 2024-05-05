@@ -1,64 +1,55 @@
-const { QueryType, useMainPlayer, useQueue } = require('discord-player');
+const { QueryType, useMainPlayer } = require('discord-player');
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 
 module.exports = {
     name: 'play',
-    description: "play a song!",
+    description: "Play a song!",
     voiceChannel: true,
     options: [
         {
             name: 'song',
-            description: 'the song you want to play',
+            description: 'The song you want to play',
             type: ApplicationCommandOptionType.String,
             required: true,
         }
     ],
 
     async execute({ inter, client }) {
-        const player = useMainPlayer()
+        const player = useMainPlayer();
 
         const song = inter.options.getString('song');
         const res = await player.search(song, {
             requestedBy: inter.member,
             searchEngine: QueryType.AUTO
         });
-        const NoResultsEmbed = new EmbedBuilder()
-            .setAuthor({ name: `No results found... try again ? ❌`})
-            .setColor('#2f3136')
 
-        if (!res || !res.tracks.length) return inter.editReply({ embeds: [NoResultsEmbed] });
+        let defaultEmbed = new EmbedBuilder().setColor('#2f3136');
 
-        const queue = await player.nodes.create(inter.guild, {
-            metadata: inter.channel,
-            spotifyBridge: client.config.opt.spotifyBridge,
-            volume: client.config.opt.volume,
-            leaveOnEmpty: client.config.opt.leaveOnEmpty,
-            leaveOnEmptyCooldown: client.config.opt.leaveOnEmptyCooldown,
-            leaveOnEnd: client.config.opt.leaveOnEnd,
-            leaveOnEndCooldown: client.config.opt.leaveOnEndCooldown,
-        });
-
-        try {
-            if (!queue.connection) await queue.connect(inter.member.voice.channel);
-        } catch {
-            await player.deleteQueue(inter.guildId);
-
-            const NoVoiceEmbed = new EmbedBuilder()
-                .setAuthor({ name: `I can't join the voice channel... try again ? ❌`})
-                .setColor('#2f3136')
-
-            return inter.editReply({ embeds: [NoVoiceEmbed] });
+        if (!res?.tracks.length) {
+            defaultEmbed.setAuthor({ name: `No results found... try again ? ❌` });
+            return inter.editReply({ embeds: [defaultEmbed] });
         }
 
-            const playEmbed = new EmbedBuilder()
-                .setAuthor({ name: `Loading your ${res.playlist ? 'playlist' : 'track'} to the queue... ✅`})
-                .setColor('#2f3136')
-                
-            await inter.editReply({ embeds: [playEmbed] });
+        try {
+            const { track } = await player.play(inter.member.voice.channel, song, {
+                nodeOptions: {
+                    metadata: {
+                        channel: inter.channel
+                    },
+                    volume: client.config.opt.volume,
+                    leaveOnEmpty: client.config.opt.leaveOnEmpty,
+                    leaveOnEmptyCooldown: client.config.opt.leaveOnEmptyCooldown,
+                    leaveOnEnd: client.config.opt.leaveOnEnd,
+                    leaveOnEndCooldown: client.config.opt.leaveOnEndCooldown,
+                }
+            });
 
-
-        res.playlist ? queue.addTrack(res.tracks) : queue.addTrack(res.tracks[0]);
-
-        if (!queue.isPlaying()) await queue.node.play();
-    },
-};
+            defaultEmbed.setAuthor({ name: `Loading ${track.title} to the queue... ✅` });
+            await inter.editReply({ embeds: [defaultEmbed] });
+        } catch (error) {
+            console.log(`Play error: ${error}`);
+            defaultEmbed.setAuthor({ name: `I can't join the voice channel... try again ? ❌` });
+            return inter.editReply({ embeds: [defaultEmbed] });
+        }
+    }
+}
