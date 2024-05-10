@@ -1,5 +1,6 @@
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const { QueryType, useMainPlayer, useQueue } = require('discord-player');
+const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'playnext',
@@ -18,7 +19,7 @@ module.exports = {
         const player = useMainPlayer();
         const queue = useQueue(inter.guild);
 
-        if (!queue?.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌` });
+        if (!queue?.isPlaying()) return inter.editReply({ content: await Translate(`No music currently playing <${inter.member}>... try again ? <❌>`) });
 
         const song = inter.options.getString('song');
         const res = await player.search(song, {
@@ -26,14 +27,14 @@ module.exports = {
             searchEngine: QueryType.AUTO
         });
 
-        if (!res?.tracks.length) return inter.editReply({ content: `No results found ${inter.member}... try again ? ❌` });
+        if (!res?.tracks.length) return inter.editReply({ content: await Translate(`No results found <${inter.member}>... try again ? <❌>`) });
 
-        if (res.playlist) return inter.editReply({ content: `This command dose not support playlist's ${inter.member}... try again ? ❌` });
+        if (res.playlist) return inter.editReply({ content: await Translate(`This command dose not support playlist's <${inter.member}>... try again ? <❌>`) });
 
         queue.insertTrack(res.tracks[0], 0);
 
         const playNextEmbed = new EmbedBuilder()
-            .setAuthor({ name: `Track has been inserted into the queue... it will play next 🎧` })
+            .setAuthor({ name: await Translate(`Track has been inserted into the queue... it will play next <🎧>`) })
             .setColor('#2f3136');
 
         await inter.editReply({ embeds: [playNextEmbed] });

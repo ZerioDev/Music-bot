@@ -21,6 +21,7 @@ module.exports = {
         guild: 'xxx',
         extraMessages: false,
         loopMessage: false,
+        lang: 'en'
 },
     opt: {
         DJ: {
@@ -52,6 +53,9 @@ Basic configuration
 - `app/global`, whether the commands will work on all servers or just one (if global they might take up to an hour to show up)
 - `app/guild`, the guild the slash command will be loaded to (this only applies if global is set to false)
 - `app/extraMessages` will increase the amount of bot spam, while you get more infomation (not recommended) 
+
+- `app/lang` will change the bot client language [__**See below for supported language codes**__]
+
 - `opt/loopMessage`, if the message that a music is played should be sent when it is looped
 
 DJ mode configuration
@@ -97,6 +101,37 @@ Realized with ❤️ by [ZerioDev](https://github.com/ZerioDev).
 Please do not withdraw the license and keep the credits on this project. 
 
 To have full access to the project and to be able to withdraw the credits a small donation is accepted.
+
+### ❗supported languages: 
+
+| Code | Language | Code | Language | Code | Language |
+| ---- | -------- | ---- | -------- | ---- | -------- |
+| `af` | Afrikaans | `bn` | Bengali | `da` | Danish |
+| `sq` | Albanian | `bg` | Bulgarian | `nl` | Dutch |
+| `ar` | Arabic | `ca` | Catalan | `en` | English |
+| `hy` | Armenian | `hr` | Croatian | `et` | Estonian |
+| `eu` | Basque | `cs` | Czech | `fi` | Finnish |
+| `be` | Belarusian | `cy` | Welsh | `fr` | French |
+| `bs` | Bosnian | `de` | German | `ga` | Irish |
+| `ja` | Japanese | `jv` | Javanese | `ka` | Georgian |
+| `kn` | Kannada | `kk` | Kazakh | `km` | Khmer |
+| `ko` | Korean | `ku` | Kurdish | `ky` | Kyrgyz |
+| `la` | Latin | `lb` | Luxembourgish | `lo` | Lao |
+| `lt` | Lithuanian | `lv` | Latvian | `mg` | Malagasy |
+| `mi` | Maori | `mk` | Macedonian | `ml` | Malayalam |
+| `mn` | Mongolian | `mr` | Marathi | `ms` | Malay |
+| `mt` | Maltese | `my` | Burmese | `ne` | Nepali |
+| `no` | Norwegian | `ny` | Chichewa | `pa` | Punjabi |
+| `pl` | Polish | `ps` | Pashto | `pt` | Portuguese |
+| `ro` | Romanian | `ru` | Russian | `sd` | Sindhi |
+| `si` | Sinhalese | `sk` | Slovak | `sl` | Slovenian |
+| `sm` | Samoan | `sn` | Shona | `so` | Somali |
+| `sq` | Albanian | `sr` | Serbian | `st` | Sesotho |
+| `su` | Sundanese | `sv` | Swedish | `sw` | Swahili |
+| `ta` | Tamil | `te` | Telugu | `th` | Thai |
+| `tr` | Turkish | `uk` | Ukrainian | `ur` | Urdu |
+| `vi` | Vietnamese | `xh` | Xhosa | `yi` | Yiddish |
+| `zu` | Zulu | | | | |
 
 ### 📝 ToDo 
 

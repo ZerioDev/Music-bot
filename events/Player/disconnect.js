@@ -1,4 +1,5 @@
 const { EmbedBuilder } = require('discord.js');
+const { Translate } = require('../../translate');
 
 module.exports = (queue) => {
     if (queue.metadata.lyricsThread) {
@@ -8,9 +9,11 @@ module.exports = (queue) => {
         });
     }
 
-    const embed = new EmbedBuilder()
-        .setAuthor({ name: `Disconnected from the voice channel, clearing the queue! ❌` })
+    (async () => {
+        const embed = new EmbedBuilder()
+        .setAuthor({ name: await Translate(`Disconnected from the voice channel, clearing the queue! <❌>`)})
         .setColor('#2f3136');
 
-    queue.metadata.channel.send({ embeds: [embed] });
+        queue.metadata.channel.send({ embeds: [embed] });
+    })()
 }

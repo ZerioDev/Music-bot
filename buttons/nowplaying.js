@@ -1,7 +1,8 @@
 const { EmbedBuilder } = require('discord.js');
+const { Translate } = require('../translate');
 
 module.exports = async ({ client, inter, queue }) => {
-    if (!queue?.isPlaying()) return inter.editReply({ content: `No music currently playing... try again ? ❌` });
+    if (!queue?.isPlaying()) return inter.editReply({ content: await Translate(`No music currently playing... try again ? <❌>`) });
 
     const track = queue.currentTrack;
     const methods = ['disabled', 'track', 'queue'];
@@ -12,7 +13,7 @@ module.exports = async ({ client, inter, queue }) => {
     const embed = new EmbedBuilder()
         .setAuthor({ name: track.title, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }) })
         .setThumbnail(track.thumbnail)
-        .setDescription(`Volume **${queue.node.volume}**%\nDuration **${trackDuration}**\nProgress ${progress}\nLoop mode **${methods[queue.repeatMode]}**\nRequested by ${track.requestedBy}`)
+        .setDescription(await Translate(`Volume <**${queue.node.volume}**%\n> <Duration **${trackDuration}**\n> <Progress ${progress}\n> <Loop mode **${methods[queue.repeatMode]}**\n> <Requested by ${track.requestedBy}>`))
         .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true }) })
         .setColor('ff0000')
         .setTimestamp();

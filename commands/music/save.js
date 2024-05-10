@@ -1,5 +1,6 @@
 const { EmbedBuilder } = require("discord.js");
 const { useQueue } = require('discord-player');
+const { Translate } = require("../../translate");
 
 module.exports = {
     name: 'save',
@@ -8,7 +9,7 @@ module.exports = {
 
     async execute({ inter }) {
         const queue = useQueue(inter.guild);
-        if (!queue?.isPlaying()) return inter.editReply({ content: `No music currently playing ${inter.member}... try again ? ❌` });
+        if (!queue?.isPlaying()) return inter.editReply({ content: await Translate(`No music currently playing <${inter.member}>... try again ? <❌>`) });
 
         const embed = new EmbedBuilder()
             .setColor('#2f3136')
@@ -24,10 +25,10 @@ module.exports = {
             .setFooter({ text: `From the server ${inter.member.guild.name}`, iconURL: inter.member.guild.iconURL({ dynamic: false }) });
 
         inter.member.send({ embeds: [embed] })
-        .then(() => {
-            return inter.editReply({ content: `I have sent you the music in private messages ✅` });
-        }).catch(() => {
-            return inter.editReply({ content: `Unable to send you a private message... try again ? ❌` });
+        .then(async () => {
+            return inter.editReply({ content: await Translate(`I have sent you the music in private messages <✅>`) });
+        }).catch(async () => {
+            return inter.editReply({ content: await Translate(`Unable to send you a private message... try again ? <❌>`) });
         });
     }
 }

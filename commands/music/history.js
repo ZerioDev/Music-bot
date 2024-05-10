@@ -1,5 +1,6 @@
 const { EmbedBuilder } = require('discord.js');
 const { useQueue } = require('discord-player');
+const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'history',
@@ -9,7 +10,7 @@ module.exports = {
     async execute({ inter }) {
         const queue = useQueue(inter.guild);
 
-        if (!queue || queue.history.tracks.toArray().length == 0) return inter.editReply({ content: `No music has been played yet` });
+        if (!queue || queue.history.tracks.toArray().length == 0) return inter.editReply({ content: await Translate(`No music has been played yet`) });
 
         const tracks = queue.history.tracks.toArray();
 
@@ -23,7 +24,7 @@ module.exports = {
             .setDescription(description)
             .setColor('#2f3136')
             .setTimestamp()
-            .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true }) });
+            .setFooter({ text: await Translate('Music comes first - Made with heart by the Community <❤️>'), iconURL: inter.member.avatarURL({ dynamic: true }) });
 
         inter.editReply({ embeds: [historyEmbed] });
     }

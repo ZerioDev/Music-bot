@@ -16,8 +16,7 @@
         "discord.js": "^14.13.0",
         "ffmpeg-static": "^5.0.2",
         "ms": "^3.0.0-canary.1",
-        "opusscript": "^0.0.8",
         "play-dl": "^1.9.6",
-        "ytdl-core": "^4.11.4"
+        "translate": "^3.0.0"
     }
 }

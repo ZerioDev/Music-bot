@@ -1,5 +1,6 @@
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const { QueryType, useMainPlayer } = require('discord-player');
+const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'search',
@@ -23,7 +24,7 @@ module.exports = {
             searchEngine: QueryType.AUTO
         });
 
-        if (!res?.tracks.length) return inter.editReply({ content: `No results found ${inter.member}... try again ? ❌` });
+        if (!res?.tracks.length) return inter.editReply({ content: await Translate(`No results found <${inter.member}>... try again ? <❌>`) });
 
         const queue = player.nodes.create(inter.guild, {
             metadata: inter.channel,
@@ -36,10 +37,10 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setColor('#2f3136')
-            .setAuthor({ name: `Results for ${song}`, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }) })
+            .setAuthor({ name: await Translate(`Results for <${song}>`), iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }) })
             .setDescription(`${maxTracks.map((track, i) => `**${i + 1}**. ${track.title} | ${track.author}`).join('\n')}\n\nSelect choice between **1** and **${maxTracks.length}** or **cancel** ⬇️`)
             .setTimestamp()
-            .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true }) })
+            .setFooter({ text: await Translate('Music comes first - Made with heart by the Community <❤️>'), iconURL: inter.member.avatarURL({ dynamic: true }) })
 
         inter.editReply({ embeds: [embed] });
 
@@ -58,25 +59,25 @@ module.exports = {
 
             const value = parseInt(query);
             if (!value || value <= 0 || value > maxTracks.length) {
-                return inter.followUp({ content: `Invalid response, try a value between **1** and **${maxTracks.length}** or **cancel**... try again ? ❌`, ephemeral: true });
+                return inter.followUp({ content: await Translate(`Invalid response, try a value between <**1**> and <**${maxTracks.length}**> or <**cancel**>... try again ? <❌>`), ephemeral: true });
             }
 
             try {
                 if (!queue.connection) await queue.connect(inter.member.voice.channel);
             } catch {
                 await player.deleteQueue(inter.guildId);
-                return inter.followUp({ content: `I can't join the voice channel ${inter.member}... try again ? ❌`, ephemeral: true });
+                return inter.followUp({ content: await Translate(`I can't join the voice channel <${inter.member}>... try again ? <❌>`), ephemeral: true });
             }
 
-            await inter.followUp({content: `Loading your search... 🎧`, ephemeral: true });
+            await inter.followUp({content: await Translate(`Loading your search... <🎧>`), ephemeral: true });
 
             queue.addTrack(res.tracks[query.content - 1]);
 
             if (!queue.isPlaying()) await queue.node.play();
         });
 
-        collector.on('end', (msg, reason) => {
-            if (reason === 'time') return inter.followUp({ content: `Search timed out ${inter.member}... try again ? ❌`, ephemeral: true });
+        collector.on('end', async (msg, reason) => {
+            if (reason === 'time') return inter.followUp({ content: await Translateslate(`Search timed out <${inter.member}>... try again ? <❌>`), ephemeral: true });
         });
     }
 }

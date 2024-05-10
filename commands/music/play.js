@@ -1,5 +1,6 @@
 const { QueryType, useMainPlayer } = require('discord-player');
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
+const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'play',
@@ -26,7 +27,7 @@ module.exports = {
         let defaultEmbed = new EmbedBuilder().setColor('#2f3136');
 
         if (!res?.tracks.length) {
-            defaultEmbed.setAuthor({ name: `No results found... try again ? ❌` });
+            defaultEmbed.setAuthor({ name: await Translate(`No results found... try again ? <❌>`) });
             return inter.editReply({ embeds: [defaultEmbed] });
         }
 
@@ -44,11 +45,11 @@ module.exports = {
                 }
             });
 
-            defaultEmbed.setAuthor({ name: `Loading ${track.title} to the queue... ✅` });
+            defaultEmbed.setAuthor({ name: await Translate(`Loading <${track.title}> to the queue... <✅>`) });
             await inter.editReply({ embeds: [defaultEmbed] });
         } catch (error) {
             console.log(`Play error: ${error}`);
-            defaultEmbed.setAuthor({ name: `I can't join the voice channel... try again ? ❌` });
+            defaultEmbed.setAuthor({ name: await Translate(`I can't join the voice channel... try again ? <❌>`) });
             return inter.editReply({ embeds: [defaultEmbed] });
         }
     }

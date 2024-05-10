@@ -1,10 +1,13 @@
 const { EmbedBuilder } = require('discord.js');
+const { Translate } = require('../../translate');
 
 module.exports = (queue) => {
 
-    const embed = new EmbedBuilder()
-        .setAuthor({ name: `No more songs in the queue! ❌` })
+    (async () => {
+        const embed = new EmbedBuilder()
+        .setAuthor({ name: await Translate('No more songs in the queue!  <❌>')})
         .setColor('#2f3136');
 
-    queue.metadata.channel.send({ embeds: [embed] });
+        queue.metadata.channel.send({ embeds: [embed] });
+    })()
 }

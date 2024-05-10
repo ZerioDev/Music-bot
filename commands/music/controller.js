@@ -1,4 +1,5 @@
 const { ApplicationCommandOptionType, ActionRowBuilder, ButtonBuilder, ChannelType, EmbedBuilder, PermissionsBitField } = require('discord.js');
+const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'controller',
@@ -16,15 +17,15 @@ module.exports = {
 
     async execute({ inter }) {
         const channel = inter.options.getChannel('channel');
-        if (channel.type !== ChannelType.GuildText) return inter.editReply({ content: `You need to send it to a text channel.. ❌` });
+        if (channel.type !== ChannelType.GuildText) return inter.editReply({ content: await Translate(`You need to send it to a text channel.. <❌>`) });
 
         const embed = new EmbedBuilder()
-            .setTitle('Control your music with the buttons below !')
+            .setTitle(await Translate('Control your music with the buttons below !'))
             .setImage(inter.guild.iconURL({ size: 4096, dynamic: true }))
             .setColor('#2f3136')
-            .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true }) });
+            .setFooter({ text: await Translate('Music comes first - Made with heart by the Community <❤️>'), iconURL: inter.member.avatarURL({ dynamic: true }) });
 
-        inter.editReply({ content: `Sending controller to ${channel}... ✅` });
+        inter.editReply({ content: await Translate(`Sending controller to ${channel}... <✅>`) });
 
         const back = new ButtonBuilder()
             .setLabel('Back')

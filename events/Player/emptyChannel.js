@@ -1,4 +1,5 @@
 const { EmbedBuilder } = require('discord.js');
+const { Translate } = require('../../translate');
 
 module.exports = (queue) => {
     if (queue.metadata.lyricsThread) {
@@ -7,9 +8,12 @@ module.exports = (queue) => {
             channel: queue.metadata.channel
         });
     }
-    const embed = new EmbedBuilder()
-        .setAuthor({ name: `Nobody is in the voice channel, leaving the voice channel!  ❌` })
+
+    (async () => {
+        const embed = new EmbedBuilder()
+        .setAuthor({ name: await Translateslate(`Nobody is in the voice channel, leaving the voice channel!  <❌>`)})
         .setColor('#2f3136');
 
-    queue.metadata.channel.send({ embeds: [embed] });
+        queue.metadata.channel.send({ embeds: [embed] });
+    })()
 }
