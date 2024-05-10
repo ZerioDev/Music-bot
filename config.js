@@ -1,11 +1,12 @@
 module.exports = {
     app: {
         token: 'xxx',
-        playing: 'by Zerio ❤️',
+        playing: 'by the Community ❤️',
         global: true,
         guild: 'xxx',
         extraMessages: false,
         loopMessage: false,
+        lang: 'en'
     },
 
     opt: {
