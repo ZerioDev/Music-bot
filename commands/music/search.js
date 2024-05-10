@@ -77,7 +77,7 @@ module.exports = {
         });
 
         collector.on('end', async (msg, reason) => {
-            if (reason === 'time') return inter.followUp({ content: await Translateslate(`Search timed out <${inter.member}>... try again ? <❌>`), ephemeral: true });
+            if (reason === 'time') return inter.followUp({ content: await Translate(`Search timed out <${inter.member}>... try again ? <❌>`), ephemeral: true });
         });
     }
 }
