@@ -3,7 +3,7 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'syncedlyrics',
-    description: 'Syncronize the lyrics with the song',
+    description: await Translate('Syncronize the lyrics with the song'),
     voiceChannel: true,
 
     async execute({ inter }) {

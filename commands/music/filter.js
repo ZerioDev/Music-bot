@@ -4,12 +4,12 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'filter',
-    description: 'Add a filter to your track',
+    description: await Translate('Add a filter to your track'),
     voiceChannel: true,
     options: [
         {
             name: 'filter',
-            description: 'The filter you want to add',
+            description: await Translate('The filter you want to add'),
             type: ApplicationCommandOptionType.String,
             required: true,
             choices: [...Object.keys(AudioFilters.filters).map(m => Object({ name: m, value: m })).splice(0, 25)],
@@ -30,8 +30,8 @@ module.exports = {
         const filter = filters.find((x) => x.toLowerCase() === selectedFilter.toLowerCase().toString());
 
         let msg = await Translate (`This filter doesn't exist <${inter.member}>... try again ? <❌ \n>`) +
-            (actualFilter ? `Filter currently active: **${actualFilter}**. \n` : "") +
-            `List of available filters:`;
+            (actualFilter ? await Translate(`Filter currently active: <**${actualFilter}**. \n>`) : "") +
+            await Translate(`List of available filters:`);
         filters.forEach(f => msg += `- **${f}**`);
 
         if (!filter) return inter.editReply({ content: msg });

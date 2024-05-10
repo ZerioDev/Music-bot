@@ -9,7 +9,7 @@ module.exports = {
     options: [
         {
             name: 'song',
-            description: 'The song you want to search',
+            description: await Translate('The song you want to search'),
             type: ApplicationCommandOptionType.String,
             required: true,
         }
@@ -38,7 +38,7 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setColor('#2f3136')
             .setAuthor({ name: await Translate(`Results for <${song}>`), iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }) })
-            .setDescription(`${maxTracks.map((track, i) => `**${i + 1}**. ${track.title} | ${track.author}`).join('\n')}\n\nSelect choice between **1** and **${maxTracks.length}** or **cancel** ⬇️`)
+            .setDescription(await Translate(`<${maxTracks.map((track, i) => `**${i + 1}**. ${track.title} | ${track.author}`).join('\n')}\n\n> Select choice between <**1**> and <**${maxTracks.length}**> or <**cancel** ⬇️>`))
             .setTimestamp()
             .setFooter({ text: await Translate('Music comes first - Made with heart by the Community <❤️>'), iconURL: inter.member.avatarURL({ dynamic: true }) })
 
@@ -54,7 +54,7 @@ module.exports = {
         collector.on('collect', async (query) => {
             collector.stop();
             if (query.content.toLowerCase() === 'cancel') {
-                return inter.followUp({ content: `Search cancelled ✅`, ephemeral: true });
+                return inter.followUp({ content: await Translate(`Search cancelled <✅>`), ephemeral: true });
             }
 
             const value = parseInt(query);
@@ -77,7 +77,7 @@ module.exports = {
         });
 
         collector.on('end', async (msg, reason) => {
-            if (reason === 'time') return inter.followUp({ content: await Translateslate(`Search timed out <${inter.member}>... try again ? <❌>`), ephemeral: true });
+            if (reason === 'time') return inter.followUp({ content: await Translate(`Search timed out <${inter.member}>... try again ? <❌>`), ephemeral: true });
         });
     }
 }

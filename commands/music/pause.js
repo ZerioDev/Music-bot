@@ -4,7 +4,7 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'pause',
-    description: 'Pause the track',
+    description: await Translate('Pause the track'),
     voiceChannel: true,
 
     async execute({ inter }) {
