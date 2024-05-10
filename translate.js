@@ -49,7 +49,7 @@ module.exports = {
       (translate = module.default || module);
     } catch (e) {
       throw new Error(
-        `❌ The translate module could not load properly. Please contact an administrator ❌ \n\n\nError:${e}`
+        `❌ The translate module could not load properly. Please contact an Developers ❌ \n\n\nError:${e}`
       );
     }
   },

@@ -102,8 +102,7 @@ Please do not withdraw the license and keep the credits on this project.
 
 To have full access to the project and to be able to withdraw the credits a small donation is accepted.
 
-### ❗Notes
-- The supported language codes are:
+### ❗supported languages: 
 
 | Code | Language | Code | Language | Code | Language |
 | ---- | -------- | ---- | -------- | ---- | -------- |

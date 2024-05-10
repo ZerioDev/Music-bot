@@ -3,15 +3,11 @@ const { Translate } = require("../translate");
 module.exports = async ({ inter, queue }) => {
   if (!queue?.isPlaying())
     return inter.editReply({
-      content: await Translate(
-        `No music currently playing... try again ? <❌>`
-      ),
+      content: await Translate(`No music currently playing... try again ? <❌>`),
     });
   if (!queue.history.previousTrack)
     return inter.editReply({
-      content: await Translate(
-        `There was no music played before <${inter.member}>... try again ? <❌>`
-      ),
+      content: await Translate(`There was no music played before <${inter.member}>... try again ? <❌>`),
     });
 
   await queue.history.back();
