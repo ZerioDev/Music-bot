@@ -4,7 +4,7 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'history',
-    description: await Translate('See the history of the queue'),
+    description:('See the history of the queue'),
     voiceChannel: false,
 
     async execute({ inter }) {

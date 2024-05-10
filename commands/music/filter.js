@@ -4,12 +4,12 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'filter',
-    description: await Translate('Add a filter to your track'),
+    description:('Add a filter to your track'),
     voiceChannel: true,
     options: [
         {
             name: 'filter',
-            description: await Translate('The filter you want to add'),
+            description:('The filter you want to add'),
             type: ApplicationCommandOptionType.String,
             required: true,
             choices: [...Object.keys(AudioFilters.filters).map(m => Object({ name: m, value: m })).splice(0, 25)],

@@ -5,12 +5,12 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'volume',
-    description: await Translate('Adjust the volume'),
+    description:('Adjust the volume'),
     voiceChannel: true,
     options: [
         {
             name: 'volume',
-            description: await Translate('The new volume'),
+            description:('The new volume'),
             type: ApplicationCommandOptionType.Number,
             required: true,
             minValue: 1,

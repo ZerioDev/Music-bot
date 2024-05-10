@@ -4,12 +4,12 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'play',
-    description: await Translate("Play a song!"),
+    description:("Play a song!"),
     voiceChannel: true,
     options: [
         {
             name: 'song',
-            description: await Translate('The song you want to play'),
+            description:('The song you want to play'),
             type: ApplicationCommandOptionType.String,
             required: true,
         }

@@ -3,13 +3,13 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'controller',
-    description: await Translate("Send music controller to a channel"),
+    description:("Send music controller to a channel"),
     voiceChannel: false,
     permissions: PermissionsBitField.Flags.ManageMessages,
     options: [
         {
             name: 'channel',
-            description: await Translate('The text channel you want to send it to'),
+            description:('The text channel you want to send it to'),
             type: ApplicationCommandOptionType.Channel,
             required: true,
         }

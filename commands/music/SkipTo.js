@@ -4,18 +4,18 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'skipto',
-    description: await Translate("Skips to particular track in queue"),
+    description:("Skips to particular track in queue"),
     voiceChannel: true,
     options: [
         {
             name: 'song',
-            description: await Translate('The name/url of the track you want to skip to'),
+            description:('The name/url of the track you want to skip to'),
             type: ApplicationCommandOptionType.String,
             required: false,
         },
         {
             name: 'number',
-            description: await Translate('The place in the queue the song is in'),
+            description:('The place in the queue the song is in'),
             type: ApplicationCommandOptionType.Number,
             required: false,
         }

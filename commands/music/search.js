@@ -9,7 +9,7 @@ module.exports = {
     options: [
         {
             name: 'song',
-            description: await Translate('The song you want to search'),
+            description:('The song you want to search'),
             type: ApplicationCommandOptionType.String,
             required: true,
         }

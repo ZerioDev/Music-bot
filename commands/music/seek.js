@@ -10,7 +10,7 @@ module.exports = {
     options: [
         {
             name: 'time',
-            description: await Translate('The time to skip to'),
+            description:('The time to skip to'),
             type: ApplicationCommandOptionType.String,
             required: true,
         }

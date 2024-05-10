@@ -3,7 +3,7 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'help',
-    description: await Translate("All the commands this bot has!"),
+    description:("All the commands this bot has!"),
     showHelp: false,
 
     async execute({ client, inter }) {

@@ -3,7 +3,7 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'ping',
-    description: await Translate("Get the ping of the bot!"),
+    description:("Get the ping of the bot!"),
 
     async execute({ client, inter }) {
         await inter.editReply("Ping?");
