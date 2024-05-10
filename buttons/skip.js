@@ -1,22 +1,9 @@
 const { Translate } = require("../translate");
 
 module.exports = async ({ inter, queue }) => {
-  if (!queue?.isPlaying())
-    return inter.editReply({
-      content: await Translate(
-        `No music currently playing... try again ? <❌>`
-      ),
-    });
+    if (!queue?.isPlaying()) return inter.editReply({ content: await Translate(`No music currently playing... try again ? <❌>`) });
 
-  const success = queue.node.skip();
+    const success = queue.node.skip();
 
-  return inter.editReply({
-    content: success
-      ? await Translate(
-          `Current music <${queue.currentTrack.title}> skipped <✅>`
-        )
-      : await Translate(
-          `Something went wrong <${inter.member}>... try again ? <❌>`
-        ),
-  });
-};
+    return inter.editReply({ content: success ? await Translate(`Current music <${queue.currentTrack.title}> skipped <✅>`) : await Translate(`Something went wrong <${inter.member}>... try again ? <❌>`) });
+}

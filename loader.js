@@ -48,8 +48,7 @@ GetTranslationModule().then(() => {
         delete require.cache[require.resolve(`./commands/${dirs}/${file}`)];
       } else {
         const txtEvent = `< -> > [Failed Command] <${command.name.toLowerCase()}>`;
-        parseLog(txtEvent);
-      }
+        parseLog(txtEvent);}
     }
   });
 
