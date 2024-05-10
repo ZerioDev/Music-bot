@@ -15,27 +15,27 @@ module.exports = (queue, track) => {
       .setColor("#2f3136");
 
     const back = new ButtonBuilder()
-      .setLabel("Back")
+      .setLabel(await Translate("Back"))
       .setCustomId("back")
       .setStyle("Primary");
 
     const skip = new ButtonBuilder()
-      .setLabel("Skip")
+      .setLabel(await Translate("Skip"))
       .setCustomId("skip")
       .setStyle("Primary");
 
     const resumepause = new ButtonBuilder()
-      .setLabel("Resume & Pause")
+      .setLabel(await Translate("Resume & Pause"))
       .setCustomId("resume&pause")
       .setStyle("Danger");
 
     const loop = new ButtonBuilder()
-      .setLabel("Loop")
+      .setLabel(await Translate("Loop"))
       .setCustomId("loop")
       .setStyle("Secondary");
 
     const lyrics = new ButtonBuilder()
-      .setLabel("Lyrics")
+      .setLabel(await Translate("Lyrics"))
       .setCustomId("lyrics")
       .setStyle("Secondary");
 
