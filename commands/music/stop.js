@@ -10,6 +10,13 @@ module.exports = {
     async execute({ inter }) {
         const queue = useQueue(inter.guild);
         if (!queue?.isPlaying()) return inter.editReply({ content: await Translate(`No music currently playing <${inter.member}>... try again ? <❌>`) });
+        
+        if (queue.metadata.message && queue.metadata.channel && queue.metadata.message.channel.id === queue.metadata.channel.id) {
+            try {
+                await queue.metadata.message.delete();
+            } catch (error) {
+            }
+        }
 
         queue.delete();
 

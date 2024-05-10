@@ -27,7 +27,9 @@ module.exports = {
         if (!res?.tracks.length) return inter.editReply({ content: await Translate(`No results found <${inter.member}>... try again ? <❌>`) });
 
         const queue = player.nodes.create(inter.guild, {
-            metadata: inter.channel,
+            metadata: {
+               channel: inter.channel
+            },
             spotifyBridge: client.config.opt.spotifyBridge,
             volume: client.config.opt.defaultvolume,
             leaveOnEnd: client.config.opt.leaveOnEnd,

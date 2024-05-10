@@ -8,6 +8,9 @@ module.exports = (queue, track) => {
         .setAuthor({ name: await Translate(`Skipping <**${track.title}**> due to an issue! <❌>`)})
         .setColor('#EE4B2B');
 
-        queue.metadata.channel.send({ embeds: [embed], iconURL: track.thumbnail });
+        const message = await queue.metadata.channel.send({ embeds: [embed], iconURL: track.thumbnail });
+        setTimeout(() => {
+            message.delete();
+        }, 1000);
     })()
 }
