@@ -24,33 +24,6 @@ module.exports = {
             .setFooter({ text: await Translate('Music comes first - Made with heart by the Community <❤️>'), iconURL: inter.member.avatarURL({ dynamic: true }) })
             .setColor('#2f3136')
             .setTimestamp();
-
-        const saveButton = new ButtonBuilder()
-            .setLabel('Save this track')
-            .setCustomId('savetrack')
-            .setStyle('Danger');
-
-        const volumeup = new ButtonBuilder()
-            .setLabel('Volume Up')
-            .setCustomId('volumeup')
-            .setStyle('Primary');
-
-        const volumedown = new ButtonBuilder()
-            .setLabel('Volume Down')
-            .setCustomId('volumedown')
-            .setStyle('Primary');
-
-        const loop = new ButtonBuilder()
-            .setLabel('Loop')
-            .setCustomId('loop')
-            .setStyle('Danger');
-
-        const resumepause = new ButtonBuilder()
-            .setLabel('Resume & Pause')
-            .setCustomId('resume&pause')
-            .setStyle('Success');
-
-        const row = new ActionRowBuilder().addComponents(volumedown, saveButton, resumepause, loop, volumeup);
-        inter.editReply({ embeds: [embed], components: [row] });
+        inter.editReply({ embeds: [embed] });
     }
 }
