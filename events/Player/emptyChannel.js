@@ -17,13 +17,18 @@ module.exports = async (queue) => {
     }
 
     (async () => {
-        const embed = new EmbedBuilder()
-        .setAuthor({ name: await Translate(`Nobody is in the voice channel, leaving the voice channel!  <❌>`)})
-        .setColor('#2f3136');
-
-        const message = await queue.metadata.channel.send({ embeds: [embed] });
-        setTimeout(() => {
-            message.delete();
-        }, 1000);
-    })()
+        if (client.config.opt.leaveOnEmpty) {
+            try {
+                const embed = new EmbedBuilder()
+                    .setAuthor({ name: await Translate(`Nobody is in the voice channel, leaving the voice channel!  <❌>`)})
+                    .setColor('#2f3136');
+            
+                const message = await queue.metadata.channel.send({ embeds: [embed] });
+                setTimeout(() => {
+                    message.delete();
+                }, 1000);
+            } catch (error) {
+            }
+        }
+    })();
 }
