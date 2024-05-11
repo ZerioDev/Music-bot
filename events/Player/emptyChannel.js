@@ -26,7 +26,7 @@ module.exports = async (queue) => {
                 const message = await queue.metadata.channel.send({ embeds: [embed] });
                 setTimeout(() => {
                     message.delete();
-                }, 1000);
+                }, 10000);
             } catch (error) {
             }
         }
