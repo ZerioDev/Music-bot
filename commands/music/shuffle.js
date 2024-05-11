@@ -4,7 +4,7 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'shuffle',
-    description: 'Shuffle the queue',
+    description:('Shuffle the queue'),
     voiceChannel: true,
 
     async execute({ inter }) {

@@ -4,12 +4,12 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'playnext',
-    description: "Play a song right after this one",
+    description:("Play a song right after this one"),
     voiceChannel: true,
     options: [
         {
             name: 'song',
-            description: 'The song you want to play next',
+            description:('The song you want to play next'),
             type: ApplicationCommandOptionType.String,
             required: true,
         }

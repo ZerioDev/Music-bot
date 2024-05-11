@@ -26,27 +26,27 @@ module.exports = {
             .setTimestamp();
 
         const saveButton = new ButtonBuilder()
-            .setLabel('Save this track')
+            .setLabel(await Translate('Save this track'))
             .setCustomId('savetrack')
             .setStyle('Danger');
 
         const volumeup = new ButtonBuilder()
-            .setLabel('Volume Up')
+            .setLabel(await Translate('Volume Up'))
             .setCustomId('volumeup')
             .setStyle('Primary');
 
         const volumedown = new ButtonBuilder()
-            .setLabel('Volume Down')
+            .setLabel(await Translate('Volume Down'))
             .setCustomId('volumedown')
             .setStyle('Primary');
 
         const loop = new ButtonBuilder()
-            .setLabel('Loop')
+            .setLabel(await Translate('Loop'))
             .setCustomId('loop')
             .setStyle('Danger');
 
         const resumepause = new ButtonBuilder()
-            .setLabel('Resume & Pause')
+            .setLabel(await Translate('Resume <&> Pause'))
             .setCustomId('resume&pause')
             .setStyle('Success');
 

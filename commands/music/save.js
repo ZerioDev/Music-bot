@@ -4,7 +4,7 @@ const { Translate } = require("../../translate");
 
 module.exports = {
     name: 'save',
-    description: 'Save the current track!',
+    description:('Save the current track!'),
     voiceChannel: true,
 
     async execute({ inter }) {
@@ -16,13 +16,13 @@ module.exports = {
             .setTitle(`:arrow_forward: ${queue.currentTrack.title}`)
             .setURL(queue.currentTrack.url)
             .addFields(
-                { name: ':hourglass: Duration:', value: `\`${queue.currentTrack.duration}\``, inline: true },
-                { name: 'Song by:', value: `\`${queue.currentTrack.author}\``, inline: true },
-                { name: 'Views :eyes:', value: `\`${Number(queue.currentTrack.views).toLocaleString()}\``, inline: true },
-                { name: 'Song URL:', value: `\`${queue.currentTrack.url}\`` }
+                { name: await Translate('Duration <:hourglass:>'), value: `\`${queue.currentTrack.duration}\``, inline: true },
+                { name: await Translate('Song by:'), value: `\`${queue.currentTrack.author}\``, inline: true },
+                { name: await Translate('Views <:eyes:>'), value: `\`${Number(queue.currentTrack.views).toLocaleString()}\``, inline: true },
+                { name: await Translate('Song <URL>:'), value: `\`${queue.currentTrack.url}\`` }
             )
             .setThumbnail(queue.currentTrack.thumbnail)
-            .setFooter({ text: `From the server ${inter.member.guild.name}`, iconURL: inter.member.guild.iconURL({ dynamic: false }) });
+            .setFooter({ text: await Translate(`From the server <${inter.member.guild.name}>`), iconURL: inter.member.guild.iconURL({ dynamic: false }) });
 
         inter.member.send({ embeds: [embed] })
         .then(async () => {

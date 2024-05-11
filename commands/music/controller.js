@@ -3,13 +3,13 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'controller',
-    description: "Send music controller to a channel",
+    description:("Send music controller to a channel"),
     voiceChannel: false,
     permissions: PermissionsBitField.Flags.ManageMessages,
     options: [
         {
             name: 'channel',
-            description: 'The text channel you want to send it to',
+            description:('The text channel you want to send it to'),
             type: ApplicationCommandOptionType.Channel,
             required: true,
         }
@@ -28,62 +28,62 @@ module.exports = {
         inter.editReply({ content: await Translate(`Sending controller to ${channel}... <✅>`) });
 
         const back = new ButtonBuilder()
-            .setLabel('Back')
+            .setLabel(await Translate('Back'))
             .setCustomId('back')
             .setStyle('Primary');
 
         const skip = new ButtonBuilder()
-            .setLabel('Skip')
+            .setLabel(await Translate('Skip'))
             .setCustomId('skip')
             .setStyle('Primary');
 
         const resumepause = new ButtonBuilder()
-            .setLabel('Resume & Pause')
+            .setLabel(await Translate('Resume & Pause'))
             .setCustomId('resume&pause')
             .setStyle('Danger');
 
         const save = new ButtonBuilder()
-            .setLabel('Save')
+            .setLabel(await Translate('Save'))
             .setCustomId('savetrack')
             .setStyle('Success');
 
         const volumeup = new ButtonBuilder()
-            .setLabel('Volume Up')
+            .setLabel(await Translate('Volume Up'))
             .setCustomId('volumeup')
             .setStyle('Primary');
 
         const volumedown = new ButtonBuilder()
-            .setLabel('Volume Down')
+            .setLabel(await Translate('Volume Down'))
             .setCustomId('volumedown')
             .setStyle('Primary');
 
         const loop = new ButtonBuilder()
-            .setLabel('Loop')
+            .setLabel(await Translate('Loop'))
             .setCustomId('loop')
             .setStyle('Danger');
 
         const np = new ButtonBuilder()
-            .setLabel('Now Playing')
+            .setLabel(await Translate('Now Playing'))
             .setCustomId('nowplaying')
             .setStyle('Secondary');
 
         const queuebutton = new ButtonBuilder()
-            .setLabel('Queue')
+            .setLabel(await Translate('Queue'))
             .setCustomId('queue')
             .setStyle('Secondary');
 
         const lyrics = new ButtonBuilder()
-            .setLabel('lyrics')
+            .setLabel(await Translate('lyrics'))
             .setCustomId('Lyrics')
             .setStyle('Primary');
 
         const shuffle = new ButtonBuilder()
-            .setLabel('Shuffle')
+            .setLabel(await Translate('Shuffle'))
             .setCustomId('shuffle')
             .setStyle('Success');
 
         const stop = new ButtonBuilder()
-            .setLabel('Stop')
+            .setLabel(await Translate('Stop'))
             .setCustomId('stop')
             .setStyle('Danger');
 

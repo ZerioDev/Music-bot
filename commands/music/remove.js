@@ -9,13 +9,13 @@ module.exports = {
     options: [
         {
             name: 'song',
-            description: 'the name/url of the track you want to remove',
+            description:('the name/url of the track you want to remove'),
             type: ApplicationCommandOptionType.String,
             required: false,
         },
         {
             name: 'number',
-            description: 'the place in the queue the song is in',
+            description:('the place in the queue the song is in'),
             type: ApplicationCommandOptionType.Number,
             required: false,
         }

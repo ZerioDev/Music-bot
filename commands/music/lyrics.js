@@ -4,7 +4,7 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'lyrics',
-    description: 'Get the lyrics for the current track',
+    description:('Get the lyrics for the current track'),
     voiceChannel: true,
 
     async execute({ inter }) {

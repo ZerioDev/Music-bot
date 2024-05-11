@@ -15,7 +15,7 @@ const playerEvents = readdirSync("./events/Player/").filter((file) =>
 );
 
 GetTranslationModule().then(() => {
-  console.log("Translation Module Loaded");
+  console.log("| Translation Module Loaded |");
 
   for (const file of discordEvents) {
     const DiscordEvent = require(`./events/Discord/${file}`);

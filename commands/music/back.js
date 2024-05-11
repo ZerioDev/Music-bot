@@ -4,7 +4,7 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'back',
-    description: "Go back to the last song played",
+    description:("Go back to the last song played"),
     voiceChannel: true,
 
     async execute({ inter }) {

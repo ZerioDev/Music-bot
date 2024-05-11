@@ -4,12 +4,12 @@ const { Translate } = require('../../translate');
 
 module.exports = {
     name: 'loop',
-    description: 'Toggle the looping of song\'s or the whole queue',
+    description:('Toggle the looping of song\'s or the whole queue'),
     voiceChannel: true,
     options: [
         {
             name: 'action',
-            description: 'What action you want to preform on the loop',
+            description:('What action you want to preform on the loop'),
             type: ApplicationCommandOptionType.String,
             required: true,
             choices: [
