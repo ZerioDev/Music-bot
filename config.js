@@ -8,6 +8,21 @@ module.exports = {
         loopMessage: false,
         lang: 'en'
     },
+    
+    emoji: {
+        stop: '⏹️',
+        skip: '⏭',
+        queue: '📋',
+        resumepause: '⏯',
+        lyrics: '📝',
+        back: '⏮',
+        save: '💾',
+        volumeup: '🔊',
+        volumedown: '🔉',
+        loop: '🔄',
+        np: '🎧',
+        shuffle: '🔀'
+    }, // customEmoji use <:emojiName:emojiID>
 
     opt: {
         DJ: {

@@ -22,34 +22,34 @@ module.exports = async (queue, track) => {
         .setColor("#2f3136");
 
     const back = new ButtonBuilder()
-        .setLabel("Back")
+        .setEmoji(client.config.emoji.back)
         .setCustomId("back")
         .setStyle("Primary");
 
     const skip = new ButtonBuilder()
-        .setLabel("Skip")
+        .setEmoji(client.config.emoji.skip)
         .setCustomId("skip")
         .setStyle("Primary");
 
     const resumepause = new ButtonBuilder()
-        .setLabel("Resume & Pause")
+        .setEmoji(client.config.emoji.resumepause)
         .setCustomId("resume&pause")
-        .setStyle("Danger");
-
-    const loop = new ButtonBuilder()
-        .setLabel("Loop")
-        .setCustomId("loop")
         .setStyle("Secondary");
 
+    const stop = new ButtonBuilder()
+        .setEmoji(client.config.emoji.stop)
+        .setCustomId("stop")
+        .setStyle("Danger");
+
     const lyrics = new ButtonBuilder()
-        .setLabel("Lyrics")
+        .setEmoji(client.config.emoji.lyrics)
         .setCustomId("lyrics")
         .setStyle("Secondary");
 
     const row1 = new ActionRowBuilder().addComponents(
         back,
-        loop,
         resumepause,
+        stop,
         lyrics,
         skip
     );

@@ -28,62 +28,62 @@ module.exports = {
         inter.editReply({ content: await Translate(`Sending controller to ${channel}... <✅>`) });
 
         const back = new ButtonBuilder()
-            .setLabel('Back')
+            .setEmoji(client.config.emoji.back)
             .setCustomId('back')
             .setStyle('Primary');
 
         const skip = new ButtonBuilder()
-            .setLabel('Skip')
+            .setEmoji(client.config.emoji.skip)
             .setCustomId('skip')
             .setStyle('Primary');
 
         const resumepause = new ButtonBuilder()
-            .setLabel('Resume & Pause')
+            .setEmoji(client.config.emoji.resumepause)
             .setCustomId('resume&pause')
             .setStyle('Danger');
 
         const save = new ButtonBuilder()
-            .setLabel('Save')
+            .setEmoji(client.config.emoji.save)
             .setCustomId('savetrack')
             .setStyle('Success');
 
         const volumeup = new ButtonBuilder()
-            .setLabel('Volume Up')
+            .setEmoji(client.config.emoji.volumeup)
             .setCustomId('volumeup')
             .setStyle('Primary');
 
         const volumedown = new ButtonBuilder()
-            .setLabel('Volume Down')
+            .setEmoji(client.config.emoji.volumedown)
             .setCustomId('volumedown')
             .setStyle('Primary');
 
         const loop = new ButtonBuilder()
-            .setLabel('Loop')
+            .setEmoji(client.config.emoji.loop)
             .setCustomId('loop')
             .setStyle('Danger');
 
         const np = new ButtonBuilder()
-            .setLabel('Now Playing')
+            .setEmoji(client.config.emoji.np)
             .setCustomId('nowplaying')
             .setStyle('Secondary');
 
         const queuebutton = new ButtonBuilder()
-            .setLabel('Queue')
+            .setEmoji(client.config.emoji.queue)
             .setCustomId('queue')
             .setStyle('Secondary');
 
         const lyrics = new ButtonBuilder()
-            .setLabel('lyrics')
+            .setEmoji(client.config.emoji.lyrics)
             .setCustomId('Lyrics')
             .setStyle('Primary');
 
         const shuffle = new ButtonBuilder()
-            .setLabel('Shuffle')
+            .setEmoji(client.config.emoji.shuffle)
             .setCustomId('shuffle')
             .setStyle('Success');
 
         const stop = new ButtonBuilder()
-            .setLabel('Stop')
+            .setEmoji(client.config.emoji.stop)
             .setCustomId('stop')
             .setStyle('Danger');
 
