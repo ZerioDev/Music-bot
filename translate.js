@@ -3,9 +3,18 @@ const config = require("./config");
 module.exports = {
   Translate: async (text = "", lang = "", allUnderScore = false) => {
     let output;
-    const reg = /<([^>]+)>/g;
-    if (!translate)
-      throw new Error("❌ You must provide a module to translate! ❌");
+
+    let reg = /<([^>]+)>/g;
+
+    if (!translate){
+      console.error("❌ no module to translate detected! ❌");
+      output = text
+      .replace(/<<@(\d+)>>/g, "<@$1>")
+      .replace(/>/g, "")
+      .replace(/</g, "")
+      .replace(/@(\w+)/g, "<@$1>");
+      return output;
+    }
 
     // Apparently doing this searches it without crashing. Damn
     !lang ? (lang = config.app?.lang) : (lang = lang);
@@ -16,8 +25,12 @@ module.exports = {
       );
 
     if (lang === "en") {
-      output = text.replace(/>/g, "");
-      output = output.replace(/</g, "");
+      output = text
+      .replace(/<<@(\d+)>>/g, "<@$1>")
+      .replace(/>/g, "")
+      .replace(/</g, "")
+      .replace(/@(\w+)/g, "<@$1>");
+      
     } else {
       const arrayStr = text.split(reg);
       const translatedArray = await Promise.all(
@@ -41,9 +54,9 @@ module.exports = {
           }
         })
       );
-      output = translatedArray.join(" ");
+      output = translatedArray.join("");
     }
-
+    
     return output;
   },
 
