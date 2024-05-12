@@ -1,18 +1,14 @@
 const config = require("./config");
 
 module.exports = {
-  Translate: async (text = "", lang = "", allUnderScore = false) => {
+  Translate: async (text = "", lang = "", allLowerCase = false) => {
     let output;
 
     let reg = /<([^>]+)>/g;
 
-    if (!translate){
-      console.error("❌ no module to translate detected! ❌");
-      output = text
-      .replace(/<<@(\d+)>>/g, "<@$1>")
-      .replace(/>/g, "")
-      .replace(/</g, "")
-      .replace(/@(\w+)/g, "<@$1>");
+    if (!translate) {
+      console.warn("❌ No translation module detected! ❌");
+      output = getUnchangedText(text);
       return output;
     }
 
@@ -25,12 +21,7 @@ module.exports = {
       );
 
     if (lang === "en") {
-      output = text
-      .replace(/<<@(\d+)>>/g, "<@$1>")
-      .replace(/>/g, "")
-      .replace(/</g, "")
-      .replace(/@(\w+)/g, "<@$1>");
-      
+      output = getUnchangedText(text);
     } else {
       const arrayStr = text.split(reg);
       const translatedArray = await Promise.all(
@@ -38,9 +29,8 @@ module.exports = {
           if (index % 2 === 0) {
             if (verifyLang(lang)) {
               try {
-                return !allUnderScore
-                  ? await translate(str, lang)
-                  : await translate(str, lang).toLowerCase();
+                if(!allLowerCase) return await translate(str, lang);
+                return (await translate(str, lang)).toLowerCase();
               } catch (e) {
                 return str;
               }
@@ -50,13 +40,13 @@ module.exports = {
               );
             }
           } else {
-            return str;
+            return getUnchangedText(str);
           }
         })
       );
       output = translatedArray.join("");
     }
-    
+
     return output;
   },
 
@@ -75,4 +65,12 @@ module.exports = {
 function verifyLang(lang) {
   const langs = ["af", "sq", "ar", "hy", "id", "eu", "be", "bn", "bg", "ca", "hr", "cs", "da", "nl", "en", "et", "fi", "fr", "gl", "ka", "de", "el", "gu", "he", "hi", "hu", "is", "id", "ga", "it", "ja", "kn", "ko", "lo", "la", "lv", "lt", "mk", "ms", "ml", "mt", "mr", "mn", "ne", "no", "fa", "pl", "pt", "ro", "ru", "sa", "sr", "si", "sk", "sl", "es", "sw", "sv", "ta", "te", "th", "tr", "uk", "ur", "vi", "cy", "yi", "zu"];
   return langs.includes(lang);
+}
+
+function getUnchangedText(text) {
+  return text
+    .replace(/<<@(\d+)>>/g, "<@$1>")
+    .replace(/>/g, "")
+    .replace(/</g, "")
+    .replace(/@(\w+)/g, "<@$1>");
 }
