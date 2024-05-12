@@ -27,7 +27,7 @@ module.exports = {
               try {
                 return !allUnderScore
                   ? await translate(str, lang)
-                  : await translate(str, lang).toUnderscore();
+                  : await translate(str, lang).toLowerCase();
               } catch (e) {
                 return str;
               }
