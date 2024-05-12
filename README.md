@@ -131,7 +131,7 @@ To have full access to the project and to be able to withdraw the credits a smal
 | `ta` | Tamil | `te` | Telugu | `th` | Thai |
 | `tr` | Turkish | `uk` | Ukrainian | `ur` | Urdu |
 | `vi` | Vietnamese | `xh` | Xhosa | `yi` | Yiddish |
-| `zu` | Zulu | | | | |
+| `zu` | Zulu | `id` | Indonesian | | |
 
 ### 📝 ToDo 
 
