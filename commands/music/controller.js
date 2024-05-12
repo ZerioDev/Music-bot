@@ -25,7 +25,7 @@ module.exports = {
             .setColor('#2f3136')
             .setFooter({ text: await Translate('Music comes first - Made with heart by the Community <❤️>'), iconURL: inter.member.avatarURL({ dynamic: true }) });
 
-        inter.editReply({ content: await Translate(`Sending controller to ${channel}... <✅>`) });
+        inter.editReply({ content: await Translate(`Sending controller to <${channel}>... <✅>`) });
 
         const back = new ButtonBuilder()
             .setLabel(await Translate('Back'))
