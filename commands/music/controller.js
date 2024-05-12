@@ -19,13 +19,15 @@ module.exports = {
         const channel = inter.options.getChannel('channel');
         if (channel.type !== ChannelType.GuildText) return inter.editReply({ content: await Translate(`You need to send it to a text channel.. <❌>`) });
 
+        const controllerContent = await Translate(`<✅> Sending controller to`);
+        const textCombine = `${controllerContent} ${channel.toString()}.`;
         const embed = new EmbedBuilder()
             .setTitle(await Translate('Control your music with the buttons below !'))
             .setImage(inter.guild.iconURL({ size: 4096, dynamic: true }))
             .setColor('#2f3136')
             .setFooter({ text: await Translate('Music comes first - Made with heart by the Community <❤️>'), iconURL: inter.member.avatarURL({ dynamic: true }) });
 
-        inter.editReply({ content: await Translate(`Sending controller to ${channel}... <✅>`) });
+        inter.editReply({ content: textCombine, });
 
         const back = new ButtonBuilder()
             .setEmoji(client.config.emoji.back)

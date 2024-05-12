@@ -9,9 +9,14 @@ module.exports = {
 
     async execute({ inter }) {
         const queue = useQueue(inter.guild);
-        if (!queue?.isPlaying()) return inter.editReply({ content: await Translate(`No music currently playing <${inter.member}>... try again ? <❌>`) });
+        const isPlayingContent = await Translate(`no music currently playing... try again? <❌>`);
+        const historyContent = await Translate(`there was no music played before... try again? <❌>`);
+        const textCombine = `${inter.member} ${isPlayingContent}`;
+        const textCombine1 = `${inter.member} ${historyContent}`;
+        
+        if (!queue?.isPlaying()) return inter.editReply({ content: textCombine, });
 
-        if (!queue.history.previousTrack) return inter.editReply({ content: await Translate(`There was no music played before <${inter.member}>... try again ? <❌>`) });
+        if (!queue.history.previousTrack) return inter.editReply({ content: textCombine1, });
 
         await queue.history.back();
 

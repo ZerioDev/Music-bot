@@ -5,14 +5,17 @@ module.exports = async ({ inter, queue }) => {
     return inter.editReply({
       content: await Translate(`No music currently playing... try again ? <❌>`),
     });
+  
+  const replyContent = await Translate(`there was no music played before... try again? <❌>`);
+  const textCombine = `${inter.member} ${replyContent}`;
   if (!queue.history.previousTrack)
     return inter.editReply({
-      content: await Translate(`There was no music played before <${inter.member}>... try again ? <❌>`),
+      content: textCombine,
     });
 
   await queue.history.back();
 
   inter.editReply({
-    content: await Translate(`Playing the <**previous**> track <✅>`),
+    content: await Translate(`Playing the previous track <✅>`),
   });
 };
