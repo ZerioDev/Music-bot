@@ -5,5 +5,5 @@ module.exports = async ({ inter, queue }) => {
 
     const success = queue.node.skip();
 
-    return inter.editReply({ content: success ? await Translate(`Current music <${queue.currentTrack.title}> skipped <✅>`) : await Translate(`Something went wrong <${inter.member}>... try again ? <❌>`) });
+    return inter.editReply({ content: success ? await Translate(`Current music <[${queue.currentTrack.author} - ${queue.currentTrack.title}](${queue.currentTrack.url})> skipped ✅`) : await Translate(`Something went wrong <${inter.member}>... try again ? <❌>`) });
 }
