@@ -44,7 +44,7 @@ module.exports = {
           }
         })
       );
-      output = translatedArray.join("");
+      output = translatedArray.join(" ");
     }
 
     return output;
