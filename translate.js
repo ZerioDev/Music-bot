@@ -3,9 +3,15 @@ const config = require("./config");
 module.exports = {
   Translate: async (text = "", lang = "", allUnderScore = false) => {
     let output;
-    const reg = /<([^>]+)>/g;
-    if (!translate)
-      throw new Error("❌ You must provide a module to translate! ❌");
+
+    let reg = /<([^>]+)>/g;
+
+    if (!translate){
+      console.error("❌ no module to translate detected! ❌");
+      output = text.replace(/>/g, "");
+      output = output.replace(/</g, "");
+      return output;
+    }
 
     // Apparently doing this searches it without crashing. Damn
     !lang ? (lang = config.app?.lang) : (lang = lang);
@@ -41,9 +47,9 @@ module.exports = {
           }
         })
       );
-      output = translatedArray.join(" ");
+      output = translatedArray.join("");
     }
-
+    
     return output;
   },
 
