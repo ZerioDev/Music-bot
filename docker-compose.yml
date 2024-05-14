@@ -1,5 +1,4 @@
-﻿version: "3.8"
-services:
+﻿services:
   music-bot:
     build: .
     restart: always
