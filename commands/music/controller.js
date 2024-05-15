@@ -27,7 +27,7 @@ module.exports = {
 
         inter.editReply({ content: await Translate(`Sending controller to <${channel}>... <✅>`) });
 
-        const EmojiState = client.config.app.enableEmojis;
+        let EmojiState = client.config.app.enableEmojis;
 
         const emojis = client.config.emojis;
 

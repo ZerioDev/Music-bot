@@ -17,7 +17,7 @@ module.exports = {
         const trackDuration = timestamp.progress == 'Infinity' ? 'infinity (live)' : track.duration;
         const progress = queue.node.createProgressBar();
 
-        const EmojiState = client.config.app.enableEmojis;
+        let EmojiState = client.config.app.enableEmojis;
 
         const emojis = client.config?.emojis;
 
