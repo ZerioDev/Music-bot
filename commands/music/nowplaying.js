@@ -17,6 +17,12 @@ module.exports = {
         const trackDuration = timestamp.progress == 'Infinity' ? 'infinity (live)' : track.duration;
         const progress = queue.node.createProgressBar();
 
+        const EmojiState = client.config.app.enableEmojis;
+
+        const emojis = client.config?.emojis;
+
+        emojis ? EmojiState = EmojiState : EmojiState = false;
+
         const embed = new EmbedBuilder()
             .setAuthor({ name: track.title, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }) })
             .setThumbnail(track.thumbnail)
@@ -24,33 +30,33 @@ module.exports = {
             .setFooter({ text: await Translate('Music comes first - Made with heart by the Community <❤️>'), iconURL: inter.member.avatarURL({ dynamic: true }) })
             .setColor('#2f3136')
             .setTimestamp();
-
+        
         const saveButton = new ButtonBuilder()
-            .setLabel(await Translate('Save this track'))
+            .setLabel(EmojiState ? emojis.savetrack : ('Save this track'))
             .setCustomId('savetrack')
             .setStyle('Danger');
 
         const volumeup = new ButtonBuilder()
-            .setLabel(await Translate('Volume Up'))
+            .setLabel(EmojiState ? emojis.volumeUp : ('Volume Up'))
             .setCustomId('volumeup')
             .setStyle('Primary');
 
         const volumedown = new ButtonBuilder()
-            .setLabel(await Translate('Volume Down'))
+            .setLabel(EmojiState ? emojis.volumeDown : ('Volume Down'))
             .setCustomId('volumedown')
             .setStyle('Primary');
 
         const loop = new ButtonBuilder()
-            .setLabel(await Translate('Loop'))
+            .setLabel(EmojiState ? emojis.loop : ('Loop'))
             .setCustomId('loop')
             .setStyle('Danger');
 
         const resumepause = new ButtonBuilder()
-            .setLabel(await Translate('Resume <&> Pause'))
+            .setLabel(EmojiState ? emojis.ResumePause : ('Resume <&> Pause'))
             .setCustomId('resume&pause')
             .setStyle('Success');
 
-        const row = new ActionRowBuilder().addComponents(volumedown, saveButton, resumepause, loop, volumeup);
+        const row = new ActionRowBuilder().addComponents(volumedown, resumepause, volumeup, loop, saveButton);
         inter.editReply({ embeds: [embed], components: [row] });
     }
 }
