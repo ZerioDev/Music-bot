@@ -33,15 +33,15 @@ client.login(client.config.app.token)
             change the token in the config file\n\n`)
                 
                 + chalk.white(`app: `) + chalk.magenta(`{\n`) + 
-                chalk.green(`token: `) + chalk.yellow(`> > >`) + chalk.red(`'xxx'`) + chalk.yellow(`< < <\n`) +
-                chalk.green(`playing: `) + chalk.blue(`'by the Community ❤️',\n`) +
-                chalk.green(`global: `) + chalk.blue(`${client.config.app?.global},\n`) +
-                chalk.green(`guild: `) + chalk.blue(`'${client.config.app?.guild}',\n`) +
-                chalk.green(`extraMessages: `) + chalk.blue(`${client.config.app?.extraMessages},\n`) +
-                chalk.green(`loopMessage: `) + chalk.blue(`${client.config.app?.loopMessage},\n`) +
-                chalk.green(`lang: `) + chalk.blue(`'${client.config.app?.lang}',\n`) +
-                chalk.green(`Translate_Timeout: `) + chalk.blue(`${client.config.app?.Translate_Timeout},\n`) +
-                chalk.green(`enableEmojis: `) + chalk.blue(`${client.config.app?.enableEmojis},\n`) +
+                chalk.green(`\ttoken: `) + chalk.yellow(`> > >`) + chalk.red(`'xxx'`) + chalk.yellow(`< < <\n`) +
+                chalk.green(`\tplaying: `) + chalk.blue(`'by the Community ❤️',\n`) +
+                chalk.green(`\tglobal: `) + chalk.blue(`${client.config.app?.global},\n`) +
+                chalk.green(`\tguild: `) + chalk.blue(`'${client.config.app?.guild}',\n`) +
+                chalk.green(`\textraMessages: `) + chalk.blue(`${client.config.app?.extraMessages},\n`) +
+                chalk.green(`\tloopMessage: `) + chalk.blue(`${client.config.app?.loopMessage},\n`) +
+                chalk.green(`\tlang: `) + chalk.blue(`'${client.config.app?.lang}',\n`) +
+                chalk.green(`\tTranslate_Timeout: `) + chalk.blue(`${client.config.app?.Translate_Timeout},\n`) +
+                chalk.green(`\tenableEmojis: `) + chalk.blue(`${client.config.app?.enableEmojis},\n`) +
                 chalk.magenta(`},\n`));
 
                 process.exit(1);
