@@ -7,6 +7,7 @@ module.exports = {
         extraMessages: false,
         loopMessage: false,
         lang: 'en',
+        Translate_Timeout: 10000,
         enableEmojis: false,
     },
 

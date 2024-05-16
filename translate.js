@@ -3,6 +3,7 @@ const config = require("./config");
 module.exports = {
   Translate: async (text = "", lang = "", allLowerCase = false) => {
     let output;
+    let wait_time = config.app?.Translate_Timeout;
 
     let reg = /<([^>]+)>/g;
 
@@ -26,13 +27,25 @@ module.exports = {
       const arrayStr = text.split(reg);
       const translatedArray = await Promise.all(
         arrayStr.map(async (str, index) => {
-          if (index % 2 === 0) {
+          if (index % 2 == 0) {
             if (verifyLang(lang)) {
               try {
-                if(!allLowerCase) return await translate(str, lang);
-                return (await translate(str, lang)).toLowerCase();
+                let Tranlate_buff;
+
+                if(wait_time){
+                  const timeout = new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                      reject(new Error('❗ TimeoutRaisedError: The Translation took too long to complete! Skipping... ❗'))}, wait_time);
+                  })
+                  Tranlate_buff = await Promise.race([translate(str, lang), timeout]);
+                } else{
+                  Tranlate_buff = await translate(str, lang);
+                }
+
+                if(!allLowerCase) return Tranlate_buff;
+                return Tranlate_buff.toLowerCase();
               } catch (e) {
-                return str;
+                return getUnchangedText(str);
               }
             } else {
               throw new Error(
