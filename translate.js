@@ -48,9 +48,28 @@ module.exports = {
                 return getUnchangedText(str);
               }
             } else {
-              throw new Error(
-                "❌ An invalid language was inserted in the config file. Please check the language code! ❌"
-              );
+              console.clear()
+
+              const module = await import("chalk");
+              chalk = module.default || module;
+
+              console.error(
+                chalk.red(`\n
+                ❌ An invalid language was inserted in the config file. Please check the language code! ❌
+                \t\t\tchange the language code in the config.js file\n\n`)
+                + chalk.white(`app: `) + chalk.magenta(`{\n`) + 
+                chalk.green(`\ttoken: `) + chalk.blue(`'${client.config.app?.token}'\n`) +
+                chalk.green(`\tplaying: `) + chalk.blue(`'by the Community ❤️',\n`) +
+                chalk.green(`\tglobal: `) + chalk.blue(`${client.config.app?.global},\n`) +
+                chalk.green(`\tguild: `) + chalk.blue(`'${client.config.app?.guild}',\n`) +
+                chalk.green(`\textraMessages: `) + chalk.blue(`${client.config.app?.extraMessages},\n`) +
+                chalk.green(`\tloopMessage: `) + chalk.blue(`${client.config.app?.loopMessage},\n`) +
+                chalk.green(`\tlang: `) + chalk.yellow(`> > >`) + chalk.red(`'${client.config.app?.lang}'`) + chalk.yellow(`< < <,\n`) +
+                chalk.green(`\tTranslate_Timeout: `) + chalk.blue(`${client.config.app?.Translate_Timeout},\n`) +
+                chalk.green(`\tenableEmojis: `) + chalk.blue(`${client.config.app?.enableEmojis},\n`) +
+                chalk.magenta(`},\n`));
+
+                process.exit(1);
             }
           } else {
             return getUnchangedText(str);
