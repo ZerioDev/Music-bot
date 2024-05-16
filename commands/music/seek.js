@@ -1,7 +1,7 @@
 const ms = require('ms');
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const { useQueue } = require('discord-player');
-const { Translate } = require('../../translate');
+const { Translate } = require('../../events/Process/process_tools');
 
 module.exports = {
     name: 'seek',

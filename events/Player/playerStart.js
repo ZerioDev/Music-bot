@@ -1,5 +1,5 @@
 const { ActionRowBuilder, ButtonBuilder, EmbedBuilder } = require("discord.js");
-const { Translate } = require("../../translate");
+const { Translate } = require("../Process/process_tools");
 
 module.exports = (queue, track) => {
   if (!client.config.app.loopMessage && queue.repeatMode !== 0) return;

@@ -1,4 +1,4 @@
-module.exports = (queue, track) => {
+module.exports = (queue) => {
     if (queue.metadata.lyricsThread) {
         queue.metadata.lyricsThread.delete();
         queue.setMetadata({

@@ -1,5 +1,5 @@
 const ms = require('ms');
-const { Translate } = require('../../translate');
+const { Translate } = require('../../events/Process/process_tools');
 
 module.exports = {
     name: 'ping',

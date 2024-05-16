@@ -1,5 +1,5 @@
 const { QueueRepeatMode } = require('discord-player');
-const { Translate } = require('../translate');
+const { Translate } = require('../events/Process/process_tools');
 
 module.exports = async ({ inter, queue }) => {
     const methods = ['disabled', 'track', 'queue'];

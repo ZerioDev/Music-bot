@@ -1,4 +1,4 @@
-const config = require("./config");
+const config = require("../../config");
 
 module.exports = {
   Translate: async (text = "", lang = "", allLowerCase = false) => {
@@ -53,23 +53,9 @@ module.exports = {
               const module = await import("chalk");
               chalk = module.default || module;
 
-              console.error(
-                chalk.red(`\n
-                ❌ An invalid language was inserted in the config file. Please check the language code! ❌
-                \t\t\tchange the language code in the config.js file\n\n`)
-                + chalk.white(`app: `) + chalk.magenta(`{\n`) + 
-                chalk.green(`\ttoken: `) + chalk.blue(`'${client.config.app?.token}'\n`) +
-                chalk.green(`\tplaying: `) + chalk.blue(`'by the Community ❤️',\n`) +
-                chalk.green(`\tglobal: `) + chalk.blue(`${client.config.app?.global},\n`) +
-                chalk.green(`\tguild: `) + chalk.blue(`'${client.config.app?.guild}',\n`) +
-                chalk.green(`\textraMessages: `) + chalk.blue(`${client.config.app?.extraMessages},\n`) +
-                chalk.green(`\tloopMessage: `) + chalk.blue(`${client.config.app?.loopMessage},\n`) +
-                chalk.green(`\tlang: `) + chalk.yellow(`> > >`) + chalk.red(`'${client.config.app?.lang}'`) + chalk.yellow(`< < <,\n`) +
-                chalk.green(`\tTranslate_Timeout: `) + chalk.blue(`${client.config.app?.Translate_Timeout},\n`) +
-                chalk.green(`\tenableEmojis: `) + chalk.blue(`${client.config.app?.enableEmojis},\n`) +
-                chalk.magenta(`},\n`));
-
-                process.exit(1);
+            genConfigError(chalk, 'app', 'lang', 
+            `❌ An invalid language was inserted in the config file. Please check the language code! ❌
+            \t\t\tchange the language code in the config.js file\n`);  
             }
           } else {
             return getUnchangedText(str);
@@ -86,12 +72,19 @@ module.exports = {
     try {
       const module = await import("translate");
       translate = module.default || module;
+
+      const chalk_module = await import("chalk");
+      chalk = chalk_module.default || chalk_module;
     } catch (e) {
       throw new Error(
         `❌ The translate module could not load properly. Please contact an Developers ❌ \n\n\nError:${e}`
       );
     }
   },
+
+  throwConfigError: (module, section = 'app', key = 'token', error = '') => {
+    genConfigError(module, section, key, error)
+  }
 };
 
 function verifyLang(lang) {
@@ -105,4 +98,36 @@ function getUnchangedText(text) {
     .replace(/>/g, "")
     .replace(/</g, "")
     .replace(/@(\w+)/g, "<@$1>");
+}
+
+function genConfigError(chalk, dict = 'app', key = 'token', error = '') {
+  try {
+    let config = require("../../config");
+
+    if(!config[dict]){
+      throw new Error(`\n\n❌ The ${dict} object is incorrect or does not exist in the config file! ❌\n\n`);
+    }
+    if(!config[dict][key]){
+      throw new Error(`\n\n❌ The ${key} key is incorrect or does not exist in the ${dict} object in the config file! ❌\n\n`);
+    }
+
+    (async() => {
+      console.error(
+        chalk.red(`\n
+        ${error}\n`)
+        + chalk.white(`${dict}: `) + chalk.magenta(`{`))
+
+      for (let [k, v] of Object.entries(config[dict])) {
+        console.error(
+          chalk.green(`\t${k}: `) + 
+          (k != key ? chalk.blue(`'${v}'`) : chalk.yellow(`> > >`) + chalk.red(`'${v}'`) + chalk.yellow(`< < <`))
+        );
+      }
+      console.error(chalk.magenta(`},`))
+      process.exit(1);
+    })()
+  } catch(e){
+    console.error(e);
+    process.exit(1);
+  }
 }
