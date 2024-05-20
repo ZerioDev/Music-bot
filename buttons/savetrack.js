@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require('discord.js');
-const { Translate } = require('../events/Process/process_tools');
+const { Translate } = require('../process_tools');
 
 module.exports = async ({ inter, queue }) => {
     if (!queue?.isPlaying()) return inter.editReply({ content: await Translate(`No music currently playing... try again ? <❌>`) });

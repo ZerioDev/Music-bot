@@ -1,5 +1,5 @@
 const { ApplicationCommandOptionType, ActionRowBuilder, ButtonBuilder, ChannelType, EmbedBuilder, PermissionsBitField } = require('discord.js');
-const { Translate } = require('../../events/Process/process_tools');
+const { Translate } = require('../../process_tools');
 
 module.exports = {
     name: 'controller',

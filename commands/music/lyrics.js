@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require('discord.js');
 const { useMainPlayer, useQueue } = require('discord-player');
-const { Translate } = require('../../events/Process/process_tools');
+const { Translate } = require('../../process_tools');
 
 module.exports = {
     name: 'lyrics',

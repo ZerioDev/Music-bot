@@ -1,4 +1,4 @@
-const config = require("../../config");
+const config = require("./config");
 
 module.exports = {
   Translate: async (text = "", lang = "", allLowerCase = false) => {
@@ -50,10 +50,7 @@ module.exports = {
             } else {
               console.clear()
 
-              const module = await import("chalk");
-              chalk = module.default || module;
-
-            genConfigError(chalk, 'app', 'lang', 
+            genConfigError('app', 'lang', 
             `❌ An invalid language was inserted in the config file. Please check the language code! ❌
             \t\t\tchange the language code in the config.js file\n`);  
             }
@@ -72,9 +69,6 @@ module.exports = {
     try {
       const module = await import("translate");
       translate = module.default || module;
-
-      const chalk_module = await import("chalk");
-      chalk = chalk_module.default || chalk_module;
     } catch (e) {
       throw new Error(
         `❌ The translate module could not load properly. Please contact an Developers ❌ \n\n\nError:${e}`
@@ -82,8 +76,8 @@ module.exports = {
     }
   },
 
-  throwConfigError: (module, section = 'app', key = 'token', error = '') => {
-    genConfigError(module, section, key, error)
+  throwConfigError: (section = 'app', key = 'token', error = '') => {
+    genConfigError(section, key, error)
   }
 };
 
@@ -100,9 +94,9 @@ function getUnchangedText(text) {
     .replace(/@(\w+)/g, "<@$1>");
 }
 
-function genConfigError(chalk, dict = 'app', key = 'token', error = '') {
+function genConfigError(dict = 'app', key = 'token', error = '') {
   try {
-    let config = require("../../config");
+    let config = require("./config");
 
     if(!config[dict]){
       throw new Error(`\n\n❌ The ${dict} object is incorrect or does not exist in the config file! ❌\n\n`);
@@ -112,18 +106,31 @@ function genConfigError(chalk, dict = 'app', key = 'token', error = '') {
     }
 
     (async() => {
+      class colors {
+        constructor(){}
+        red(str){return '\u001b[31m' + str}
+        green(str){return '\u001b[32m' + str}
+        yellow(str){return '\u001b[33m' + str}
+        blue(str){return '\u001b[34m' + str}
+        magenta(str){return '\u001b[35m' + str}
+        cyan(str){return '\u001b[36m' + str}
+        white(str){return '\u001b[37m' + str}
+        reset(str){return '\u001b[0m' + str}
+      }
+      const color = new colors();
       console.error(
-        chalk.red(`\n
+        color.red(`\n
         ${error}\n`)
-        + chalk.white(`${dict}: `) + chalk.magenta(`{`))
+        + color.white(`${dict}: `) + color.magenta(`{`))
 
       for (let [k, v] of Object.entries(config[dict])) {
         console.error(
-          chalk.green(`\t${k}: `) + 
-          (k != key ? chalk.blue(`'${v}'`) : chalk.yellow(`> > >`) + chalk.red(`'${v}'`) + chalk.yellow(`< < <`))
+          color.green(`\t${k}: `) + 
+          (k != key ? color.blue(`'${v}'`) : color.yellow(`> > >`) + color.red(`'${v}'`) + color.yellow(`< < <`))
         );
       }
-      console.error(chalk.magenta(`},`))
+      console.error(color.magenta(`},`))
+      console.error(color.reset(`\n`));
       process.exit(1);
     })()
   } catch(e){

@@ -22,8 +22,11 @@ require('./loader');
 
 client.login(client.config.app.token)
 .catch(async (e) => {
-    const module = await import("chalk");
-    chalk = module.default || module;
-    require('./events/Process/process_tools')
-    .throwConfigError(chalk, 'app', 'token', '\n\t   ❌ Invalid Token Provided! ❌ \n\tchange the token in the config file\n')
+    if(e.message === 'An invalid token was provided.'){
+    require('./process_tools')
+    .throwConfigError('app', 'token', '\n\t   ❌ Invalid Token Provided! ❌ \n\tchange the token in the config file\n')}
+
+    else{
+        console.error('❌ An error occurred while trying to login to the bot! ❌ \n', e)
+    }
 });

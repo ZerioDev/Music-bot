@@ -1,6 +1,6 @@
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const { useMainPlayer, useQueue } = require('discord-player');
-const { Translate } = require('../../events/Process/process_tools.js');
+const { Translate } = require('../../process_tools');
 
 module.exports = {
     name: 'remove',

@@ -1,4 +1,4 @@
-const { Translate } = require("../events/Process/process_tools");
+const { Translate } = require('../process_tools');
 
 const maxVol = client.config.opt.maxVol;
 
