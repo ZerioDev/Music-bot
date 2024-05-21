@@ -1,6 +1,6 @@
 const { ApplicationCommandOptionType, EmbedBuilder } = require('discord.js');
 const { AudioFilters, useQueue } = require('discord-player');
-const { Translate } = require('../../translate');
+const { Translate } = require('../../process_tools');
 
 module.exports = {
     name: 'filter',

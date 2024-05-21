@@ -1,5 +1,5 @@
 const { EmbedBuilder } = require('discord.js');
-const { Translate } = require('../../translate');
+const { Translate } = require('../../process_tools');
 
 module.exports = (queue) => {
     if (queue.metadata.lyricsThread) {

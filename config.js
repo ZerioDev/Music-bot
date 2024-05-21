@@ -6,7 +6,19 @@ module.exports = {
         guild: 'xxx',
         extraMessages: false,
         loopMessage: false,
-        lang: 'en'
+        lang: 'en',
+        Translate_Timeout: 10000,
+        enableEmojis: false,
+    },
+
+    emojis:{
+        'back': '⏪',
+        'skip': '⏩',
+        'ResumePause': '⏯️',
+        'savetrack': '💾',
+        'volumeUp': '🔊',
+        'volumeDown': '🔉',
+        'loop': '🔁',
     },
 
     opt: {

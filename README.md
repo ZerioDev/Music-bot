@@ -21,7 +21,9 @@ module.exports = {
         guild: 'xxx',
         extraMessages: false,
         loopMessage: false,
-        lang: 'en'
+        lang: 'en',
+        Translate_Timeout: 10000,
+        enableEmojis: false
 },
     opt: {
         DJ: {
@@ -55,6 +57,10 @@ Basic configuration
 - `app/extraMessages` will increase the amount of bot spam, while you get more infomation (not recommended) 
 
 - `app/lang` will change the bot client language [__**See below for supported language codes**__]
+
+- `app/Translate_Timeout` will set the time limit the bot has to create the translation succesfully. If the time is out, only the original english version will be printed. Set to `none` if you want to disable it (No Timeout). 
+
+- `app/enableEmojis` will change the player buttons with emojis if set to true. `false` will replace them by basic english words
 
 - `opt/loopMessage`, if the message that a music is played should be sent when it is looped
 
@@ -96,7 +102,7 @@ Now in your terminal run the following commands assuming you are in the same dir
 
 and Done, your bot should be running!
 
-Realized with ❤️ by [ZerioDev](https://github.com/ZerioDev).
+Realized with ❤️ by the Community.
 
 Please do not withdraw the license and keep the credits on this project. 
 

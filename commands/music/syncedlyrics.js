@@ -1,5 +1,5 @@
 const { useMainPlayer, useQueue } = require('discord-player');
-const { Translate } = require('../../translate');
+const { Translate } = require('../../process_tools');
 
 module.exports = {
     name: 'syncedlyrics',
