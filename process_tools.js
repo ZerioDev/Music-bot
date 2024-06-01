@@ -3,7 +3,7 @@ const config = require("./config");
 module.exports = {
   Translate: async (text = "", lang = "", allLowerCase = false) => {
     let output;
-    let wait_time = config.app?.Translate_Timeout;
+    let wait_time = config.opt?.Translate_Timeout;
 
     let reg = /<([^>]+)>/g;
 
@@ -108,14 +108,13 @@ function genConfigError(dict = 'app', key = 'token', error = '') {
     (async() => {
       class colors {
         constructor(){}
-        red(str){return '\u001b[31m' + str}
-        green(str){return '\u001b[32m' + str}
-        yellow(str){return '\u001b[33m' + str}
-        blue(str){return '\u001b[34m' + str}
-        magenta(str){return '\u001b[35m' + str}
-        cyan(str){return '\u001b[36m' + str}
-        white(str){return '\u001b[37m' + str}
-        reset(str){return '\u001b[0m' + str}
+        red(str){return '\u001b[31m' + str + '\u001b[0m'}
+        green(str){return '\u001b[32m' + str + '\u001b[0m'}
+        yellow(str){return '\u001b[33m' + str + '\u001b[0m'}
+        blue(str){return '\u001b[34m' + str + '\u001b[0m'}
+        magenta(str){return '\u001b[35m' + str + '\u001b[0m'}
+        cyan(str){return '\u001b[36m' + str + '\u001b[0m'}
+        white(str){return '\u001b[37m' + str + '\u001b[0m'}
       }
       const color = new colors();
       console.error(
@@ -130,7 +129,6 @@ function genConfigError(dict = 'app', key = 'token', error = '') {
         );
       }
       console.error(color.magenta(`},`))
-      console.error(color.reset(`\n`));
       process.exit(1);
     })()
   } catch(e){
