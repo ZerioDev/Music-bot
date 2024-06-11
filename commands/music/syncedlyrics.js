@@ -25,7 +25,7 @@ module.exports = {
             }
 
             const thread = await queue.metadata.channel.threads.create({
-                name: `Letra de ${queue.currentTrack.title}`
+                name: `Lyrics of ${queue.currentTrack.title}`
             });
 
             queue.setMetadata({
