@@ -13,6 +13,6 @@ module.exports = async ({ inter, queue }) => {
   await queue.history.back();
 
   inter.editReply({
-    content: await Translate(`Playing the <**previous**> track <✅>`),
+    content: await Translate(`Playing the previous track <✅>`),
   });
 };

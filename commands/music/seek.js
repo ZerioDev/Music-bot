@@ -22,14 +22,14 @@ module.exports = {
 
         const timeToMS = ms(inter.options.getString('time'));
         if (timeToMS >= queue.currentTrack.durationMS) {
-            return inter.editReply({ content: await Translate(`The indicated time is higher than the total time of the current song <${inter.member}>... try again ? <❌\n> *Try for example a valid time like <**5s, 10s, 20 seconds, 1m**>...*`) });
+            return inter.editReply({ content: await Translate(`The indicated time is higher than the total time of the current song <${inter.member}>... try again ? <❌\n> *Try for example a valid time like <5s, 10s, 20 seconds, 1m>...*`) });
         }
 
         await queue.node.seek(timeToMS);
 
         const embed = new EmbedBuilder()
             .setColor('#2f3136')
-            .setAuthor({ name: await Translate(`Time set on the current song <**${ms(timeToMS, { long: true })}**> <✅>`) });
+            .setAuthor({ name: await Translate(`Time set on the current song <${ms(timeToMS, { long: true })}> <✅>`) });
 
         inter.editReply({ embeds: [embed] });
     }

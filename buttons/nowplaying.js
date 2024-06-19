@@ -13,8 +13,8 @@ module.exports = async ({ client, inter, queue }) => {
     const embed = new EmbedBuilder()
         .setAuthor({ name: track.title, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }) })
         .setThumbnail(track.thumbnail)
-        .setDescription(await Translate(`Volume <**${queue.node.volume}**%\n> <Duration **${trackDuration}**\n> <Progress ${progress}\n> <Loop mode **${methods[queue.repeatMode]}**\n> <Requested by ${track.requestedBy}>`))
-        .setFooter({ text: 'Music comes first - Made with heart by Zerio ❤️', iconURL: inter.member.avatarURL({ dynamic: true }) })
+        .setDescription(await Translate(`Volume ${queue.node.volume}%\n> <Duration ${trackDuration}\n> <Progress ${progress}\n> <Loop mode ${methods[queue.repeatMode]}\n> <Requested by ${track.requestedBy}>`))
+        .setFooter({ text: 'Music comes first - Made with ❤️ by the Community ', iconURL: inter.member.avatarURL({ dynamic: true }) })
         .setColor('ff0000')
         .setTimestamp();
 
