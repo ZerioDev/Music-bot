@@ -10,7 +10,7 @@ module.exports = {
     options: [
         {
             name: 'time',
-            description:('The time to skip to'),
+            description:('The time to skip to (in milliseconds)'),
             type: ApplicationCommandOptionType.String,
             required: true,
         }
