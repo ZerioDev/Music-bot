@@ -18,7 +18,7 @@ module.exports = {
             })
             .catch(async (e) => {
                 console.log(e);
-                return inter.editReply({ content: await Translate(`Error! Please contact Developers! | <❌>`) });
+                return inter.editReply({ content: await Translate(`Error! Please contact developers! | <❌>`) });
             });
 
         const lyrics = results?.[0];
