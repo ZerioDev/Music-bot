@@ -1,3 +1,5 @@
+// disabled because mostly broken
+
 const { useMainPlayer, useQueue } = require('discord-player');
 const { Translate } = require('../../process_tools');
 

@@ -17,9 +17,9 @@ module.exports = {
             .setURL(queue.currentTrack.url)
             .addFields(
                 { name: await Translate('Duration <:hourglass:>'), value: `\`${queue.currentTrack.duration}\``, inline: true },
-                { name: await Translate('Song by:'), value: `\`${queue.currentTrack.author}\``, inline: true },
+                { name: await Translate('Author <:bust_in_silhouette:>'), value: `\`${queue.currentTrack.author}\``, inline: true },
                 { name: await Translate('Views <:eyes:>'), value: `\`${Number(queue.currentTrack.views).toLocaleString()}\``, inline: true },
-                { name: await Translate('Song <URL>:'), value: `\`${queue.currentTrack.url}\`` }
+                { name: await Translate('Song URL'), value: `\`${queue.currentTrack.url}\`` }
             )
             .setThumbnail(queue.currentTrack.thumbnail)
             .setFooter({ text: await Translate(`From the server <${inter.member.guild.name}>`), iconURL: inter.member.guild.iconURL({ dynamic: false }) });

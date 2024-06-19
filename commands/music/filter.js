@@ -30,9 +30,9 @@ module.exports = {
         const filter = filters.find((x) => x.toLowerCase() === selectedFilter.toLowerCase().toString());
 
         let msg = await Translate (`This filter doesn't exist <${inter.member}>... try again ? <❌ \n>`) +
-            (actualFilter ? await Translate(`Filter currently active: <**${actualFilter}**. \n>`) : "") +
+            (actualFilter ? await Translate(`Filter currently active: <${actualFilter}. \n>`) : "") +
             await Translate(`List of available filters:`);
-        filters.forEach(f => msg += `- **${f}**`);
+        filters.forEach(f => msg += `- ${f}`);
 
         if (!filter) return inter.editReply({ content: msg });
 
