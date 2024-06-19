@@ -7,7 +7,7 @@ module.exports = async ({ client, inter, queue }) => {
 
     const methods = ['', '🔁', '🔂'];
     const songs = queue.tracks.length;
-    const nextSongs = songs > 5 ? await Translate(`And <${songs - 5}> other song(s)...`) : await Translate(`In the playlist <${songs}> song(s)...`);
+    const nextSongs = songs > 5 ? await Translate(`and <${songs - 5}> other song(s)...`) : await Translate(`<${songs}> song(s) in the playlist...`);
     const tracks = queue.tracks.map(async (track, i) => await Translate(`<${i + 1}> - <${track.title} | ${track.author}> (requested by : <${track.requestedBy ? track.requestedBy.displayName : "unknown"}>)`));
 
     const embed = new EmbedBuilder()

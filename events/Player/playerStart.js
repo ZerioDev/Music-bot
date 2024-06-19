@@ -22,7 +22,7 @@ module.exports = (queue, track) => {
       .setColor("#2f3136");
 
     const back = new ButtonBuilder()
-      .setLabel(EmojiState ? emojis.back : ('Back'))
+      .setLabel(EmojiState ? emojis.back : ('Previous'))
       .setCustomId('back')
       .setStyle('Primary');
 
@@ -32,14 +32,14 @@ module.exports = (queue, track) => {
       .setStyle('Primary');
 
     const resumepause = new ButtonBuilder()
-      .setLabel(EmojiState ? emojis.ResumePause : ('Resume & Pause'))
+      .setLabel(EmojiState ? emojis.ResumePause : ('Resume/Pause'))
       .setCustomId('resume&pause')
-      .setStyle('Danger');
+      .setStyle('Secondary');
 
     const loop = new ButtonBuilder()
       .setLabel(EmojiState ? emojis.loop : ('Loop'))
       .setCustomId('loop')
-      .setStyle('Danger');
+      .setStyle('Secondary');
 
     const lyrics = new ButtonBuilder()
       .setLabel(await Translate("Lyrics"))
