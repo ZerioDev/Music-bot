@@ -42,7 +42,7 @@ module.exports = {
             .setAuthor({ name: await Translate(`Results for <${song}>`), iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }) })
             .setDescription(await Translate(`<${maxTracks.map((track, i) => `${i + 1}. ${track.title} | ${track.author}`).join('\n')}\n\n> Select choice between <1> and <${maxTracks.length}> or <cancel ⬇️>`))
             .setTimestamp()
-            .setFooter({ text: await Translate('Music comes first - Made with <❤️> by the Community'), iconURL: inter.member.avatarURL({ dynamic: true }) })
+            .setFooter({ text: await Translate('Music comes first - Made with <❤️> by BoredKevin'), iconURL: inter.member.avatarURL({ dynamic: true }) })
 
         inter.editReply({ embeds: [embed] });
 
