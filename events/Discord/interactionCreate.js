@@ -8,7 +8,7 @@ module.exports = async (client, inter) => {
         const DJ = client.config.opt.DJ;
         const command = client.commands.get(inter.commandName);
 
-        const errorEmbed = new EmbedBuilder().setColor('#ff0000');
+        const errorEmbed = new EmbedBuilder().setColor('#ed4245');
 
         if (!command) {
             errorEmbed.setDescription(await Translate('<❌> Error! Please contact developers!'));

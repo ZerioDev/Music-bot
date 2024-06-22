@@ -11,7 +11,7 @@ module.exports = async ({ client, inter, queue }) => {
     const tracks = queue.tracks.map(async (track, i) => await Translate(`<${i + 1}> - <${track.title} | ${track.author}> (requested by : <${track.requestedBy ? track.requestedBy.displayName : "unknown"}>)`));
 
     const embed = new EmbedBuilder()
-        .setColor('#ff0000')
+        .setColor('#ed4245')
         .setThumbnail(inter.guild.iconURL({ size: 2048, dynamic: true }))
         .setAuthor({ name: await Translate(`Server queue - <${inter.guild.name} ${methods[queue.repeatMode]}>`), iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }) })
         .setDescription(`Current ${queue.currentTrack.title}\n\n${tracks.slice(0, 5).join('\n')}\n\n${nextSongs}`)

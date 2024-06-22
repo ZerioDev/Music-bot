@@ -10,7 +10,7 @@ module.exports = {
         const commands = client.commands.filter(x => x.showHelp !== false);
 
         const embed = new EmbedBuilder()
-            .setColor('#ff0000')
+            .setColor('#7289da')
             .setAuthor({ name: client.user.username, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }) })
             .setDescription(await Translate('Lethal Boombox is a simple open-source Discord music bot for playing and managing your favorite tunes with ease. <\n>Originally from <[ZerioDev/Music-bot](https://github.com/ZerioDev/Music-bot)>.'))
             .addFields([{ name: `Enabled - ${commands.size}`, value: commands.map(x => `\`${x.name}\``).join(' | ') }])
