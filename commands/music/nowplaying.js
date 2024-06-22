@@ -26,7 +26,7 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setAuthor({ name: track.title, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }) })
             .setThumbnail(track.thumbnail)
-            .setDescription(await Translate("Volume `<${queue.node.volume}%>` <\n> <${progress}> <\n >Loop `<${methods[queue.repeatMode]}>` <\n>Requested by `<${track.requestedBy}>`"))
+            .setDescription(await Translate(`Volume \`<${queue.node.volume}%>\` <\n> <${progress}> <\n >Loop \`<${methods[queue.repeatMode]}>\``))// <\n>Requested by `<${track.requestedBy}>`))
             .setFooter({ text: await Translate('Music comes first - Made with <❤️> by BoredKevin'), iconURL: inter.member.avatarURL({ dynamic: true }) })
             .setColor('#7289da')
             .setTimestamp();
