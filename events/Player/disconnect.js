@@ -11,7 +11,7 @@ module.exports = (queue) => {
 
     (async () => {
         const embed = new EmbedBuilder()
-        .setAuthor({ name: await Translate(`Disconnected from the voice channel, clearing the queue! <❌>`)})
+        .setAuthor({ name: await Translate(`Disconnected from the voice channel, clearing the queue!`)})
         .setColor('#7289da');
 
         queue.metadata.channel.send({ embeds: [embed] });
