@@ -5,7 +5,12 @@ module.exports = (queue, track) => {
 
     (async () => {
         const embed = new EmbedBuilder()
-        .setAuthor({ name: await Translate(`Skipping <${track.title}>`)})
+        .setAuthor({
+            name: await Translate(
+              `Skipping <${track.title}>`
+            ),
+            iconURL: track.thumbnail,
+          })
         .setColor('#ed4245');
 
         queue.metadata.channel.send({ embeds: [embed], iconURL: track.thumbnail });
