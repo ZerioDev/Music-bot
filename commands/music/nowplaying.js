@@ -34,27 +34,27 @@ module.exports = {
         const saveButton = new ButtonBuilder()
             .setLabel(EmojiState ? emojis.savetrack : ('Save this track'))
             .setCustomId('savetrack')
-            .setStyle('Danger');
+            .setStyle('Primary');
 
         const volumeup = new ButtonBuilder()
             .setLabel(EmojiState ? emojis.volumeUp : ('Volume Up'))
             .setCustomId('volumeup')
-            .setStyle('Primary');
+            .setStyle('Secondary');
 
         const volumedown = new ButtonBuilder()
             .setLabel(EmojiState ? emojis.volumeDown : ('Volume Down'))
             .setCustomId('volumedown')
-            .setStyle('Primary');
+            .setStyle('Secondary');
 
         const loop = new ButtonBuilder()
             .setLabel(EmojiState ? emojis.loop : ('Loop'))
             .setCustomId('loop')
-            .setStyle('Danger');
+            .setStyle('Primary');
 
         const resumepause = new ButtonBuilder()
             .setLabel(EmojiState ? emojis.ResumePause : ('Resume <&> Pause'))
             .setCustomId('resume&pause')
-            .setStyle('Success');
+            .setStyle('Secondary');
 
         const row = new ActionRowBuilder().addComponents(volumedown, resumepause, volumeup, loop, saveButton);
         inter.editReply({ embeds: [embed], components: [row] });
