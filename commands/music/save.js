@@ -12,7 +12,7 @@ module.exports = {
         if (!queue?.isPlaying()) return inter.editReply({ content: await Translate(`No music currently playing <${inter.member}>... try again ? <❌>`) });
 
         const embed = new EmbedBuilder()
-            .setColor('#2f3136')
+            .setColor('#7289da')
             .setTitle(`:arrow_forward: ${queue.currentTrack.title}`)
             .setURL(queue.currentTrack.url)
             .addFields(

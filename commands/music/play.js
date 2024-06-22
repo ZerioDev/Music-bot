@@ -24,7 +24,7 @@ module.exports = {
             searchEngine: QueryType.AUTO
         });
 
-        let defaultEmbed = new EmbedBuilder().setColor('#2f3136');
+        let defaultEmbed = new EmbedBuilder().setColor('#7289da');
 
         if (!res?.tracks.length) {
             defaultEmbed.setAuthor({ name: await Translate(`No results found... try again ? <❌>`) });

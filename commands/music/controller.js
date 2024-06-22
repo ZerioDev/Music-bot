@@ -22,7 +22,7 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setTitle(await Translate('Control your music with the buttons below !'))
             .setImage(inter.guild.iconURL({ size: 4096, dynamic: true }))
-            .setColor('#2f3136')
+            .setColor('#7289da')
             .setFooter({ text: await Translate('Music comes first - Made with <❤️> by BoredKevin'), iconURL: inter.member.avatarURL({ dynamic: true }) });
 
         inter.editReply({ content: await Translate(`Sending controller to <${channel}>... <✅>`) });

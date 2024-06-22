@@ -35,7 +35,7 @@ module.exports = {
 
         const playNextEmbed = new EmbedBuilder()
             .setAuthor({ name: await Translate(`Track has been inserted into the queue... it will play next <🎧>`) })
-            .setColor('#2f3136');
+            .setColor('#7289da');
 
         await inter.editReply({ embeds: [playNextEmbed] });
     }

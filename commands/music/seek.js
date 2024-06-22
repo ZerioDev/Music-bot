@@ -28,7 +28,7 @@ module.exports = {
         await queue.node.seek(timeToMS);
 
         const embed = new EmbedBuilder()
-            .setColor('#2f3136')
+            .setColor('#7289da')
             .setAuthor({ name: await Translate(`Time set on the current song <${ms(timeToMS, { long: true })}> <✅>`) });
 
         inter.editReply({ embeds: [embed] });

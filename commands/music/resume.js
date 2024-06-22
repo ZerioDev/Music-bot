@@ -17,7 +17,7 @@ module.exports = {
 
         const resumeEmbed = new EmbedBuilder()
             .setAuthor({ name: success ? await Translate(`Current music <${queue.currentTrack.title}> resumed <✅>`) : await Translate(`Something went wrong <${inter.member}>... try again ? <❌>`) })
-            .setColor('#2f3136')
+            .setColor('#7289da')
 
         return inter.editReply({ embeds: [resumeEmbed] });
     }

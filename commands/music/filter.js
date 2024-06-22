@@ -40,7 +40,7 @@ module.exports = {
 
         const filterEmbed = new EmbedBuilder()
             .setAuthor({ name: await Translate(`The filter <${filter}> is now <${queue.filters.ffmpeg.isEnabled(filter) ? 'enabled' : 'disabled'}> <✅\n> *Reminder: the longer the music is, the longer this will take.*`) })
-            .setColor('#2f3136');
+            .setColor('#7289da');
 
         return inter.editReply({ embeds: [filterEmbed] });
     }

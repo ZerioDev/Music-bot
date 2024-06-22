@@ -7,7 +7,7 @@ module.exports = async ({ inter, queue }) => {
     queue.delete();
 
     const embed = new EmbedBuilder()
-        .setColor('#2f3136')
+        .setColor('#7289da')
         .setAuthor({ name: await Translate(`Music stopped into this server, see you next time <✅>`) });
 
     return inter.editReply({ embeds: [embed] });

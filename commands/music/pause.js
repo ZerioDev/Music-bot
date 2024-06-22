@@ -16,7 +16,7 @@ module.exports = {
         const success = queue.node.setPaused(true);
         const pauseEmbed = new EmbedBuilder()
             .setAuthor({ name: success ? await Translate(`Current music <${queue.currentTrack.title}> paused <✅>`) : await Translate(`Something went wrong <${inter.member}>... try again ? <❌>`) })
-            .setColor('#2f3136')
+            .setColor('#7289da')
 
         return inter.editReply({ embeds: [pauseEmbed] });
     }

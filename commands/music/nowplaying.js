@@ -28,7 +28,7 @@ module.exports = {
             .setThumbnail(track.thumbnail)
             .setDescription(await Translate(`Volume <${queue.node.volume}%> <\n> <Duration ${trackDuration}> <\n> Progress <${progress}> <\n >Loop mode <${methods[queue.repeatMode]}> <\n>Requested by <${track.requestedBy}>`))
             .setFooter({ text: await Translate('Music comes first - Made with <❤️> by BoredKevin'), iconURL: inter.member.avatarURL({ dynamic: true }) })
-            .setColor('#2f3136')
+            .setColor('#7289da')
             .setTimestamp();
         
         const saveButton = new ButtonBuilder()

@@ -22,7 +22,7 @@ module.exports = {
         let historyEmbed = new EmbedBuilder()
             .setTitle(`History`)
             .setDescription(description)
-            .setColor('#2f3136')
+            .setColor('#7289da')
             .setTimestamp()
             .setFooter({ text: await Translate('Music comes first - Made with <❤️> by BoredKevin'), iconURL: inter.member.avatarURL({ dynamic: true }) });
 
