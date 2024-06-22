@@ -16,7 +16,7 @@ module.exports = {
         const methods = ['', '🔁', '🔂'];
         const songs = queue.tracks.size;
         const nextSongs = songs > 5 ? await Translate(`and <${songs - 5}> other song(s)...`) : await Translate(`<${songs}> song(s) in the playlist...`);
-        const tracks = queue.tracks.map((track, i) => `${i + 1} | ${track.author} - ${track.title}})`); //| (requested by : ${track.requestedBy ? track.requestedBy.displayName : "unknown"})`);
+        const tracks = queue.tracks.map((track, i) => `${i + 1}. ${track.author} - ${track.title}`); //| (requested by : ${track.requestedBy ? track.requestedBy.displayName : "unknown"})`);
         const embed = new EmbedBuilder()
             .setColor('#2f3136')
             .setThumbnail(inter.guild.iconURL({ size: 2048, dynamic: true }))
