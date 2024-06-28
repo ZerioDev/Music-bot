@@ -19,6 +19,7 @@ player.extractors.loadDefault();
 
 console.clear()
 require('./loader');
+require('./keep-alive');
 
 client.login(client.config.app.token)
 .catch(async (e) => {
