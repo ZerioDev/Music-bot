@@ -39,8 +39,10 @@ module.exports = {
         await queue.filters.ffmpeg.toggle(filter);
 
         const filterEmbed = new EmbedBuilder()
-            .setAuthor({ name: await Translate(`The filter <${filter}> is now <${queue.filters.ffmpeg.isEnabled(filter) ? 'enabled' : 'disabled'}> <✅\n> *Reminder: the longer the music is, the longer this will take.*`) })
-            .setColor('#7289da');
+            .setAuthor({ name: await Translate(`The filter <${filter}> is now <${queue.filters.ffmpeg.isEnabled(filter) ? 'enabled' : 'disabled'}> <✅\n> Note: the longer the music is, the longer this will take.`) })
+            .setFooter({ text: await Translate('Music comes first - Made with <❤️> by BoredKevin'), iconURL: inter.member.avatarURL({ dynamic: true }) })
+            .setColor('#7289da')
+            .setTimestamp();
 
         return inter.editReply({ embeds: [filterEmbed] });
     }
