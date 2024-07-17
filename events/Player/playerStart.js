@@ -1,8 +1,15 @@
 const { ActionRowBuilder, ButtonBuilder, EmbedBuilder } = require("discord.js");
-const { Translate } = require("../../translate");
+const { Translate } = require("../../process_tools");
 
 module.exports = (queue, track) => {
   if (!client.config.app.loopMessage && queue.repeatMode !== 0) return;
+
+  let EmojiState = client.config.app.enableEmojis;
+
+  const emojis = client.config.emojis;
+
+  emojis ? EmojiState = EmojiState : EmojiState = false;
+
 
   (async () => {
     const embed = new EmbedBuilder()
@@ -15,24 +22,24 @@ module.exports = (queue, track) => {
       .setColor("#2f3136");
 
     const back = new ButtonBuilder()
-      .setLabel(await Translate("Back"))
-      .setCustomId("back")
-      .setStyle("Primary");
+      .setLabel(EmojiState ? emojis.back : ('Back'))
+      .setCustomId('back')
+      .setStyle('Primary');
 
     const skip = new ButtonBuilder()
-      .setLabel(await Translate("Skip"))
-      .setCustomId("skip")
-      .setStyle("Primary");
+      .setLabel(EmojiState ? emojis.skip : ('Skip'))
+      .setCustomId('skip')
+      .setStyle('Primary');
 
     const resumepause = new ButtonBuilder()
-      .setLabel(await Translate("Resume & Pause"))
-      .setCustomId("resume&pause")
-      .setStyle("Danger");
+      .setLabel(EmojiState ? emojis.ResumePause : ('Resume & Pause'))
+      .setCustomId('resume&pause')
+      .setStyle('Danger');
 
     const loop = new ButtonBuilder()
-      .setLabel(await Translate("Loop"))
-      .setCustomId("loop")
-      .setStyle("Secondary");
+      .setLabel(EmojiState ? emojis.loop : ('Loop'))
+      .setCustomId('loop')
+      .setStyle('Danger');
 
     const lyrics = new ButtonBuilder()
       .setLabel(await Translate("Lyrics"))
@@ -43,8 +50,8 @@ module.exports = (queue, track) => {
       back,
       loop,
       resumepause,
-      lyrics,
-      skip
+      skip,
+      lyrics
     );
     queue.metadata.channel.send({ embeds: [embed], components: [row1] });
   })();

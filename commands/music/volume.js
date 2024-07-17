@@ -1,7 +1,7 @@
 const maxVol = client.config.opt.maxVol || 100;
 const { ApplicationCommandOptionType } = require('discord.js');
 const { useQueue } = require('discord-player');
-const { Translate } = require('../../translate');
+const { Translate } = require('../../process_tools');
 
 module.exports = {
     name: 'volume',

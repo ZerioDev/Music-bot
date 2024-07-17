@@ -5,7 +5,7 @@ client.commands = new Collection();
 const commandsArray = [];
 const player = useMainPlayer();
 
-const { Translate, GetTranslationModule } = require("./translate");
+const { Translate, GetTranslationModule } = require("./process_tools");
 
 const discordEvents = readdirSync("./events/Discord/").filter((file) =>
   file.endsWith(".js")

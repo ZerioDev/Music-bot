@@ -1,5 +1,5 @@
 const { ApplicationCommandOptionType, ActionRowBuilder, ButtonBuilder, ChannelType, EmbedBuilder, PermissionsBitField } = require('discord.js');
-const { Translate } = require('../../translate');
+const { Translate } = require('../../process_tools');
 
 module.exports = {
     name: 'controller',
@@ -27,69 +27,75 @@ module.exports = {
 
         inter.editReply({ content: await Translate(`Sending controller to <${channel}>... <✅>`) });
 
+        let EmojiState = client.config.app.enableEmojis;
+
+        const emojis = client.config.emojis;
+
+        emojis ? EmojiState = EmojiState : EmojiState = false;
+
         const back = new ButtonBuilder()
-            .setLabel(await Translate('Back'))
+            .setLabel(EmojiState ? emojis.back : ('Back'))
             .setCustomId('back')
             .setStyle('Primary');
 
         const skip = new ButtonBuilder()
-            .setLabel(await Translate('Skip'))
+            .setLabel(EmojiState ? emojis.skip : ('Skip'))
             .setCustomId('skip')
             .setStyle('Primary');
 
         const resumepause = new ButtonBuilder()
-            .setLabel(await Translate('Resume & Pause'))
+            .setLabel(EmojiState ? emojis.ResumePause : ('Resume & Pause'))
             .setCustomId('resume&pause')
             .setStyle('Danger');
 
         const save = new ButtonBuilder()
-            .setLabel(await Translate('Save'))
+            .setLabel(EmojiState ? emojis.savetrack : ('Save'))
             .setCustomId('savetrack')
             .setStyle('Success');
 
         const volumeup = new ButtonBuilder()
-            .setLabel(await Translate('Volume Up'))
+            .setLabel(EmojiState ? emojis.volumeUp : ('Volume Up'))
             .setCustomId('volumeup')
             .setStyle('Primary');
 
         const volumedown = new ButtonBuilder()
-            .setLabel(await Translate('Volume Down'))
+            .setLabel(EmojiState ? emojis.volumeDown : ('Volume Down'))
             .setCustomId('volumedown')
             .setStyle('Primary');
 
         const loop = new ButtonBuilder()
-            .setLabel(await Translate('Loop'))
+            .setLabel(EmojiState ? emojis.loop : ('Loop'))
             .setCustomId('loop')
             .setStyle('Danger');
 
         const np = new ButtonBuilder()
-            .setLabel(await Translate('Now Playing'))
+            .setLabel('Now Playing')
             .setCustomId('nowplaying')
             .setStyle('Secondary');
 
         const queuebutton = new ButtonBuilder()
-            .setLabel(await Translate('Queue'))
+            .setLabel('Queue')
             .setCustomId('queue')
             .setStyle('Secondary');
 
         const lyrics = new ButtonBuilder()
-            .setLabel(await Translate('lyrics'))
+            .setLabel('lyrics')
             .setCustomId('Lyrics')
             .setStyle('Primary');
 
         const shuffle = new ButtonBuilder()
-            .setLabel(await Translate('Shuffle'))
+            .setLabel('Shuffle')
             .setCustomId('shuffle')
             .setStyle('Success');
 
         const stop = new ButtonBuilder()
-            .setLabel(await Translate('Stop'))
+            .setLabel('Stop')
             .setCustomId('stop')
             .setStyle('Danger');
 
-        const row1 = new ActionRowBuilder().addComponents(back, queuebutton, resumepause, np, skip);
-        const row2 = new ActionRowBuilder().addComponents(volumedown, loop, save, volumeup);
-        const row3 = new ActionRowBuilder().addComponents(lyrics, shuffle, stop);
+        const row1 = new ActionRowBuilder().addComponents(back, resumepause, skip, stop, save);
+        const row2 = new ActionRowBuilder().addComponents(volumedown, volumeup, loop);
+        const row3 = new ActionRowBuilder().addComponents(lyrics, shuffle, queuebutton, np);
 
         channel.send({ embeds: [embed], components: [row1, row2, row3] });
     }

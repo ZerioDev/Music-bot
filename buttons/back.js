@@ -1,4 +1,4 @@
-const { Translate } = require("../translate");
+const { Translate } = require('../process_tools');
 
 module.exports = async ({ inter, queue }) => {
   if (!queue?.isPlaying())

@@ -1,6 +1,6 @@
 const { EmbedBuilder } = require('discord.js');
 const { useQueue } = require('discord-player');
-const { Translate } = require('../../translate');
+const { Translate } = require('../../process_tools');
 
 module.exports = {
     name: 'queue',
@@ -16,8 +16,7 @@ module.exports = {
         const methods = ['', '🔁', '🔂'];
         const songs = queue.tracks.size;
         const nextSongs = songs > 5 ? await Translate(`And <**${songs - 5}**> other song(s)...`) : await Translate(`In the playlist <**${songs}**> song(s)...`);
-        const tracks = queue.tracks.map(async (track, i) => await Translate(`<**${i + 1}**> - <${track.title}> | <${track.author}> (requested by : <${track.requestedBy ? track.requestedBy.displayName : "unknown"}>)`));
-
+        const tracks = queue.tracks.map((track, i) => `**${i + 1}** - ${track.title} | ${track.author} (requested by : ${track.requestedBy ? track.requestedBy.displayName : "unknown"})`);
         const embed = new EmbedBuilder()
             .setColor('#2f3136')
             .setThumbnail(inter.guild.iconURL({ size: 2048, dynamic: true }))

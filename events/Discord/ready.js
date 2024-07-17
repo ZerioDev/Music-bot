@@ -1,4 +1,4 @@
-const { Translate } = require("../../translate");
+const { Translate } = require('../../process_tools');
 
 module.exports = async (client) => {
     console.log(await Translate(`Logged to the client <${client.user.username}>.`));
