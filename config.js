@@ -1,9 +1,10 @@
+const process = require('process');
 module.exports = {
     app: {
-        token: 'xxx',
+        token: process.env.DISCORD_TOKEN || 'xxx',
         playing: 'by the Community ❤️',
         global: true,
-        guild: 'xxx',
+        guild: process.env.GUILD_ID || 'xxx',
         extraMessages: false,
         loopMessage: false,
         lang: 'en',

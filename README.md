@@ -10,34 +10,48 @@ If you need help with this project, to get support faster you can join the help 
 
 ### ⚡ Configuration
 
+Important!!! In order to work you need to rename `.env.example` to `.env`
+
 Open the configuration file located in the main folder `config.js`.
 
 ```js
+const process = require('process');
 module.exports = {
     app: {
-        token: 'XXX',
-        playing: 'by Zerio ❤️',
+        token: process.env.DISCORD_TOKEN || 'xxx',
+        playing: 'by the Community ❤️',
         global: true,
-        guild: 'xxx',
+        guild: process.env.GUILD_ID || 'xxx',
         extraMessages: false,
         loopMessage: false,
         lang: 'en',
-        Translate_Timeout: 10000,
-        enableEmojis: false
-},
+        enableEmojis: false,
+    },
+
+    emojis:{
+        'back': '⏪',
+        'skip': '⏩',
+        'ResumePause': '⏯️',
+        'savetrack': '💾',
+        'volumeUp': '🔊',
+        'volumeDown': '🔉',
+        'loop': '🔁',
+    },
+
     opt: {
         DJ: {
             enabled: false,
             roleName: '',
             commands: []
         },
+        Translate_Timeout: 10000,
         maxVol: 100,
         spotifyBridge: true,
         volume: 75,
         leaveOnEmpty: true,
-        leaveOnEmptyCooldown: 60000,
+        leaveOnEmptyCooldown: 30000,
         leaveOnEnd: true,
-        leaveOnEndCooldown: 60000,
+        leaveOnEndCooldown: 30000,
         discordPlayer: {
             ytdlOptions: {
                 quality: 'highestaudio',
