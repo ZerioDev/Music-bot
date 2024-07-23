@@ -1,10 +1,10 @@
 {
-    "name": "music-bot",
+    "name": "lethal-boombox",
     "main": "main.js",
-    "author": "ZerioDev",
-    "version": "8.0.0",
-    "repository": "https://github.com/ZerioDev/Music-bot.git",
-    "description": "A complete code to download for a cool Discord music bot.",
+    "author": "BoredKevin",
+    "version": "8.2.0",
+    "repository": "https://github.com/BoredKevin/lethal-boombox",
+    "description": "ZerioDev's Music-Bot with different changes according to my preference",
     "scripts": {
         "start": "node main.js"
     },
@@ -13,6 +13,7 @@
         "@discordjs/opus": "^0.9.0",
         "@distube/ytdl-core": "^4.11.8",
         "@evan/opus": "^1.0.3",
+        "child_process": "^1.0.2",
         "discord-player": "6.6.9-dev.1",
         "discord.js": "^14.13.0",
         "express": "^4.19.2",
