@@ -8,7 +8,9 @@ module.exports = {
         loopMessage: false,
         lang: 'en',
         enableEmojis: false,
-        port: 3000
+        port: 3000,
+        autoRestart: false, // whether to restart the systemd service when having connection issues
+        autoRestartService: 'musicbot.service' // the systemd service to restart
     },
 
     emojis:{

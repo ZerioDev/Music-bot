@@ -2,7 +2,7 @@
     "name": "lethal-boombox",
     "main": "main.js",
     "author": "BoredKevin",
-    "version": "8.2.0",
+    "version": "8.2.1",
     "repository": "https://github.com/BoredKevin/lethal-boombox",
     "description": "ZerioDev's Music-Bot with different changes according to my preference",
     "scripts": {
