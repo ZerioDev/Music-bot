@@ -25,7 +25,7 @@ module.exports = {
         const queue = useQueue(inter.guild);
         const errorMessage = await Translate(`Something went wrong <${inter.member}>... try again ? <❌>`);
         let baseEmbed = new EmbedBuilder()
-            .setColor('#2f3136');
+            .setColor('#7289da');
 
         if (!queue?.isPlaying()) return inter.editReply({ content: await Translate(`No music currently playing <${inter.member}>... try again ? <❌>`) });
 

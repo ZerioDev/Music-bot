@@ -50,7 +50,7 @@ module.exports = {
 
         const embed = new EmbedBuilder()
             .setAuthor({ name: await Translate(`Skipped to <${trackName}> <✅>`) })
-            .setColor('#2f3136')
+            .setColor('#7289da')
 
         inter.editReply({ embeds: [embed] });
     }

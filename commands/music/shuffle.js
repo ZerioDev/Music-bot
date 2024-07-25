@@ -16,7 +16,7 @@ module.exports = {
         queue.tracks.shuffle();
 
         const embed = new EmbedBuilder()
-            .setColor('#2f3136')
+            .setColor('#7289da')
             .setAuthor({ name: await Translate(`Queue shuffled <${queue.tracks.size}> song(s)! <✅>`) });
 
         return inter.editReply({ embeds: [embed] });

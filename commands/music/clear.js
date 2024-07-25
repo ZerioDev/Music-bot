@@ -17,7 +17,7 @@ module.exports = {
 
         const clearEmbed = new EmbedBuilder()
             .setAuthor({ name: await Translate(`The queue has just been cleared <🗑️>`) })
-            .setColor('#2f3136');
+            .setColor('#7289da');
 
         inter.editReply({ embeds: [clearEmbed] });
     }

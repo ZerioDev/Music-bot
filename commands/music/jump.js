@@ -47,7 +47,7 @@ module.exports = {
 
         const jumpEmbed = new EmbedBuilder()
             .setAuthor({ name: await Translate(`Jumped to <${trackName}> <✅>`) })
-            .setColor('#2f3136');
+            .setColor('#7289da');
 
         inter.editReply({ embeds: [jumpEmbed] });
     }

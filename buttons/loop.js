@@ -8,5 +8,5 @@ module.exports = async ({ inter, queue }) => {
     if (queue.repeatMode === 2) queue.setRepeatMode(QueueRepeatMode.OFF)
     else queue.setRepeatMode(queue.repeatMode + 1)
 
-    return inter.editReply({ content: await Translate(`Loop made has been set to <**${methods[queue.repeatMode]}**>.<✅>`) });
+    return inter.editReply({ content: await Translate(`Loop made has been set to <${methods[queue.repeatMode]}.<✅>`) });
 }

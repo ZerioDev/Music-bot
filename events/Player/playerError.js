@@ -5,8 +5,8 @@ module.exports = (queue, error) => {
 
     (async () => {
         const embed = new EmbedBuilder()
-        .setAuthor({ name: await Translate(`Bot had an unexpected error, please check the console imminently!`)})
-        .setColor('#EE4B2B');
+        .setAuthor({ name: await Translate(`Bot had an unexpected error, please contact developers!`)})
+        .setColor('#ed4245');
 
         queue.metadata.channel.send({ embeds: [embed] });
 

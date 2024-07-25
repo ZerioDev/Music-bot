@@ -30,17 +30,19 @@ module.exports = {
         const filter = filters.find((x) => x.toLowerCase() === selectedFilter.toLowerCase().toString());
 
         let msg = await Translate (`This filter doesn't exist <${inter.member}>... try again ? <❌ \n>`) +
-            (actualFilter ? await Translate(`Filter currently active: <**${actualFilter}**. \n>`) : "") +
+            (actualFilter ? await Translate(`Filter currently active: <${actualFilter}. \n>`) : "") +
             await Translate(`List of available filters:`);
-        filters.forEach(f => msg += `- **${f}**`);
+        filters.forEach(f => msg += `- ${f}`);
 
         if (!filter) return inter.editReply({ content: msg });
 
         await queue.filters.ffmpeg.toggle(filter);
 
         const filterEmbed = new EmbedBuilder()
-            .setAuthor({ name: await Translate(`The filter <${filter}> is now <${queue.filters.ffmpeg.isEnabled(filter) ? 'enabled' : 'disabled'}> <✅\n> *Reminder: the longer the music is, the longer this will take.*`) })
-            .setColor('#2f3136');
+            .setAuthor({ name: await Translate(`The filter <${filter}> is now <${queue.filters.ffmpeg.isEnabled(filter) ? 'enabled' : 'disabled'}> <✅\n> Note: the longer the music is, the longer this will take.`) })
+            .setFooter({ text: await Translate('Music comes first - Made with <❤️> by BoredKevin'), iconURL: inter.member.avatarURL({ dynamic: true }) })
+            .setColor('#7289da')
+            .setTimestamp();
 
         return inter.editReply({ embeds: [filterEmbed] });
     }

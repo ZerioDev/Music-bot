@@ -18,7 +18,7 @@ module.exports = {
             })
             .catch(async (e) => {
                 console.log(e);
-                return inter.editReply({ content: await Translate(`Error! Please contact Developers! | <❌>`) });
+                return inter.editReply({ content: await Translate(`Error! Please contact developers! | <❌>`) });
             });
 
         const lyrics = results?.[0];
@@ -32,9 +32,9 @@ module.exports = {
                 name: lyrics.artistName
             })
             .setDescription(trimmedLyrics.length === 1997 ? `${trimmedLyrics}...` : trimmedLyrics)
-            .setFooter({ text: await Translate('Music comes first - Made with heart by the Community <❤️>'), iconURL: inter.member.avatarURL({ dynamic: true }) })
+            .setFooter({ text: await Translate('Music comes first - Made with <❤️> by BoredKevin'), iconURL: inter.member.avatarURL({ dynamic: true }) })
             .setTimestamp()
-            .setColor('#2f3136');
+            .setColor('#7289da');
 
         return inter.editReply({ embeds: [embed] });
     }

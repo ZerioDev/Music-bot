@@ -17,7 +17,7 @@ module.exports = {
 
         const backEmbed = new EmbedBuilder()
             .setAuthor({ name: await Translate(`Playing the previous track <✅>`) })
-            .setColor('#2f3136');
+            .setColor('#7289da');
 
         inter.editReply({ embeds: [backEmbed] });
     }

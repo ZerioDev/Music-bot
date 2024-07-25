@@ -26,9 +26,9 @@ module.exports = async ({ inter, queue }) => {
             name: lyrics.artistName
         })
         .setDescription(trimmedLyrics.length === 1997 ? `${trimmedLyrics}...` : trimmedLyrics)
-        .setFooter({ text: await Translate('Music comes first - Made with heart by the Community <❤️>'), iconURL: inter.member.avatarURL({ dynamic: true }) })
+        .setFooter({ text: await Translate('Music comes first - Made with <❤️> by BoredKevin'), iconURL: inter.member.avatarURL({ dynamic: true }) })
         .setTimestamp()
-        .setColor('#2f3136');
+        .setColor('#7289da');
 
     return inter.editReply({ embeds: [embed] });
 }

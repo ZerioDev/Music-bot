@@ -16,15 +16,15 @@ module.exports = {
 
         let description = tracks
             .slice(0, 20)
-            .map((track, index) => { return `**${index + 1}.** [${track.title}](${track.url}) by ${track.author}` })
+            .map((track, index) => { return `${index + 1}. [${track.title}](${track.url}) by ${track.author}` })
             .join('\r\n\r\n');
 
         let historyEmbed = new EmbedBuilder()
             .setTitle(`History`)
             .setDescription(description)
-            .setColor('#2f3136')
+            .setColor('#7289da')
             .setTimestamp()
-            .setFooter({ text: await Translate('Music comes first - Made with heart by the Community <❤️>'), iconURL: inter.member.avatarURL({ dynamic: true }) });
+            .setFooter({ text: await Translate('Music comes first - Made with <❤️> by BoredKevin'), iconURL: inter.member.avatarURL({ dynamic: true }) });
 
         inter.editReply({ embeds: [historyEmbed] });
     }

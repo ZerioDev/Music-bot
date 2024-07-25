@@ -26,35 +26,35 @@ module.exports = {
         const embed = new EmbedBuilder()
             .setAuthor({ name: track.title, iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }) })
             .setThumbnail(track.thumbnail)
-            .setDescription(await Translate(`Volume <**${queue.node.volume}**%> <\n> <Duration **${trackDuration}**> <\n> Progress <${progress}> <\n >Loop mode <**${methods[queue.repeatMode]}**> <\n>Requested by <${track.requestedBy}>`))
-            .setFooter({ text: await Translate('Music comes first - Made with heart by the Community <❤️>'), iconURL: inter.member.avatarURL({ dynamic: true }) })
-            .setColor('#2f3136')
+            .setDescription(await Translate(`<\n><${progress}><\n>Volume \`<${queue.node.volume}%>\`<\n>Loop \`<${methods[queue.repeatMode]}>\``))// <\n>Requested by `<${track.requestedBy}>`))
+            .setFooter({ text: await Translate('Music comes first - Made with <❤️> by BoredKevin'), iconURL: inter.member.avatarURL({ dynamic: true }) })
+            .setColor('#7289da')
             .setTimestamp();
         
         const saveButton = new ButtonBuilder()
             .setLabel(EmojiState ? emojis.savetrack : ('Save this track'))
             .setCustomId('savetrack')
-            .setStyle('Danger');
+            .setStyle('Primary');
 
         const volumeup = new ButtonBuilder()
             .setLabel(EmojiState ? emojis.volumeUp : ('Volume Up'))
             .setCustomId('volumeup')
-            .setStyle('Primary');
+            .setStyle('Secondary');
 
         const volumedown = new ButtonBuilder()
             .setLabel(EmojiState ? emojis.volumeDown : ('Volume Down'))
             .setCustomId('volumedown')
-            .setStyle('Primary');
+            .setStyle('Secondary');
 
         const loop = new ButtonBuilder()
             .setLabel(EmojiState ? emojis.loop : ('Loop'))
             .setCustomId('loop')
-            .setStyle('Danger');
+            .setStyle('Primary');
 
         const resumepause = new ButtonBuilder()
             .setLabel(EmojiState ? emojis.ResumePause : ('Resume <&> Pause'))
             .setCustomId('resume&pause')
-            .setStyle('Success');
+            .setStyle('Secondary');
 
         const row = new ActionRowBuilder().addComponents(volumedown, resumepause, volumeup, loop, saveButton);
         inter.editReply({ embeds: [embed], components: [row] });

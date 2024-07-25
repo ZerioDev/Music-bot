@@ -38,11 +38,11 @@ module.exports = {
         const maxTracks = res.tracks.slice(0, 10);
 
         const embed = new EmbedBuilder()
-            .setColor('#2f3136')
+            .setColor('#7289da')
             .setAuthor({ name: await Translate(`Results for <${song}>`), iconURL: client.user.displayAvatarURL({ size: 1024, dynamic: true }) })
-            .setDescription(await Translate(`<${maxTracks.map((track, i) => `**${i + 1}**. ${track.title} | ${track.author}`).join('\n')}\n\n> Select choice between <**1**> and <**${maxTracks.length}**> or <**cancel** ⬇️>`))
+            .setDescription(await Translate(`<${maxTracks.map((track, i) => `${i + 1}. ${track.title} | ${track.author}`).join('\n')}\n\n> Select choice between <1> and <${maxTracks.length}> or <cancel ⬇️>`))
             .setTimestamp()
-            .setFooter({ text: await Translate('Music comes first - Made with heart by the Community <❤️>'), iconURL: inter.member.avatarURL({ dynamic: true }) })
+            .setFooter({ text: await Translate('Music comes first - Made with <❤️> by BoredKevin'), iconURL: inter.member.avatarURL({ dynamic: true }) })
 
         inter.editReply({ embeds: [embed] });
 
@@ -61,7 +61,7 @@ module.exports = {
 
             const value = parseInt(query);
             if (!value || value <= 0 || value > maxTracks.length) {
-                return inter.followUp({ content: await Translate(`Invalid response, try a value between <**1**> and <**${maxTracks.length}**> or <**cancel**>... try again ? <❌>`), ephemeral: true });
+                return inter.followUp({ content: await Translate(`Invalid response, try a value between <1> and <${maxTracks.length}> or <cancel>... try again ? <❌>`), ephemeral: true });
             }
 
             try {
