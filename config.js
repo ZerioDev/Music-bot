@@ -1,4 +1,3 @@
-const process = require('process');
 module.exports = {
     app: {
         token: process.env.DISCORD_TOKEN || 'xxx',
