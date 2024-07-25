@@ -1,3 +1,5 @@
+require('dotenv').config()
+
 const { Player } = require('discord-player');
 const { Client, GatewayIntentBits } = require('discord.js');
 
