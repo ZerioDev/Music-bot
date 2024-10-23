@@ -1,3 +1,0 @@
-STEP-1 run this command in cmd : yarn add discord-player-youtubei
-STEP-2 after installing the new extractor run the bot with the updated main.js which fixed youtube extractor warning
-thanks
