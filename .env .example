@@ -5,5 +5,8 @@
 
 #Important!!!: This file should be renamed to .env
 
-DISCORD_TOKEN="your token here"
-GUILD="your guild id here"
+# Discord Bot Token
+DISCORD_TOKEN=""
+
+#Guild ID
+GUILD=""
