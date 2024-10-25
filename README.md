@@ -100,7 +100,7 @@ To use the project correctly you will need some tools.
 
 WARNING: You MUST use Node.js version `v18.20.2`, otherwise, you will encounter major compatibility issues.
 
-[FFmpeg](https://www.ffmpeg.org) to process audio
+[FFmpeg](https://www.ffmpeg.org) to process audio ( make sure to download the latest version availble )
 
 [Node JS](https://nodejs.org/en/) (`v18.20.2`) for environment
 
