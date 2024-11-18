@@ -122,6 +122,56 @@ Please do not withdraw the license and keep the credits on this project.
 
 To have full access to the project and to be able to withdraw the credits a small donation is accepted.
 
+### 📦 Installation via Docker
+
+#### 1. Install Docker
+
+Make sure you have [Docker](https://www.docker.com/get-started) and [Docker Compose](https://docs.docker.com/compose/install/) installed.
+
+#### 2. Build the Docker Image and Run the Container
+
+1. To build the Docker image from the `Dockerfile` in the root directory of your project, use the Docker tool. The image will be created with the tag `music-bot`.
+    
+    `docker build -t music-bot .`
+
+2. After building the image, you can run the container, specifying the container name, port mapping, and the environment variable file `.env` for configuration.
+    
+    `docker run -d --name music-bot -p 3000:3000 --env-file .env music-bot`
+
+#### 3. Using Docker Compose
+
+If you prefer to use `docker-compose` to manage containers, ensure that your project has a `docker-compose.yml` file. This file should define all services, including the container for your bot, as well as ports and the environment variable file.
+
+   ```yaml
+   version: '3.8'
+   services:
+      music-bot:
+         build:
+            context: .
+            dockerfile: Dockerfile
+         container_name: music-bot
+         ports:
+           - "3000:3000"
+         env_file:
+           - .env                  
+         restart: unless-stopped
+   ```
+
+1. To build and start the container using `docker-compose`, use the standard commands, which will automatically create and start the container in the background.
+
+   `docker-compose up --build -d`
+
+2. To stop the containers using Docker Compose, there's a command to stop all services and remove the created containers.
+
+   `docker-compose down`
+
+#### 4. Notes
+
+- Environment variables from the `.env` file will automatically be loaded for both Docker and Docker Compose, provided the file is correctly configured.
+- Make sure all required variables (such as `DISCORD_TOKEN`, `GUILD_ID`, and others) are set in the `.env` file before running the container.
+
+Now your bot should be set up and running in a Docker container!
+
 ### ❗supported languages: 
 
 | Code | Language | Code | Language | Code | Language |
