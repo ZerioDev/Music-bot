@@ -1,0 +1,4 @@
+﻿services:
+  music-bot:
+    build: .
+    restart: always

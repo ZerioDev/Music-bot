@@ -1,7 +1,7 @@
 module.exports = {
     app: {
         token: process.env.DISCORD_TOKEN || 'xxx',
-        playing: 'by the Community ❤️',
+        playing: 'catch the humans',
         global: true,
         guild: process.env.GUILD_ID || 'xxx',
         extraMessages: false,
@@ -29,7 +29,7 @@ module.exports = {
         Translate_Timeout: 10000,
         maxVol: 100,
         spotifyBridge: true,
-        volume: 75,
+        volume: 7,
         leaveOnEmpty: true,
         leaveOnEmptyCooldown: 30000,
         leaveOnEnd: true,
