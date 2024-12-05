@@ -13,38 +13,40 @@ module.exports = {
 
         const metadataThread = queue.metadata.lyricsThread;
         if (metadataThread && !metadataThread.archived) return inter.editReply({ content: await Translate(`Lyrics thread already created <${inter.member}> ! <${queue.metadata.lyricsThread}>`) });
-
-        const results = await player.lyrics
-            .search({
+ try {
+            const results = await player.lyrics.search({
                 q: queue.currentTrack.title
-            })
-            .catch(async (e) => {
-                console.log(e);
-                return inter.editReply({ content: await Translate(`Error! Please contact Developers! | <❌>`) });
             });
 
-        const lyrics = results?.[0];
-        if (!lyrics?.plainLyrics) return inter.editReply({ content: await Translate(`No lyrics found for <${queue.currentTrack.title}>... try again ? <❌>`) });
-        
-        const thread = await queue.metadata.channel.threads.create({
-            name: `Lyrics of ${queue.currentTrack.title}`
-        });
+            const lyrics = results?.[0];
+            if (!lyrics?.plainLyrics) {
+                console.log(`No lyrics found for ${queue.currentTrack.title}`);
+                return inter.editReply({ content: await Translate(`No lyrics found for <${queue.currentTrack.title}>... try again ? <❌>`) });
+            }
 
-        queue.setMetadata({
-            channel: queue.metadata.channel,
-            lyricsThread: thread
-        });
-
-        const syncedLyrics = queue?.syncedLyrics(lyrics);
-        syncedLyrics.onChange(async (lyrics) => {
-            await thread.send({
-                content: lyrics
+            const thread = await queue.metadata.channel.threads.create({
+                name: `Lyrics of ${queue.currentTrack.title}`
             });
-        });
 
-        syncedLyrics?.subscribe();
+            queue.setMetadata({
+                channel: queue.metadata.channel,
+                lyricsThread: thread
+            });
 
-        return inter.editReply({ content: await Translate(`Successfully syncronized lyrics in <${thread}> ! <${inter.member}> <✅>`) });
+            const syncedLyrics = queue?.syncedLyrics(lyrics);
+            syncedLyrics.onChange(async (lyrics) => {
+                await thread.send({
+                    content: lyrics
+                });
+            });
+
+            syncedLyrics?.subscribe();
+
+            return inter.editReply({ content: await Translate(`Successfully synchronized lyrics in <${thread}> ! <${inter.member}> <✅>`) });
+        } catch (error) {
+            console.log(error);
+            return inter.editReply({ content: await Translate(`Hubo un error inesperado o no se encontró la letra de la canción`) });
+        }
     }
 }
 
