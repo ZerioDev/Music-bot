@@ -1,0 +1,14 @@
+version: '3.8'
+
+services:
+  music-bot:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: music-bot
+    ports:
+      - "3000:3000"
+    environment:               # Define environment variables directly in the docker-compose file
+      DISCORD_TOKEN: ""
+      GUILD_ID: ""
+    restart: unless-stopped
